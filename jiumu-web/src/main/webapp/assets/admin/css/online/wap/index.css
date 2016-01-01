@@ -1,0 +1,560 @@
+/* ==========================================================
+ * index.css v20150805
+ * ==========================================================
+ * Copyright yuzhu
+ *
+ * 天谕数据库移动端 页面css
+ * ========================================================== */
+html{
+  width: 100%;
+  height: 100%;
+  /*-webkit-animation:sBody 0.2s linear;
+  animation:sBody 0.2s linear;*/
+  background-color: #1e1f21;
+}
+body{
+  width: 100%;
+  background-color: #1e1f21;
+  font-size: .28rem;
+  color: #d2d2d2;
+}
+@-webkit-keyframes sBody {
+  from {-webkit-transform:scale(0,0);}
+  to {-webkit-transform:scale(1,1);}
+}
+@keyframes sBody {
+  from {transform:scale(0,0);}
+  to {transform:scale(1,1);}
+}
+
+a{color: #d2d2d2;}
+a:visited{color: #d2d2d2;}
+.index{height: 100%;}
+.wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  padding-top: 1rem;
+}
+
+/* 内容层 */
+.content{
+  position: relative;
+  z-index: 2;
+}
+/*背景层*/
+.bg{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.bg1{
+  width: 100%;
+  height: 100%;
+  background: url(../../../img/indexbg.jpg) center top no-repeat;
+  background-size: 100% 100%;
+}
+
+/*搜索栏*/
+.m-search{
+  position: relative;
+  margin: .20rem auto;
+  width: 5.95rem;
+  height: .65rem;
+  line-height: .65rem;
+  border: 1px solid #9f8d56;
+  background-color: #131415;
+  font-size: .28rem;
+  color: #9f8d56;
+}
+.m-search .icon-search{
+  float: left;
+  margin: .12rem .20rem;
+  width: .38rem;
+  height: .40rem;
+  background: url(../../../img/mtydb.png) 0 0;
+  background-size: 6.4rem 6rem;
+}
+.m-search .input-search{
+  float: left;
+  width: 4.30rem;
+  height: .65rem;
+  line-height: normal;
+  border: none;
+  color: #35373b;
+  background-color: #131415;
+} 
+.m-search .input-submit{display: none;}
+.m-search .input-search:focus{color: #fff;}
+.m-search .cancel{float: right;margin-right: .27rem;}
+
+/* 首页 */
+.logo{
+  margin: .20rem auto 0;
+  height: 1.88rem;
+  width: 3.15rem;
+}
+.logo img{width: 100%;height: 100%;}
+.index-main{
+  background-color: #141414;
+  opacity: 0.6;
+  border-top: 1px solid #9f8d56;
+  border-bottom: 1px solid #9f8d56;
+}
+.index-main a{
+  position: relative;
+  display: block;
+  height: .90rem;
+  padding-left: 1.00rem;
+  margin-bottom: -1px;
+  line-height: .90rem;
+  color: #9f8d56;
+  border-bottom: 1px dashed #9f8d56;
+  color: #9e9562;
+  font-size: .24rem;
+}
+.index-main .icon-f{
+  position: absolute;
+  top: .27rem;
+  left: .43rem;
+  width: .37rem;
+  height: .37rem;
+  background: url(../../../img/mtydb.png) -0.37rem 0;
+  background-size: 6.4rem 6rem;
+}
+.index-main .icon-ar{
+  position: absolute;
+  top: .33rem;
+  right: .47rem;
+  width: .17rem;
+  height: .24rem;
+  background: url(../../../img/mtydb.png) -0.75rem 0;
+  background-size: 6.4rem 6rem;
+}
+/* 首页 end */
+.search-result{
+  display: none;
+  padding: .20rem;
+  color: #d2d2d2;
+  border-top: 1px dashed #9f8d56;
+  line-height: .36rem;
+  border-bottom: 1px solid #9f8d56;
+}
+.search-tab{
+  background-color: #2a2b2e;
+}
+.search-tab .target{display: none;}
+.search-tab .cur{display: block;}
+.icon-error{
+  float: left;
+  width: .32rem;
+  height: .32rem;
+  background: url(../../../img/mtydb.png) -0.93rem 0;
+  background-size: 6.4rem 6rem;
+}
+.search-result .yellow{color: #9f8d56;}
+/* 头部 */
+.top-header{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 1.00rem;
+  line-height: 1rem;
+  color: #fff;
+  background-color: #9f8d56;
+  text-align: center;
+  z-index: 5;
+}
+
+@-webkit-keyframes zd {
+    0%,75%{-webkit-transform:rotateY(360deg)}
+    100%{-webkit-transform:rotateY(0deg)}
+}
+@keyframes zd {
+    0%,75%{transform:rotateY(360deg)}
+    100%{transform:rotateY(0deg)}
+}
+.top-header .icon-back{
+  position: absolute;
+  left: .35rem;
+  top: .3rem;
+  width: .21rem;
+  height: .36rem;
+  background: url(../../../img/mtydb.png) 0 -0.40rem;
+  background-size: 6.4rem 6rem;
+}
+.top-header .i-right{
+  position: absolute;
+  right: .35rem;
+  top: .3rem;
+}
+.top-header .icon-search{
+  float: right;
+  margin-left: .2rem;
+  width: .37rem;
+  height: .40rem;
+  background: url(../../../img/mtydb.png) -0.22rem -0.40rem no-repeat;
+  background-size: 6.4rem 6rem;
+  /*-webkit-animation:zd 6s ease-out .4s infinite;
+  animation:zd 6s ease-out .4s infinite;*/
+  
+}
+.top-header .icon-home{
+  float: right;
+  width: .46rem;
+  height: .40rem;
+  background: url(../../../img/mtydb.png) -0.61rem -0.40rem;
+  background-size: 6.4rem 6rem;
+  /*-webkit-animation:zd 6s ease-out .4s infinite;
+  animation:zd 6s ease-out .4s infinite;*/
+}
+/* 表格样式 */
+.m-waptable{
+  width: 100%;
+  background-color: #222325;
+  font-size: .23rem;
+  line-height: .3rem;
+}
+.m-waptable tr{ border-bottom: 1px dashed #9f8d56;}
+.m-waptable th{text-align: center;color: #a99f87;line-height: .65rem;font-size: .24rem;}
+.m-waptable td{text-align: center;padding: .2rem 0;}
+.m-waptable a{display: inline-block;width: 100%;}
+.m-waptable .col-name{text-align: left;line-height: .65rem;}
+.m-waptable .col-name img{margin-left: 0.2rem;margin-right: 0.1rem;width: .65rem;height: .65rem;}
+.m-waptable .ceven{background-color: #1e1f21}
+.m-waptable .ttl{text-align: left;padding-left: .4rem;}
+/* 表格里面名称颜色 */
+/*.m-waptable .gray { color: #ccc; }*/
+.m-waptable .white { color: #fefee5; }
+.m-waptable .green { color: #6de539; }
+.m-waptable .blue { color: #8dc6ff; }
+.m-waptable .purple { color: #ac40ff; }
+.m-waptable .golden { color: #f7e159; }
+
+.w300{width: 3.00rem;}
+.w205{width: 2.01rem;}
+.w70{width: .70rem;}
+.w65{width: .65rem;}
+
+/* 装备 */
+.menu{
+  background-color: #4c4331;
+  height: 1.62rem;
+  padding:0 .3rem;
+}
+.menu-one{
+  height: .87rem;
+  line-height: .87rem;
+  border-bottom: 1px solid #9f8d56;
+  text-align: center;
+  font-size: .32rem;
+}
+.menu-one li{
+  position: relative;
+  float: left;
+  
+}
+.three-tab li{width: 33%;}
+.two-tab li{width: 50%;}
+.one-tab li{width: 100%;}
+.menu-one li .line{
+  position: absolute;
+  top: .30rem;
+  right: 0;
+  width: 1px;
+  height: .30rem;
+  background-color: #9f8d56;
+}
+.menu-one li .onetext{
+  line-height: .8rem;
+  padding-bottom: .20rem;
+  color: #ccb382;
+}
+.menu-one .cur .onetext{border-bottom: .09rem solid #ccb382;}
+
+.menu-two .arrleft{
+  position: relative;
+  float: left;
+  margin-left: -0.3rem;
+  width: .7rem;
+  height: .75rem;
+}
+.menu-two .arrleft .icon{
+  position: absolute;
+  top: .28rem;
+  left: 0.3rem;
+  width: .10rem;
+  height: .17rem;
+  background: url(../../../img/mtydb.png) -1.25rem 0;
+  background-size: 6.4rem 6rem;
+}
+.menu-two .arrright{
+  position: relative;
+  float: right;
+  margin-right: -0.3rem;
+  width: .7rem;
+  height: .75rem;
+}
+.menu-two .arrright .icon{
+  position: absolute;
+  top: .28rem;
+  right: .3rem;
+  width: .10rem;
+  height: .17rem;
+  background: url(../../../img/mtydb.png) -1.36rem 0;
+  background-size: 6.4rem 6rem;
+}
+.menu-two .content{
+  float: left;
+  width: 4.8rem;
+  margin-left: .1rem;
+  margin-right: .1rem;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.menu-two .content .long{width: 20rem;}
+.menu-two .content .cc{
+  float: left;
+  /*transition: margin 0.5s linear;
+  -moz-transition: margin .5s linear;  
+  -webkit-transition: margin .5s linear; 
+  -o-transition: margin .5s linear; */
+}
+.menu-two .content .cc .cc-one{width: 4.8rem;text-align: center;float: left;}
+.menu-two .type{
+  margin: 0 .2rem;
+  font-size: .28rem;
+  line-height: .75rem;
+  color: #ccb382;
+}
+.menu-two .type.cur{color: #fff;}
+
+
+/* 装备详情 */
+  .item-details p{ margin: 0;}
+  .item-details{
+    background-color: #1e1f21;
+    font-size: .26rem;
+    line-height: .4rem;
+  }
+  .tydb-equip1 { 
+    position: relative; 
+    margin-bottom: .4rem;
+    padding: .2rem .5rem;
+    background-color:#312f29;
+    color: #fefee5;
+  }
+  .tydb-equip2{ 
+    margin-left: .25rem;
+    padding:0 .25rem .2rem;
+    margin-bottom: .25rem;
+    background: url(../../../img/linebg.png) left bottom no-repeat;
+    background-size: 5.8rem 0.07rem;
+  }
+  .tydb-property { 
+    padding:0 .5rem .3rem;
+    position: relative; 
+  }
+ .equip-details  .item-details .clearfix{padding:0 .5rem .3rem;}
+  
+  /*属性小头像*/
+  .tydb-equip1img { float: left; margin-right: .33rem; width: .82rem; height: .82rem; position: relative; }
+  .tydb-equip1img img{width: 100%;height: 100%;}
+  .item-details .item-name {font-size:.38rem;}
+  .item-details .item-name .name {
+      height: .45rem;
+      overflow: hidden;
+  }
+  .tydb-equip2 .equ-part{font-size: .34rem}
+  
+  /* 装备名字颜色 */
+  .tydb-name-white { color: #fefee5; }
+  .tydb-name-green { color: #6de539; }
+  .tydb-name-blue { color: #8dc6ff; }
+  .tydb-name-purple { color: #c693ff; }
+  .tydb-name-golden { color: #ffcc32; }
+
+  .namebg-white { background-color: #312f29; }
+  .namebg-green { background-color: #164521; }
+  .namebg-blue { background-color: #224f66; }
+  .namebg-purple { background-color: #46284c; }
+  .namebg-golden { background-color: #655239; }
+
+  /*.tydb-name-gray { color: #ccc; }*/
+  /*.tydb-name-orange { color: #ff8126; }*/
+
+  /* 品阶色块 */
+  .tydb-kuai {
+   position: absolute; top:.7rem;left: 2.6rem; height: .15rem; width: 1.9rem;
+    }
+  .tydb-k1, .tydb-k2, .tydb-k3, .tydb-k4 { position: absolute; top: 0; width:.52rem; height: .15rem; 
+    background-image: url(../../../img/mtydb.png); 
+    background-size: 6.4rem 6rem;
+  }
+  .tydb-k1 { left: 0; background-position: -1.46rem 0; }
+  .tydb-k2 { left: .45rem; background-position: -1.99rem 0; }
+  .tydb-k3 { left: .88rem; background-position: -2.50rem 0; }
+  .tydb-k4 { left: 1.32rem; background-position: -3.01rem 0; }
+
+  /*详情里面内容的颜色*/
+  .tydb-yellow { color: #e9813a;}/*移动端装备详情内容里面橙色*/
+  .tydb-blue { color: #0071a9; }/*蓝色*/
+  .tydb-red { color: #bb3ae6; }/*装备详情内容里面的紫红色*/
+  .tydb-green { color: #68c33d; }/*绿色*/
+  .tydb-yellowlight{color:#f0df6d;}
+  .tydb-orange{color: #f98c3f;}
+  .tydb-purpledark{color: #ea9cff;}
+  .tydb-purple{color: #7373F7;}
+  .tydb-greendark{color: #9BCA64;}
+  .tydb-purple2{color: #7B7DBF;}
+  .tydb-lightorange{color: #CD4D4D;}
+  .tydb-bluedark{color: #7FB2C4;}
+  .tydb-white{color: #fff;}
+  .tydb-redbig{color: #C43000;}
+/* 装备详情 end */
+/* 技能详情 */
+.skill-detail .tydb-equip1{
+  margin-left: .25rem;
+  padding-left: .25rem;
+  padding-bottom: .2rem;
+  margin-bottom: .25rem;
+  background: url(../../../img/linebg.png) left bottom no-repeat;
+  background-size: 5.8rem 0.07rem;
+}
+.skill-detail .tydb-equip1 .tydb-yellow{color: #e19d15;}
+.tydb-equip .tydb-equip-name {
+  margin-bottom: .1rem;
+  font-size: .38rem;
+  color: #a340ff;
+  font-weight: bold;
+}
+.tydb-equip1img s {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: .2rem;
+  height: .2rem;
+  background-color: #1D293A;
+  font-size: .12rem;
+  color: #F0F0D8;
+  text-align: center;
+  line-height: .2rem;
+  background: rgba(29, 41, 58, 0.83);
+  text-decoration: none;
+  border-top-left-radius: 5px;
+}
+.tydb-equip p.tydb-green {position: relative; padding-left: .4rem; color: #F0F0D8; }
+.tydb-equip p img { width: .3rem; height: .3rem; margin-top: 3px; margin-right: 0.05rem; position: absolute; border: 1px solid #863132; left: 0; top: 0px; }
+.tydb-equip p img.red { border-color: #863132; }
+.tydb-equip p img.blue { border-color: #427DA6; }
+.tydb-equip p.text-desc { padding-left: .4rem;  color: #84B085; }
+.tydb-skill-type{
+  padding: 0 .05rem;
+  color: #d2af74;
+  border: 1px solid #d2af74;
+  font-size: .27rem;
+}
+.tydb-skill-desc{color: #fff;}
+.tydb-skill-desc li {
+  list-style-type: square;}
+
+.tydb-skill-kuang{
+  width: 5.8rem;
+}
+.tydb-skill-kuang li{
+  float: left;
+  margin-right: .18rem;
+  width: 1.7rem;
+}
+.tydb-kuang1{
+  margin-top: .18rem;
+  margin-bottom: .18rem;
+  width: 1.7rem;
+  height: .56rem;
+  line-height: .56rem;
+  border-radius: .1rem;
+  border: 1px solid #ccb382;
+  text-align: center;
+}
+.tydb-kuang2{
+  width: 1.7rem;
+  height: 1rem;
+  line-height: 1rem;
+  border-radius: .1rem;
+  border: 1px solid #ccb382;
+  text-align: center;
+}
+.item-details .tydb-bl {
+  float: left;
+  width: 2rem;
+}
+.item-details .tydb-br {
+  float: right;
+  margin-top: -0.1rem;
+}
+.item-details .icon-book {
+  position: relative;
+  top: .1rem;
+  margin-left:0.05rem;
+  display: inline-block;
+  width: .38rem;
+  height: .37rem;
+  background: url(../../../img/mtydb.png) -0.37rem -0.8rem;
+  background-size: 6.4rem 6rem;
+}
+.item-details .icon-circle {
+  position: relative;
+  top: .1rem;
+  margin-left: 0.05rem;
+  display: inline-block;
+  width: .31rem;
+  height: .37rem;
+  background: url(../../../img/mtydb.png) 0 -0.8rem;
+  background-size: 6.4rem 6rem;
+}
+/*技能详情 end*/
+
+.tydb-awake .target{
+  display: none;
+}
+.tydb-awake .targetcur{
+  display: block;
+}
+.m-typetab{text-align: center;overflow: hidden;background-color: #2a2b2e;}
+.m-typetab .typetab{
+  position: relative;
+  float: left;
+  width: 50%;
+  background-color: #2a2b2e;
+  text-align: center;
+}
+.m-typetab .onetext {
+  line-height: .88rem;
+  padding-bottom: .20rem;
+  color: #ccb382;
+  font-size: .32rem;
+}
+.m-typetab .cur .onetext {border-bottom: .09rem solid #ccb382;}
+.m-typetab .line {
+  position: absolute;
+  top: .30rem;
+  right: 0;
+  width: 1px;
+  height: .30rem;
+  background-color: #9f8d56;
+}
+.awaketype li{
+  float: left;
+  width: 33%;
+  text-align: center;
+  height: .73rem;
+  line-height: .73rem;
+  background-color: #191a1b;
+  border-bottom: 1px solid #0a0b0c;
+  border-top: 1px solid #0a0b0c;
+  color: #4b4c4c;
+}
+.awaketype li.awaketypecur{color: #d2d2d2;}

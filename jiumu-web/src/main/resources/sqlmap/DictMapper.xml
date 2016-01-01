@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="DictMapper">
+ 	<select id="getAllDict"  resultType="Dict">
+ 		select id,dict_key dictKey,dict_value dictValue,dict_type dictType,dict_desc dictDesc 
+ 		 from dict order by dict_type asc,dict_order asc
+	</select>
+ 	
+ 	<!-- admin -->
+ 	<!-- admin_user -->
+ 	<insert id="insertAdminUser" parameterType="AdminUser" >
+ 		insert into admin_user 
+ 				(user_name,password,super_manager,create_time,modified_time) 
+	   	  values('${userName}','${password}',#{superManager},now(),now())
+ 		 <selectKey resultType="long" order="AFTER" keyProperty="id" >
+	      SELECT LAST_INSERT_ID() AS id
+	    </selectKey>
+ 	</insert>
+ 	
+ 	<select id="getAdminUser" parameterType="hashmap" resultType="AdminUser">
+		select id,user_name userName,password,create_time createTime,modified_time modifiedTime,super_manager superManager 
+		from admin_user 
+		where 
+		user_name=#{userName} 
+		<if test="password!=null">
+			and password = #{password}
+		</if>
+	</select>
+ 	<select id="getAllAdminUser" resultType="AdminUser">
+		select id,user_name userName,password,create_time createTime,modified_time modifiedTime,super_manager superManager 
+		from admin_user 
+	</select>
+	<update id="updateAdminUser" parameterType="AdminUser">
+		update admin_user set 
+		<if test="password!=null">
+			password=#{password} ,
+		</if>
+		super_manager=#{superManager},modified_time=now()
+		where id=#{id}
+	</update>
+	<delete id="deleteAdminUser" parameterType="long">
+		delete from admin_user where id=#{id}
+	</delete>
+
+</mapper>

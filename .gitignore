@@ -1,0 +1,4 @@
+*.iml
+jiumu-service/target/
+jiumu-web/target/
+jiumu-web/src/main/resources/jdbc.properties

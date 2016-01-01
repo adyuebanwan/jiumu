@@ -1,0 +1,266 @@
+/* ==========================================================
+ * index.css v20150512
+ * ==========================================================
+ * Copyright huangxiaowen
+ *
+ * tianyudatabase 装备详情的css
+ * ========================================================== */
+.dv {
+  display: inline-block;
+  vertical-align: middle;
+
+  *display: inline;
+  *zoom: 1;
+}
+.clearfix {
+  *zoom: 1;
+}
+
+.clearfix:after {
+  display: block;
+  clear: both;
+  height: 0;
+  font-size: 0;
+  content: '';
+}
+.fl{
+	float: left;
+}
+.tydb-plr5{
+	padding: 0 5px;
+}
+.tydb-detail{
+	margin-top: 25px;
+}
+
+/* 技能详情 */
+.tydb-skill-type{
+	padding: 3px;
+	color: #d2af74;
+	border: 1px solid #d2af74;
+	font-size: 12px;
+}
+
+.tydb-square{
+	float: left;
+	margin: 8px 6px 0 5px;
+	width: 9px;
+	height: 9px;
+	background: url(../../img/tydb-arrow.png) 0 -10px no-repeat;
+}
+
+.tydb-skill-kuang{
+	width: 300px;
+}
+.tydb-skill-kuang li{
+	float: left;
+	margin-right: 4px;
+	width: 68px;
+}
+.tydb-kuang1{
+	margin-top: 10px;
+	margin-bottom: 10px;
+	width: 66px;
+	height: 25px;
+	line-height: 25px;
+	border-radius: 5px;
+	border: 1px solid #445d7f;
+	background-color: #0f1b2b;
+	text-align: center;
+	font-size: 12px;
+}
+.tydb-kuang2{
+	width: 66px;
+	height: 66px;
+	line-height: 66px;
+	border-radius: 5px;
+	border: 1px solid #445d7f;
+	background-color: #0f1b2b;
+	text-align: center;
+	font-size: 16px;
+}
+
+/*觉醒 装备前缀表格*/
+.tydb-awakebg1{
+	background: url(../../img/tydb-dt1.png) no-repeat;
+}
+.tydb-awakebg2{
+	background: url(../../img/tydb-dt2.png) no-repeat;
+}
+.tydb-equpre{
+	display: none;
+	background: url(../../img/tydb-dt2.png) no-repeat;
+}
+.tyde-tabhead{
+	position: relative;
+	padding-left: 15px;
+	font-size: 16px;
+	height: 43px;
+	line-height: 44px;
+	color: #a2b1c4;
+	border-bottom: 1px solid #fff;
+}
+.tydb-big{
+	color: #fff;
+}
+.tydb-equpre .tydb-big{
+	margin-right: 90px;
+}
+.tyde-tabhead .tydb-cur{
+	text-decoration: underline;
+}
+/*单选*/
+.tydb-radio{
+	padding-right: 50px;
+	padding-left: 30px;
+	*padding-right: 25px;
+	*padding-left: 10px;
+	font-size: 14px;
+	color: #fff;
+}
+.tydb-radio span{
+	margin-left: 10px;
+}
+.tydb-more{
+	position: absolute;
+	right: 0;
+	top: 0;
+	color: #999;
+	font-size: 12px;
+}
+/* 表格样式 */
+.tydb-table{
+	width: 640px;
+	font-size: 14px;
+	text-align: center;
+	border-right: 1px solid #d2d2d2;
+	border-bottom: 1px solid #d2d2d2;
+}
+.tydb-table td{
+	text-align: left;
+	padding: 12px 8px;
+	border-right: 1px solid transparent;
+	border-left: 1px solid #d2d2d2;
+	font-size: 12px;
+	line-height: 20px;
+}
+.tydb-table .text-c{
+	text-align: center;
+}
+.tydb-table td.enhanceName{
+	width: 190px;
+}
+.tydb-table td.needJineJieDesc{
+	width: 100px;
+	text-align: center;
+}
+.tydb-table td.source{
+	text-align: center;
+	width: 350px;
+}
+.tydb-table tr{
+	height: 38px;
+}
+.tydb-table th{
+	font-size: 14px;
+}
+/* 隔行变色 */
+.tydb-table tr:nth-child(even){
+	background-color: #fdfdfd;
+}
+.tydb-table tr:nth-child(odd){
+	background-color: #ebebeb;
+}
+.tydb-table th{
+	height: 38px;
+	background-color: #2f4057;
+	border-left: 1px solid #4b607d;
+	border-right: 1px solid #17212e;
+	color: #bed0e8;
+	font-weight: bold;
+	text-align: center;
+}
+
+/*装备详情下的样式*/
+.tydb-detail .m-table {
+	margin-top: 0px;
+}
+.m-jx-table .m-table-body ul:nth-child(even){
+	background-color: #ebebeb;
+}
+.m-jx-table .m-table-body ul:nth-child(odd){
+	background-color: #fdfdfd;
+}
+/*装备前缀表格*/
+.tydb-table .zb-name{
+	width: 90px;
+}
+.tydb-table .zb-zhu{
+	width: 264px;
+}
+.tydb-table .zb-fu{
+	width: 262px;
+}
+.tydb-table-zb{
+	display: none;
+}
+.tydb-toqz, .tydb-tojx{
+	cursor: pointer;
+}
+.tydb-toqz{
+	padding-left: 15px;
+}
+.tydb-tojx .tydb-radio{
+	color: #a2b1c4;
+	padding-left: 20px;
+	padding-right: 55px;
+	*padding-left: 10px;
+	*padding-right: 15px;
+}
+
+/* 技能详情表格 */
+.tydb-awakebg3{
+	background: url(../../img/tydb-dt3.png) no-repeat;
+}
+.tydb-table-skill .col1{
+	width: 233px;
+}
+.tydb-table-skill .col2{
+	width: 122px;
+}
+.tydb-table-skill .col3{
+	width: 282px;
+}
+
+
+
+/*根据盘古方修改*/
+.item-details{
+	margin-bottom: 12px;
+	padding: 15px 10px 0 15px;
+	width: 287px;
+	background:#1d293a url(../../img/tydb-equip1.png) left top no-repeat;
+	border: 5px solid #2b394d;
+	border-radius: 10px;
+	color: #a2b1c4;
+	font-size: 14px;
+	line-height: 26px;
+}
+.item-details .item-name {font-size: 20px;}
+.item-details .item-name .name {
+		width: 160px;
+		height: 26px;
+		overflow: hidden;
+}
+
+.table-nodata1, .table-nodata2{
+	display: none;
+}
+.tydb-detail .table-nodata{
+	font-size: 12px;
+	padding: 12px;
+	text-align: center;
+}
+.tydb-detail .table-nodata1{
+	border:1px solid #d2d2d2;;
+}

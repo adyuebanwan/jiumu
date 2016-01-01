@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="AdminUserMapper">
+	<!-- a_admin_user -->
+   <sql id="selectSqlAdminUser">
+   id,user_name userName,password,real_name realName,email,telephone,mobile_phone mobilePhone,address,create_time_ymd createTimeYmd,create_time_hms createTimeHms,modified_time_ymd modifiedTimeYmd,modified_time_hms modifiedTimeHms,
+   super_admin superAdmin
+   </sql>
+   <sql id="whereSqlAdminUser">
+    1=1<if test="whereSql!=null">${whereSql}</if> <if test="id!=null "> and id=#{id}</if><if test="userName!=null and userName!=''"> and user_name=#{userName}</if><if test="password!=null and password!=''"> and password=#{password}</if><if test="realName!=null and realName!=''"> and real_name=#{realName}</if>
+   </sql>
+
+ 	<select id="getAdminUser" parameterType="hashmap" resultType="AdminUser">
+              select <include refid="selectSqlAdminUser"/> from a_admin_user where <include refid="whereSqlAdminUser"/>
+ 	</select>
+ 	<select id="getAdminUserList" parameterType="hashmap" resultType="AdminUser">
+              select <include refid="selectSqlAdminUser"/> from a_admin_user where <include refid="whereSqlAdminUser"/>
+        <if test="orderBy!=null">
+            ${orderBy}
+        </if>
+ 	</select>
+
+
+</mapper>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="CategoryMapper">
+    <!-- Category -->
+    <sql id="createTable">
+    DROP TABLE `category`;
+    CREATE TABLE `category` (
+     PRIMARY KEY (`id`) ,UNIQUE KEY `uniq_id` (`id`) ,    `id` BIGINT(20) NOT NULL  AUTO_INCREMENT  COMMENT '主键' ,
+    `name` VARCHAR(50) COMMENT '分类名称'  DEFAULT  '' ,
+    `parent_id` BIGINT(20) COMMENT '父亲节点ID'  DEFAULT  '' ,
+    `sort_num` INT(4) COMMENT '排序从小到大'  DEFAULT  '' 
+    )
+    </sql>
+    <sql id="selectSqlCategory">
+        id ,name ,parent_id parentId,sort_num sortNum
+    </sql>
+
+    <sql id="whereSqlCategory">
+        1=1
+                <if test="id!=null "> and id=#{id}</if>
+
+                <if test="name!=null "> and name=#{name}</if><if test="nameLike!=null ">  and name like concat('%',#{nameLike},'%')</if>
+
+                <if test="parentId!=null "> and parent_id=#{parentId}</if>
+
+                <if test="sortNum!=null "> and sort_num=#{sortNum}</if>
+
+        <if test="whereSql!=null"> ${whereSql}</if>
+    </sql>
+
+    <sql id="updateWhereSqlCategory">
+        id = #{id}
+    </sql>
+
+    <insert id="insertCategory" parameterType="Category" >
+        <selectKey resultType="long" order="AFTER" keyProperty="id" >
+            SELECT LAST_INSERT_ID() AS id
+        </selectKey>
+        insert into category (name,parent_id,sort_num)
+        values(
+<choose><when test="name==null">  ''    </when><otherwise>#{name}</otherwise></choose> ,
+<choose><when test="parentId==null">  ''    </when><otherwise>#{parentId}</otherwise></choose> ,
+<choose><when test="sortNum==null">  ''    </when><otherwise>#{sortNum}</otherwise></choose> 
+        )
+    </insert>
+
+    <select id="getCategory" parameterType="hashmap" resultType="Category">
+        select <include refid="selectSqlCategory"/> from category where <include refid="whereSqlCategory"/>
+    </select>
+    <select id="getCategoryList" parameterType="hashmap" resultType="Category">
+        select <include refid="selectSqlCategory"/> from category where <include refid="whereSqlCategory"/>
+        <if test="orderBy != null"> order by  ${orderBy} </if>
+        <if test="limit != null"> LIMIT #{limitIndex},#{limit} </if>
+    </select>
+    <select id="getCategoryListCount" parameterType="hashmap" resultType="int">
+        select count(1)  from category where <include refid="whereSqlCategory"/>
+    </select>
+
+
+    <update id="updateCategory" parameterType="Category">
+        update category set
+<choose><when test="name!=null">name=#{name},</when></choose>
+<choose><when test="parentId!=null">parent_id=#{parentId},</when></choose>
+<choose><when test="sortNum!=null">sort_num=#{sortNum},</when></choose>        <include refid="updateWhereSqlCategory"/>
+
+        where  <include refid="updateWhereSqlCategory"/>
+    </update>
+
+    <delete id="truncateCategory">
+        truncate table category
+    </delete>
+
+    <delete id="deleteCategory" parameterType="hashmap">
+        delete from category where id = #{id}
+    </delete>
+
+    <delete id="batchDeleteCategory" parameterType="java.util.List">
+        delete from category where id in
+        <foreach item="id" index="index" collection="list" open="(" separator="," close=")">
+#{id}        </foreach>
+    </delete>
+
+    <insert id="batchInsertCategory" parameterType="java.util.List">
+        insert into category (name,parent_id,sort_num)
+        values
+        <foreach collection="list" item= "item" index ="index" separator=",">
+            (
+<choose><when test="item.name==null">  ''  </when><otherwise>#{item.name}</otherwise></choose> ,
+<choose><when test="item.parentId==null">  ''  </when><otherwise>#{item.parentId}</otherwise></choose> ,
+<choose><when test="item.sortNum==null">  ''  </when><otherwise>#{item.sortNum}</otherwise></choose> 
+            )
+        </foreach >
+    </insert>
+
+    <update id="batchUpdateCategory"  parameterType="java.util.List">
+        <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+            update category
+            <set>
+<choose><when test="item.name!=null">name=#{item.name},</when></choose>
+<choose><when test="item.parentId!=null">parent_id=#{item.parentId},</when></choose>
+<choose><when test="item.sortNum!=null">sort_num=#{item.sortNum},</when></choose>
+                id = #{item.id }
+            </set>
+            where id = #{item.id }
+        </foreach>
+    </update>
+
+</mapper>

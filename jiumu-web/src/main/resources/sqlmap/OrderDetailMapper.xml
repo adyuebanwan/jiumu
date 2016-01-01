@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="OrderDetailMapper">
+    <!-- OrderDetail -->
+    <sql id="createTable">
+    DROP TABLE `order_detail`;
+    CREATE TABLE `order_detail` (
+     PRIMARY KEY (`id`) ,UNIQUE KEY `uniq_id` (`id`) ,    `id` BIGINT(20) NOT NULL  AUTO_INCREMENT  COMMENT '订单详情ID' ,
+    `goods_serial_num` VARCHAR(20) COMMENT '商品编号'  DEFAULT  '' ,
+    `goods_name` VARCHAR(20) COMMENT '商品名称'  DEFAULT  '' ,
+    `danwei` VARCHAR(100) COMMENT '单位'  DEFAULT  '' ,
+    `buy_count` INT(4) COMMENT '购买数量'  DEFAULT  '' ,
+    `price` DECIMAL(9,2) COMMENT '商品单价'  DEFAULT  '' ,
+    `mark` VARCHAR(200) COMMENT '备注'  DEFAULT  '' ,
+    `guige_one` VARCHAR(500) COMMENT '用户购买的商品规格一'  DEFAULT  '' ,
+    `guige_two` VARCHAR(500) COMMENT '用户购买的商品规格二'  DEFAULT  '' ,
+    `guige_three` VARCHAR(500) COMMENT '用户购买的商品规格三'  DEFAULT  '' ,
+    `guige_four` VARCHAR(500) COMMENT '用户购买的商品规格四'  DEFAULT  '' ,
+    `order_main_id` BIGINT(20) COMMENT '订单ID'  DEFAULT  '' ,
+    `goods_id` BIGINT(20) COMMENT '商品ID'  DEFAULT  '' ,
+    `create_time` DATETIME COMMENT '下单日期'  ,
+    `update_time` DATETIME COMMENT '更新日期'  ,
+    `operator` DATETIME COMMENT '操作人'  DEFAULT  '' 
+    )
+    </sql>
+    <sql id="selectSqlOrderDetail">
+        id ,goods_serial_num goodsSerialNum,goods_name goodsName,danwei ,buy_count buyCount,price ,mark ,guige_one guigeOne,guige_two guigeTwo,guige_three guigeThree,guige_four guigeFour,order_main_id orderMainId,goods_id goodsId,create_time createTime,update_time updateTime,operator 
+    </sql>
+
+    <sql id="whereSqlOrderDetail">
+        1=1
+                <if test="id!=null "> and id=#{id}</if>
+
+                <if test="goodsSerialNum!=null "> and goods_serial_num=#{goodsSerialNum}</if><if test="goodsSerialNumLike!=null ">  and goods_serial_num like concat('%',#{goodsSerialNumLike},'%')</if>
+
+                <if test="goodsName!=null "> and goods_name=#{goodsName}</if><if test="goodsNameLike!=null ">  and goods_name like concat('%',#{goodsNameLike},'%')</if>
+
+                <if test="danwei!=null "> and danwei=#{danwei}</if><if test="danweiLike!=null ">  and danwei like concat('%',#{danweiLike},'%')</if>
+
+                <if test="buyCount!=null "> and buy_count=#{buyCount}</if>
+
+                <if test="price!=null "> and price=#{price}</if>
+
+                <if test="mark!=null "> and mark=#{mark}</if><if test="markLike!=null ">  and mark like concat('%',#{markLike},'%')</if>
+
+                <if test="guigeOne!=null "> and guige_one=#{guigeOne}</if><if test="guigeOneLike!=null ">  and guige_one like concat('%',#{guigeOneLike},'%')</if>
+
+                <if test="guigeTwo!=null "> and guige_two=#{guigeTwo}</if><if test="guigeTwoLike!=null ">  and guige_two like concat('%',#{guigeTwoLike},'%')</if>
+
+                <if test="guigeThree!=null "> and guige_three=#{guigeThree}</if><if test="guigeThreeLike!=null ">  and guige_three like concat('%',#{guigeThreeLike},'%')</if>
+
+                <if test="guigeFour!=null "> and guige_four=#{guigeFour}</if><if test="guigeFourLike!=null ">  and guige_four like concat('%',#{guigeFourLike},'%')</if>
+
+                <if test="orderMainId!=null "> and order_main_id=#{orderMainId}</if>
+
+                <if test="goodsId!=null "> and goods_id=#{goodsId}</if>
+                <if test="createTimeBegin!=null "> and create_time>=#{createTimeBegin,jdbcType=TIMESTAMP}</if>
+                <if test="createTimeEnd!=null "> and create_time<![CDATA[<=]]>#{createTimeEnd,jdbcType=TIMESTAMP}</if>
+                <if test="updateTimeBegin!=null "> and update_time>=#{updateTimeBegin,jdbcType=TIMESTAMP}</if>
+                <if test="updateTimeEnd!=null "> and update_time<![CDATA[<=]]>#{updateTimeEnd,jdbcType=TIMESTAMP}</if>
+
+                <if test="operator!=null "> and operator=#{operator}</if>
+
+        <if test="whereSql!=null"> ${whereSql}</if>
+    </sql>
+
+    <sql id="updateWhereSqlOrderDetail">
+        id = #{id}
+    </sql>
+
+    <insert id="insertOrderDetail" parameterType="OrderDetail" >
+        <selectKey resultType="long" order="AFTER" keyProperty="id" >
+            SELECT LAST_INSERT_ID() AS id
+        </selectKey>
+        insert into order_detail (goods_serial_num,goods_name,danwei,buy_count,price,mark,guige_one,guige_two,guige_three,guige_four,order_main_id,goods_id,create_time,update_time,operator)
+        values(
+<choose><when test="goodsSerialNum==null">  ''    </when><otherwise>#{goodsSerialNum}</otherwise></choose> ,
+<choose><when test="goodsName==null">  ''    </when><otherwise>#{goodsName}</otherwise></choose> ,
+<choose><when test="danwei==null">  ''    </when><otherwise>#{danwei}</otherwise></choose> ,
+<choose><when test="buyCount==null">  ''    </when><otherwise>#{buyCount}</otherwise></choose> ,
+<choose><when test="price==null">  ''    </when><otherwise>#{price}</otherwise></choose> ,
+<choose><when test="mark==null">  ''    </when><otherwise>#{mark}</otherwise></choose> ,
+<choose><when test="guigeOne==null">  ''    </when><otherwise>#{guigeOne}</otherwise></choose> ,
+<choose><when test="guigeTwo==null">  ''    </when><otherwise>#{guigeTwo}</otherwise></choose> ,
+<choose><when test="guigeThree==null">  ''    </when><otherwise>#{guigeThree}</otherwise></choose> ,
+<choose><when test="guigeFour==null">  ''    </when><otherwise>#{guigeFour}</otherwise></choose> ,
+<choose><when test="orderMainId==null">  ''    </when><otherwise>#{orderMainId}</otherwise></choose> ,
+<choose><when test="goodsId==null">  ''    </when><otherwise>#{goodsId}</otherwise></choose> ,
+<choose><when test="createTime==null">now() </when><otherwise>#{createTime,jdbcType=TIMESTAMP}</otherwise></choose> ,
+<choose><when test="updateTime==null">now() </when><otherwise>#{updateTime,jdbcType=TIMESTAMP}</otherwise></choose> ,
+<choose><when test="operator==null">  ''    </when><otherwise>#{operator}</otherwise></choose> 
+        )
+    </insert>
+
+    <select id="getOrderDetail" parameterType="hashmap" resultType="OrderDetail">
+        select <include refid="selectSqlOrderDetail"/> from order_detail where <include refid="whereSqlOrderDetail"/>
+    </select>
+    <select id="getOrderDetailList" parameterType="hashmap" resultType="OrderDetail">
+        select <include refid="selectSqlOrderDetail"/> from order_detail where <include refid="whereSqlOrderDetail"/>
+        <if test="orderBy != null"> order by  ${orderBy} </if>
+        <if test="limit != null"> LIMIT #{limitIndex},#{limit} </if>
+    </select>
+    <select id="getOrderDetailListCount" parameterType="hashmap" resultType="int">
+        select count(1)  from order_detail where <include refid="whereSqlOrderDetail"/>
+    </select>
+
+
+    <update id="updateOrderDetail" parameterType="OrderDetail">
+        update order_detail set
+<choose><when test="goodsSerialNum!=null">goods_serial_num=#{goodsSerialNum},</when></choose>
+<choose><when test="goodsName!=null">goods_name=#{goodsName},</when></choose>
+<choose><when test="danwei!=null">danwei=#{danwei},</when></choose>
+<choose><when test="buyCount!=null">buy_count=#{buyCount},</when></choose>
+<choose><when test="price!=null">price=#{price},</when></choose>
+<choose><when test="mark!=null">mark=#{mark},</when></choose>
+<choose><when test="guigeOne!=null">guige_one=#{guigeOne},</when></choose>
+<choose><when test="guigeTwo!=null">guige_two=#{guigeTwo},</when></choose>
+<choose><when test="guigeThree!=null">guige_three=#{guigeThree},</when></choose>
+<choose><when test="guigeFour!=null">guige_four=#{guigeFour},</when></choose>
+<choose><when test="orderMainId!=null">order_main_id=#{orderMainId},</when></choose>
+<choose><when test="goodsId!=null">goods_id=#{goodsId},</when></choose>
+<choose><when test="createTime!=null">create_time=#{createTime,jdbcType=TIMESTAMP},</when></choose>
+<choose><when test="updateTime!=null">update_time=#{updateTime,jdbcType=TIMESTAMP},</when></choose>
+<choose><when test="operator!=null">operator=#{operator},</when></choose>        <include refid="updateWhereSqlOrderDetail"/>
+
+        where  <include refid="updateWhereSqlOrderDetail"/>
+    </update>
+
+    <delete id="truncateOrderDetail">
+        truncate table order_detail
+    </delete>
+
+    <delete id="deleteOrderDetail" parameterType="hashmap">
+        delete from order_detail where id = #{id}
+    </delete>
+
+    <delete id="batchDeleteOrderDetail" parameterType="java.util.List">
+        delete from order_detail where id in
+        <foreach item="id" index="index" collection="list" open="(" separator="," close=")">
+#{id}        </foreach>
+    </delete>
+
+    <insert id="batchInsertOrderDetail" parameterType="java.util.List">
+        insert into order_detail (goods_serial_num,goods_name,danwei,buy_count,price,mark,guige_one,guige_two,guige_three,guige_four,order_main_id,goods_id,create_time,update_time,operator)
+        values
+        <foreach collection="list" item= "item" index ="index" separator=",">
+            (
+<choose><when test="item.goodsSerialNum==null">  ''  </when><otherwise>#{item.goodsSerialNum}</otherwise></choose> ,
+<choose><when test="item.goodsName==null">  ''  </when><otherwise>#{item.goodsName}</otherwise></choose> ,
+<choose><when test="item.danwei==null">  ''  </when><otherwise>#{item.danwei}</otherwise></choose> ,
+<choose><when test="item.buyCount==null">  ''  </when><otherwise>#{item.buyCount}</otherwise></choose> ,
+<choose><when test="item.price==null">  ''  </when><otherwise>#{item.price}</otherwise></choose> ,
+<choose><when test="item.mark==null">  ''  </when><otherwise>#{item.mark}</otherwise></choose> ,
+<choose><when test="item.guigeOne==null">  ''  </when><otherwise>#{item.guigeOne}</otherwise></choose> ,
+<choose><when test="item.guigeTwo==null">  ''  </when><otherwise>#{item.guigeTwo}</otherwise></choose> ,
+<choose><when test="item.guigeThree==null">  ''  </when><otherwise>#{item.guigeThree}</otherwise></choose> ,
+<choose><when test="item.guigeFour==null">  ''  </when><otherwise>#{item.guigeFour}</otherwise></choose> ,
+<choose><when test="item.orderMainId==null">  ''  </when><otherwise>#{item.orderMainId}</otherwise></choose> ,
+<choose><when test="item.goodsId==null">  ''  </when><otherwise>#{item.goodsId}</otherwise></choose> ,
+<choose><when test="item.createTime==null">now()</when><otherwise>#{item.createTime,jdbcType=TIMESTAMP}</otherwise></choose> ,
+<choose><when test="item.updateTime==null">now()</when><otherwise>#{item.updateTime,jdbcType=TIMESTAMP}</otherwise></choose> ,
+<choose><when test="item.operator==null">  ''  </when><otherwise>#{item.operator}</otherwise></choose> 
+            )
+        </foreach >
+    </insert>
+
+    <update id="batchUpdateOrderDetail"  parameterType="java.util.List">
+        <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+            update order_detail
+            <set>
+<choose><when test="item.goodsSerialNum!=null">goods_serial_num=#{item.goodsSerialNum},</when></choose>
+<choose><when test="item.goodsName!=null">goods_name=#{item.goodsName},</when></choose>
+<choose><when test="item.danwei!=null">danwei=#{item.danwei},</when></choose>
+<choose><when test="item.buyCount!=null">buy_count=#{item.buyCount},</when></choose>
+<choose><when test="item.price!=null">price=#{item.price},</when></choose>
+<choose><when test="item.mark!=null">mark=#{item.mark},</when></choose>
+<choose><when test="item.guigeOne!=null">guige_one=#{item.guigeOne},</when></choose>
+<choose><when test="item.guigeTwo!=null">guige_two=#{item.guigeTwo},</when></choose>
+<choose><when test="item.guigeThree!=null">guige_three=#{item.guigeThree},</when></choose>
+<choose><when test="item.guigeFour!=null">guige_four=#{item.guigeFour},</when></choose>
+<choose><when test="item.orderMainId!=null">order_main_id=#{item.orderMainId},</when></choose>
+<choose><when test="item.goodsId!=null">goods_id=#{item.goodsId},</when></choose>
+<choose><when test="item.createTime!=null">create_time=#{item.createTime,jdbcType=TIMESTAMP},</when></choose>
+<choose><when test="item.updateTime!=null">update_time=#{item.updateTime,jdbcType=TIMESTAMP},</when></choose>
+<choose><when test="item.operator!=null">operator=#{item.operator},</when></choose>
+                id = #{item.id }
+            </set>
+            where id = #{item.id }
+        </foreach>
+    </update>
+
+</mapper>

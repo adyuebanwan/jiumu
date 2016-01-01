@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="OrderMainMapper">
+    <!-- OrderMain -->
+    <sql id="createTable">
+    DROP TABLE `order_main`;
+    CREATE TABLE `order_main` (
+     PRIMARY KEY (`id`) ,UNIQUE KEY `uniq_id` (`id`) ,    `id` BIGINT(20) NOT NULL  AUTO_INCREMENT  COMMENT '订单号' ,
+    `account` DECIMAL(10,2) NOT NULL  COMMENT '订单总额'  DEFAULT  '' ,
+    `real_pay` DECIMAL(10,2) NOT NULL  COMMENT '客户实付金额'  DEFAULT  '' ,
+    `buyer_name` VARCHAR(50) COMMENT '购货单位'  DEFAULT  '' ,
+    `buyer_adress` VARCHAR(150) COMMENT '地址'  DEFAULT  '' ,
+    `buyer_phone` VARCHAR(30) COMMENT '电话'  DEFAULT  '' ,
+    `create_time` DATETIME COMMENT '下单日期'  ,
+    `update_time` DATETIME COMMENT '更新日期'  ,
+    `operator` DATETIME COMMENT '操作人'  DEFAULT  '' ,
+    `order_status` TINYINT(2) COMMENT '订单状态'  DEFAULT  '' 
+    )
+    </sql>
+    <sql id="selectSqlOrderMain">
+        id ,account ,real_pay realPay,buyer_name buyerName,buyer_adress buyerAdress,buyer_phone buyerPhone,create_time createTime,update_time updateTime,operator ,order_status orderStatus
+    </sql>
+
+    <sql id="whereSqlOrderMain">
+        1=1
+                <if test="id!=null "> and id=#{id}</if>
+
+                <if test="account!=null "> and account=#{account}</if>
+
+                <if test="realPay!=null "> and real_pay=#{realPay}</if>
+
+                <if test="buyerName!=null "> and buyer_name=#{buyerName}</if><if test="buyerNameLike!=null ">  and buyer_name like concat('%',#{buyerNameLike},'%')</if>
+
+                <if test="buyerAdress!=null "> and buyer_adress=#{buyerAdress}</if><if test="buyerAdressLike!=null ">  and buyer_adress like concat('%',#{buyerAdressLike},'%')</if>
+
+                <if test="buyerPhone!=null "> and buyer_phone=#{buyerPhone}</if><if test="buyerPhoneLike!=null ">  and buyer_phone like concat('%',#{buyerPhoneLike},'%')</if>
+                <if test="createTimeBegin!=null "> and create_time>=#{createTimeBegin,jdbcType=TIMESTAMP}</if>
+                <if test="createTimeEnd!=null "> and create_time<![CDATA[<=]]>#{createTimeEnd,jdbcType=TIMESTAMP}</if>
+                <if test="updateTimeBegin!=null "> and update_time>=#{updateTimeBegin,jdbcType=TIMESTAMP}</if>
+                <if test="updateTimeEnd!=null "> and update_time<![CDATA[<=]]>#{updateTimeEnd,jdbcType=TIMESTAMP}</if>
+
+                <if test="operator!=null "> and operator=#{operator}</if>
+
+                <if test="orderStatus!=null "> and order_status=#{orderStatus}</if>
+
+        <if test="whereSql!=null"> ${whereSql}</if>
+    </sql>
+
+    <sql id="updateWhereSqlOrderMain">
+        id = #{id}
+    </sql>
+
+    <insert id="insertOrderMain" parameterType="OrderMain" >
+        <selectKey resultType="long" order="AFTER" keyProperty="id" >
+            SELECT LAST_INSERT_ID() AS id
+        </selectKey>
+        insert into order_main (account,real_pay,buyer_name,buyer_adress,buyer_phone,create_time,update_time,operator,order_status)
+        values(
+<choose><when test="account==null">  ''    </when><otherwise>#{account}</otherwise></choose> ,
+<choose><when test="realPay==null">  ''    </when><otherwise>#{realPay}</otherwise></choose> ,
+<choose><when test="buyerName==null">  ''    </when><otherwise>#{buyerName}</otherwise></choose> ,
+<choose><when test="buyerAdress==null">  ''    </when><otherwise>#{buyerAdress}</otherwise></choose> ,
+<choose><when test="buyerPhone==null">  ''    </when><otherwise>#{buyerPhone}</otherwise></choose> ,
+<choose><when test="createTime==null">now() </when><otherwise>#{createTime,jdbcType=TIMESTAMP}</otherwise></choose> ,
+<choose><when test="updateTime==null">now() </when><otherwise>#{updateTime,jdbcType=TIMESTAMP}</otherwise></choose> ,
+<choose><when test="operator==null">  ''    </when><otherwise>#{operator}</otherwise></choose> ,
+<choose><when test="orderStatus==null">  ''    </when><otherwise>#{orderStatus}</otherwise></choose> 
+        )
+    </insert>
+
+    <select id="getOrderMain" parameterType="hashmap" resultType="OrderMain">
+        select <include refid="selectSqlOrderMain"/> from order_main where <include refid="whereSqlOrderMain"/>
+    </select>
+    <select id="getOrderMainList" parameterType="hashmap" resultType="OrderMain">
+        select <include refid="selectSqlOrderMain"/> from order_main where <include refid="whereSqlOrderMain"/>
+        <if test="orderBy != null"> order by  ${orderBy} </if>
+        <if test="limit != null"> LIMIT #{limitIndex},#{limit} </if>
+    </select>
+    <select id="getOrderMainListCount" parameterType="hashmap" resultType="int">
+        select count(1)  from order_main where <include refid="whereSqlOrderMain"/>
+    </select>
+
+
+    <update id="updateOrderMain" parameterType="OrderMain">
+        update order_main set
+<choose><when test="account!=null">account=#{account},</when></choose>
+<choose><when test="realPay!=null">real_pay=#{realPay},</when></choose>
+<choose><when test="buyerName!=null">buyer_name=#{buyerName},</when></choose>
+<choose><when test="buyerAdress!=null">buyer_adress=#{buyerAdress},</when></choose>
+<choose><when test="buyerPhone!=null">buyer_phone=#{buyerPhone},</when></choose>
+<choose><when test="createTime!=null">create_time=#{createTime,jdbcType=TIMESTAMP},</when></choose>
+<choose><when test="updateTime!=null">update_time=#{updateTime,jdbcType=TIMESTAMP},</when></choose>
+<choose><when test="operator!=null">operator=#{operator},</when></choose>
+<choose><when test="orderStatus!=null">order_status=#{orderStatus},</when></choose>        <include refid="updateWhereSqlOrderMain"/>
+
+        where  <include refid="updateWhereSqlOrderMain"/>
+    </update>
+
+    <delete id="truncateOrderMain">
+        truncate table order_main
+    </delete>
+
+    <delete id="deleteOrderMain" parameterType="hashmap">
+        delete from order_main where id = #{id}
+    </delete>
+
+    <delete id="batchDeleteOrderMain" parameterType="java.util.List">
+        delete from order_main where id in
+        <foreach item="id" index="index" collection="list" open="(" separator="," close=")">
+#{id}        </foreach>
+    </delete>
+
+    <insert id="batchInsertOrderMain" parameterType="java.util.List">
+        insert into order_main (account,real_pay,buyer_name,buyer_adress,buyer_phone,create_time,update_time,operator,order_status)
+        values
+        <foreach collection="list" item= "item" index ="index" separator=",">
+            (
+<choose><when test="item.account==null">  ''  </when><otherwise>#{item.account}</otherwise></choose> ,
+<choose><when test="item.realPay==null">  ''  </when><otherwise>#{item.realPay}</otherwise></choose> ,
+<choose><when test="item.buyerName==null">  ''  </when><otherwise>#{item.buyerName}</otherwise></choose> ,
+<choose><when test="item.buyerAdress==null">  ''  </when><otherwise>#{item.buyerAdress}</otherwise></choose> ,
+<choose><when test="item.buyerPhone==null">  ''  </when><otherwise>#{item.buyerPhone}</otherwise></choose> ,
+<choose><when test="item.createTime==null">now()</when><otherwise>#{item.createTime,jdbcType=TIMESTAMP}</otherwise></choose> ,
+<choose><when test="item.updateTime==null">now()</when><otherwise>#{item.updateTime,jdbcType=TIMESTAMP}</otherwise></choose> ,
+<choose><when test="item.operator==null">  ''  </when><otherwise>#{item.operator}</otherwise></choose> ,
+<choose><when test="item.orderStatus==null">  ''  </when><otherwise>#{item.orderStatus}</otherwise></choose> 
+            )
+        </foreach >
+    </insert>
+
+    <update id="batchUpdateOrderMain"  parameterType="java.util.List">
+        <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+            update order_main
+            <set>
+<choose><when test="item.account!=null">account=#{item.account},</when></choose>
+<choose><when test="item.realPay!=null">real_pay=#{item.realPay},</when></choose>
+<choose><when test="item.buyerName!=null">buyer_name=#{item.buyerName},</when></choose>
+<choose><when test="item.buyerAdress!=null">buyer_adress=#{item.buyerAdress},</when></choose>
+<choose><when test="item.buyerPhone!=null">buyer_phone=#{item.buyerPhone},</when></choose>
+<choose><when test="item.createTime!=null">create_time=#{item.createTime,jdbcType=TIMESTAMP},</when></choose>
+<choose><when test="item.updateTime!=null">update_time=#{item.updateTime,jdbcType=TIMESTAMP},</when></choose>
+<choose><when test="item.operator!=null">operator=#{item.operator},</when></choose>
+<choose><when test="item.orderStatus!=null">order_status=#{item.orderStatus},</when></choose>
+                id = #{item.id }
+            </set>
+            where id = #{item.id }
+        </foreach>
+    </update>
+
+</mapper>

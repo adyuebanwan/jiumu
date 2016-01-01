@@ -1,0 +1,59 @@
+/* hxw */
+.menu-link {
+    height: 54px;
+}
+.header {
+    height: 435px;
+}
+.menu-link .menu-link-left {
+    float: left;
+    padding: 0 35px 0 0px;
+    height: 48px;
+    margin-right: 15px;
+    width: 550px;
+    border-right: 1px dotted #4f6482;
+    overflow: hidden;
+}
+.menu-link .menu-link-right {
+    width: 356px;
+    float: left;
+    overflow: hidden;
+}
+/* search */
+.tydb-searchkuang{
+	width: 360px;
+}
+.tydb-search-input{
+	float: left;
+	margin-right: 6px;
+	padding: 0 10px;
+	width: 223px;
+	height: 30px;
+	font-size: 16px;
+	line-height: normal;
+	border: 0;
+}
+.tydb-search-btn{
+	float: left;
+	width: 105px;
+	height: 30px;
+	line-height: 30px;
+	background: url(../../img/btn-search.jpg) no-repeat;
+	color: #fff;
+	font-size: 18px;
+	text-align: center;
+	cursor: pointer;
+}
+.tydb-search-btn:hover{
+	background: url(../../img/btn-search.jpg) 0 -30px no-repeat;
+}
+.tydb-search-select{
+	margin-top: 8px;
+	color: #fff;
+}
+.tydb-idwz-input{
+	margin-left: 10px;
+}
+.tydb-search-input{
+    font-size: 13px;
+}

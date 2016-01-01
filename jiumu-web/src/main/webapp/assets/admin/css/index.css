@@ -1,0 +1,178 @@
+/* ==========================================================
+ * index.css v20150805
+ * ==========================================================
+ * Copyright yuzhu
+ *
+ * 天谕数据库移动端 页面css
+ * ========================================================== */
+html{
+  width: 100%;
+  height: 100%;
+}
+body{
+  width: 100%;
+  height: 100%;
+  background-color: #222325;
+  font-size: .28rem;
+  color: #fff;
+}
+
+.wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+/* 内容层 */
+.content{
+  position: relative;
+  z-index: 2;
+}
+/*背景层*/
+.bg{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.bg1{
+  width: 100%;
+  height: 100%;
+  background: url(../img/indexbg.jpg) center top no-repeat;
+  background-size: 100% 100%;
+}
+
+/*搜索栏*/
+.m-search{
+  position: relative;
+  margin: .20rem auto;
+  width: 5.95rem;
+  height: .65rem;
+  line-height: .65rem;
+  border: 0.01rem solid #9f8d56;
+  background-color: #131415;
+  font-size: .28rem;
+  color: #9f8d56;
+}
+.m-search .icon-search{
+  float: left;
+  margin: .12rem .20rem;
+  width: .38rem;
+  height: .40rem;
+  background: url(../img/mtydb.png) 0 0;
+  background-size: 6.4rem 6rem;
+}
+.m-search .input-search{
+  float: left;
+  width: 4.30rem;
+  height: .65rem;
+  line-height: .65rem;
+  border: none;
+  color: #35373b;
+  background-color: #131415;
+} 
+.m-search .input-search:focus{color: #fff;}
+.m-search .cancel{float: right;margin-right: .27rem;}
+
+/* 首页 */
+.logo{
+  margin: .20rem auto 0;
+  height: 1.88rem;
+  width: 3.15rem;
+}
+.logo img{width: 100%;height: 100%;}
+.index-main{
+  background-color: #141414;
+  opacity: 0.6;
+  border-top: 0.01rem solid #9f8d56;
+  border-bottom: 0.01rem solid #9f8d56;
+}
+.index-main a{
+  position: relative;
+  display: block;
+  height: .90rem;
+  padding-left: 1.00rem;
+  margin-bottom: -0.01rem;
+  line-height: .90rem;
+  color: #9f8d56;
+  border-bottom: 0.01rem dashed #9f8d56;
+  color: #9e9562;
+  font-size: .24rem;
+}
+.index-main .icon-f{
+  position: absolute;
+  top: .27rem;
+  left: .43rem;
+  width: .37rem;
+  height: .37rem;
+  background: url(../img/mtydb.png) -0.37rem 0;
+  background-size: 6.4rem 6rem;
+}
+.index-main .icon-ar{
+  position: absolute;
+  top: .33rem;
+  right: .47rem;
+  width: .17rem;
+  height: .24rem;
+  background: url(../img/mtydb.png) -0.75rem 0;
+  background-size: 6.4rem 6rem;
+}
+/* 首页 end */
+.search-result{
+  padding: .20rem;
+  color: #d2d2d2;
+  border-top: 0.01rem dashed #9f8d56;
+  line-height: .36rem;
+  border-bottom: 0.01rem solid #9f8d56;
+}
+.icon-error{
+  float: left;
+  width: .32rem;
+  height: .32rem;
+  background: url(../img/mtydb.png) -0.93rem 0;
+  background-size: 6.4rem 6rem;
+}
+.yellow{color: #9f8d56;}
+/* 头部 */
+.top-header{
+  position: relative;
+  height: 1.00rem;
+  line-height: 1.00rem;
+  color: #fff;
+  background-color: #9f8d56;
+  text-align: center;
+}
+.top-header .icon-back{
+  position: absolute;
+  left: .35rem;
+  top: .25rem;
+  width: .21rem;
+  height: .36rem;
+  background: url(../img/mtydb.png) 0 -0.40rem;
+  background-size: 6.4rem 6rem;
+}
+/* 表格样式 */
+.purple{color: #ac40ff;}
+.m-waptable{
+  width: 100%;
+  background-color: #222325;
+  font-size: .23rem;
+}
+.m-waptable tr{ border-bottom: 0.01rem dashed #9f8d56;}
+.m-waptable th{text-align: center;color: #a99f87;line-height: .65rem;font-size: .24rem;
+  /*border-bottom: 0.01rem dashed #9f8d56;*/
+}
+.m-waptable td{
+  text-align: center;padding: .2rem 0;
+  /*border-bottom: 0.01rem dashed #9f8d56;*/
+}
+.m-waptable .col-name{text-align: left;line-height: .65rem;}
+.m-waptable .col-name img{margin-left: 0.2rem;width: .65rem;height: .65rem;}
+.m-waptable .ceven{background-color: #1e1f21;}
+
+.w300{width: 3.00rem;}
+.w205{width: 2.05rem;}
+.w70{width: .70rem;}
+.w65{width: .65rem;}

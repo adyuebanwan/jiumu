@@ -1,0 +1,244 @@
+﻿/* tianyudatabase tydb-equip.css */
+
+/* 天谕数据库装备详情弹框 */
+.c_popLayer { padding: 0; margin: 0; display: none; position: absolute; z-index: 6000; }
+.dv { display: inline-block; vertical-align: middle; *display: inline; *zoom: 1; }
+.clearfix { *zoom: 1; }
+.clearfix:after { display: block; clear: both; height: 0; font-size: 0; content: ''; }
+.fl { float: left; }
+.tydb-plr5 { padding: 0 5px; }
+.tydb-detail { margin-top: 25px; }
+
+
+/* 装备详情 */
+.tydb-equip { margin-bottom: 12px; padding: 15px 10px 0 15px; width: 287px; background: #1d293a url(../../img/tydb-equip1.png) left top no-repeat; border: 5px solid #2b394d; border-radius: 10px; color: #a2b1c4; font-size: 14px; line-height: 26px; }
+.tydb-property { 
+	padding-bottom: 15px; background: url(../../img/tydb-equip2.png) left bottom no-repeat;
+	position: relative; }
+.tydb-detail p { margin: 0; }
+.item-details p{ margin: 0;}
+
+/*属性小头像*/
+.tydb-equip1img { float: left; margin-right: 10px; width: 64px; height: 64px; position: relative; }
+.tydb-equip1img img { width: 100%; height: 100%; }
+.tydb-equip1img  s { position: absolute; right: 0; bottom: 0; width: 20px; height: 20px; background-color: #1D293A; font-size: 12px; color: #F0F0D8; text-align: center; line-height: 20px; background: rgba(29, 41, 58, 0.83); text-decoration: none; border-top-left-radius: 5px; }
+.tydb-equip .tydb-equip-name { margin-bottom: 10px; font-size: 20px; color: #9175FE; }
+.tydb-equip-name .tydb-span1 { width: 160px; height: 26px; overflow: hidden; }
+
+/* 装备名字颜色 */
+.tydb-name-gray { color: #ccc; }
+.tydb-name-white { color: #fff; }
+.tydb-name-green { color: #41d95a; }
+.tydb-name-blue { color: #249cf2; }
+.tydb-name-purple { color: #a340ff; }
+.tydb-name-golden { color: #f7e159; }
+.tydb-name-orange { color: #ff8126; }
+.tydb-equip1 { position: relative; margin-bottom: 13px;}
+
+/* 品阶色块 */
+.tydb-kuai { position: absolute; top: 45px; right: 0; height: 8px; width: 160px; }
+.tydb-k1, .tydb-k2, .tydb-k3, .tydb-k4 { position: absolute; top: 0; width: 40px; height: 8px; background-image: url(../../img/tydb-kuai.png); }
+.tydb-k1 { left: 0; background-position: 0 0; }
+.tydb-k2 { left: 34px; background-position: -41px 0; }
+.tydb-k3 { left: 68px; background-position: -82px 0; }
+.tydb-k4 { left: 102px; background-position: -123px 0; }
+.tydb-kuai-z { position: absolute; top: 0; right: 0; height: 8px; }
+.tydb-kuai-z1 { width: 40px; }
+.tydb-kuai-z2 { width: 76px; }
+.tydb-kuai-z3 { width: 111px; }
+.tydb-kuai-z4 { width: 150px; }
+.tydb-equip1-line { margin-top: 15px; width: 279px; height: 7px; background: url(../../img/tydb-line1.png) no-repeat; }
+
+.tydb-yellow { color: #d2af74; font-size: 14px; }
+.tydb-blue { color: #0e99fa; }
+.tydb-red { color: #c617ff; }
+.tydb-green { color: #33ff33; }
+.tydb-yellowlight{color:#f0df6d;}
+.tydb-orange{color: #f98c3f;}
+.tydb-purpledark{color: #ea9cff;}
+.tydb-purple{color: #7373F7;}
+.tydb-greendark{color: #9BCA64;}
+.tydb-purple2{color: #7B7DBF;}
+.tydb-orangelight{color: #CD4D4D;}
+.tydb-bluedark{color: #7FB2C4;}
+.tydb-white{color: #fff;}
+.tydb-redbig{color: #C43000;}
+
+.tydb-equip2 { margin-bottom: 10px; padding: 0 0 10px; border-bottom: 1px dotted #3c4e67; }
+.tydb-arrow { margin-right: 3px; margin-top: -4px; width: 6px; height: 8px; background: url(../../img/tydb-arrow.png) no-repeat; }
+.tydb-pro-ul .tydb-blue { letter-spacing: 3px; }
+.letter-big { letter-spacing: 3px; }
+
+/* 技能详情 */
+.tydb-skill-type { padding: 3px; color: #d2af74; border: 1px solid #d2af74; font-size: 12px; }
+.tydb-square { float: left; margin: 8px 6px 0 5px; width: 9px; height: 9px; background: url(../../img/tydb-arrow.png) 0 -10px no-repeat; }
+.tydb-skill-kuang { width: 300px; }
+.tydb-skill-kuang li { float: left; margin-right: 4px; width: 68px; color: #E7E7E7; }
+.tydb-kuang1 { margin-top: 10px; margin-bottom: 10px; width: 66px; height: 25px; line-height: 25px; border-radius: 5px; border: 1px solid #445d7f; background-color: #0f1b2b; text-align: center; font-size: 12px; }
+.tydb-kuang2 { width: 66px; height: 66px; line-height: 66px; border-radius: 5px; border: 1px solid #445d7f; background-color: #0f1b2b; text-align: center; font-size: 16px; }
+
+/*根据盘古方修改*/
+.item-details { margin-bottom: 12px; padding: 15px 10px 0 15px; width: 287px; background: #1d293a url(../../img/tydb-equip1.png) left top no-repeat; border: 5px solid #2b394d; border-radius: 10px; color: #a2b1c4; font-size: 14px; line-height: 26px; }
+.item-details .item-name { margin-bottom: 10px; font-size: 20px; }
+.item-details .item-name .name { width: 160px; height: 26px; overflow: hidden; }
+
+/*修改技能描述*/
+.tydb-skill-desc { padding-left: 15px; }
+.tydb-skill-desc li { list-style-type: square; font-size: 12px; }
+.tydb-equip p { font-size: 14px; }
+.tydb-equip p.tydb-green { font-size: 12px; position: relative; padding-left: 27px; color: #F0F0D8; }
+.tydb-equip p img { width: 19px; height: 19px; margin-top: 3px; margin-right: 5px; position: absolute; border: 1px solid #863132; left: 0; top: 0px; }
+.tydb-equip p img.red { border-color: #863132; }
+.tydb-equip p img.blue { border-color: #427DA6; }
+.tydb-equip p.text-desc { padding-left: 27px; font-size: 12px; color: #84B085; }
+
+/* 神格 */
+.item-details-bottombg{
+    background: url(../../img/tydb-equip2.png) left bottom no-repeat;
+    padding-bottom: 15px;
+    position: relative;
+}
+.tydb-detail .tydb-name{font-size: 20px;height: 64px;line-height: 64px}
+.sgsl {width: 300px;margin-top: 4px;margin-bottom: 8px;}
+.sgsl li {
+  float: left;
+  margin-right: 8px;
+  width: 28px;
+}
+.sgsl-icon{
+	margin-bottom: 2px;
+    width: 28px;
+    height: 28px;
+    border-radius: 5px;
+    background-color: #101822;
+    text-align: center;
+}
+.sgsl-num{
+    width: 28px;
+    border-radius: 5px;
+    background-color: #101822;
+    text-align: center;
+    height: 16px;
+    line-height: 16px;
+    font-size: 12px;
+    font-weight: bold;
+}
+.sgsl-icon s{
+	display: block;
+	width: 28px;
+    height: 28px;
+}
+.sgsl-icon1{background: url(../../img/detail.png) 0 0;}
+.sgsl-icon2{background: url(../../img/detail.png) -36px 0;}
+.sgsl-icon3{background: url(../../img/detail.png) -108px 0;}
+.sgsl-icon4{background: url(../../img/detail.png) -179px 0;}
+.sgsl-icon5{background: url(../../img/detail.png) -72px 0;}
+.sgsl-icon6{background: url(../../img/detail.png) -143px 0;}
+.sgsl-icon7{background: url(../../img/detail.png) -215px 0;}
+.sgsl-icon8{background: url(../../img/detail.png) -251px 0;}
+.icon-book{
+    position: relative;
+    top: 3px;
+	margin-left: 5px;
+	display: inline-block;
+	width: 24px;
+	height: 18px;
+	background: url(../../img/detail.png) 0 -31px;
+}
+.tydb-bl{float: left;width: 200px;}
+.tydb-br{
+	float: right;
+}
+
+.icon-circle{
+    position: relative;
+    top: 6px;
+    margin-left: 2px;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: url(../../img/detail.png) -27px -31px;
+}
+
+.icon-bigcircle{
+    position: relative;
+    float: left;
+    margin-right: 9px;
+    display: block;
+    width: 36px;
+    height: 36px;
+    text-align: center;
+}
+.icon-talent-1{background: url(../../img/detail.png) -53px -31px;}
+.icon-talent-2{background: url(../../img/detail.png) -92px -31px;}
+.icon-talent-3{background: url(../../img/detail.png) -131px -31px;}
+.icon-talent-4{background: url(../../img/detail.png) -170px -31px;}
+.icon-talent-5{background: url(../../img/detail.png) -209px -31px;}
+.icon-bigcircle span{
+    display: inline-block;
+    margin-top: 17px;
+    font-size: 14px;
+    color: #d2af74;
+    text-shadow: 0 0 2px #000;
+}
+.item-details .mb50 {margin-bottom: 50px;}
+.tydb-zq-s{
+    position: absolute;    
+    height: 12px;
+    right: 0px;
+    top: 50px;
+}
+.tydb-zqpos1{width: 24px;}
+.tydb-zqpos2{width: 36px;}
+.tydb-zqpos3{width: 48px;}
+.tydb-zqpos4{width: 60px;}
+.tydb-zqpos5{width: 72px;}
+.tydb-zqpos6{width: 84px;}
+.tydb-zqpos7{width: 96px;}
+.tydb-zqpos8{width: 108px;}
+.tydb-zqpos9{width: 120px;}
+.tydb-zqpos10{width: 132px;}
+.tydb-zqpos11{width: 144px;}
+.tydb-zqpos12{width: 156px;}
+
+.tydb-zq-s s{
+    position: absolute;
+    top: 0;
+    width: 24px;
+    height: 12px;
+    background-image: url(../../img/detail.png);
+}
+.tydb-zq-s .zq-s1{background-position: 0 -69px;}
+.tydb-zq-s .zq-s2{background-position: -24px -69px;}
+.tydb-zq-s .zq-s3{background-position: -48px -69px;}
+.tydb-zq-s .zq-s4{background-position: -72px -69px;}
+.tydb-zq-s .zq-pos1{left: 0;}
+.tydb-zq-s .zq-pos2{left: 12px;}
+.tydb-zq-s .zq-pos3{left: 24px;}
+.tydb-zq-s .zq-pos4{left: 36px;}
+.tydb-zq-s .zq-pos5{left: 48px;}
+.tydb-zq-s .zq-pos6{left: 60px;}
+.tydb-zq-s .zq-pos7{left: 72px;}
+.tydb-zq-s .zq-pos8{left: 84px;}
+.tydb-zq-s .zq-pos9{left: 96px;}
+.tydb-zq-s .zq-pos10{left: 108px;}
+.tydb-zq-s .zq-pos11{left: 120px;}
+.tydb-zq-s .zq-pos12{left: 132px;}
+
+/*装备详情页添加装备属性*/
+.suit-area .title{font-size: 14px;font-weight: bold;letter-spacing: 3px;}
+.suit-area .text-index{text-indent: 20px;}
+.green-square{
+    display: inline-block;
+    margin-right: 5px;
+    width: 9px;
+    height: 9px;
+    background: url(../../img/tydb-arrow.png) 0 -19px;
+}
+.arrow-square{
+    margin-right: 5px;
+    display: inline-block;
+    width: 9px;
+    height: 9px;
+    background: url(../../img/tydb-arrow.png) 0 -28px;
+}

@@ -1,0 +1,190 @@
+/* tianyudatabase common.css */
+/* 通用结构用m-xxx 表示 */
+.clearfix {
+  *zoom: 1;
+}
+
+.clearfix:after {
+  display: block;
+  clear: both;
+  height: 0;
+  font-size: 0;
+  content: '';
+}
+.dv {
+  display: inline-block;
+  vertical-align: middle;
+
+  *display: inline;
+  *zoom: 1;
+}
+.m-tydb{
+	padding: 30px 0;
+	background: #fcfdfd url(../../img/tydb-bg.jpg) no-repeat;
+}
+.m-left{
+	float: left;
+	margin-left: 20px;
+	margin-right: 30px;
+	width: 270px;
+	background-color: #1d293a;
+	height:1150px;
+	color:#a4b2c5;
+	font-size: 14px;
+}
+.m-right{
+	float: left;
+	width: 640px;
+}
+.m-right-menu{
+	padding-bottom: 10px;
+	font-size: 14px;
+	border-bottom: 3px solid #b5995e;
+}
+.m-right-menu a{
+	color:#333;
+}
+
+/*left-nav style*/
+.m-left a:hover{
+	color:#d1b174 !important;
+}
+.g-tydb-nav-t{
+	background: url(../../img/db-logo.jpg) no-repeat 0 0;
+	height: 185px;
+	text-align: center;
+	overflow: hidden;
+}
+.g-tydb-nav-t span{
+	font-size: 12px;
+  margin-top: 150px;
+  display: block;
+}
+.g-tydb-nav-t span em{
+	color:#c1a26e;
+	margin:0 15px 0 5px;
+}
+.m-tydb-nav-item{
+	margin-bottom: 1px;
+}
+.m-tydb-nav-item div{
+	color:#FFF;
+	font-size: 16px;
+	font-weight: bold;
+	color:#747f8c;
+	height: 36px;
+	line-height: 36px;
+	background-color:#2f4256;
+	cursor: pointer;
+}
+.m-tydb-nav-item div i{
+	width: 13px;
+	display: inline-block;
+	*display: inline;
+	*zoom:1;
+	background: url(../../img/eq-ico.png) no-repeat -16px 0;
+	height: 36px;
+	vertical-align: middle;
+	margin-right:6px;
+}
+.m-tydb-nav-item .m-tydb-nav-sub{
+	overflow: hidden;
+	height: 0;
+	-webkit-transition: all .2s ease;
+	-o-transition: all .2s ease;
+	transition: all .2s ease;
+	position: relative;
+}
+.m-tydb-nav-item .m-tydb-nav-sub li{
+	float: left;
+	width: 33.33%;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+}
+.m-tydb-nav-item .m-tydb-nav-sub li span{
+	display: inline-block;
+	*display: inline;
+	*zoom:1;
+	line-height: normal;
+	cursor: pointer;
+	position: relative;
+	padding-bottom: 3px;
+}
+.m-tydb-nav-item .m-tydb-nav-sub li span a{
+    color:#a5b1c2;
+}
+
+.m-tydb-nav-item .m-tydb-nav-sub li span i{
+	position: absolute;
+	width: 100%;
+	height: 3px;
+	left:0;
+	bottom:0;
+	background: #1d293a;
+	-webkit-transition: all .2s ease;
+	-o-transition: all .2s ease;
+	transition: all .2s ease;
+}
+.m-tydb-nav-item .m-tydb-nav-sub li span:hover i,
+.m-tydb-nav-item .m-tydb-nav-sub li.cur span i{
+	background: #d1b173;
+}
+.m-tydb-nav-item.cur div i,
+.m-tydb-nav-item div:hover i{
+	background: url(../../img/eq-ico.png) no-repeat 0 0;
+}
+.m-tydb-nav-item div:hover a,
+.m-tydb-nav-item.cur div a,
+.m-tydb-nav-item div:hover span{
+	color:#d1b174;
+	display: inline-block;
+	*display: inline;
+	*zoom:1;
+	width: 90%;
+}
+
+.m-tydb-nav-item.cur .m-tydb-nav-sub{
+	height: auto;
+}
+.m-tydb-nav-item .m-tydb-nav-sub li.m-tydb-line{
+	height: 15px;
+	display: block;
+	width: 100%;
+}
+/*tip tyle*/
+.u-tips{
+	height: 50px;
+	line-height: 50px;
+	font-size: 12px;
+}
+.u-tips a{
+	display: block;
+	text-align: right;
+	color:#a2b2c4;
+	padding-right:20px;
+}
+.u-tips a i{
+	font-size: 16px;
+	font-weight: bold;
+	margin-left:5px;
+}
+
+.u-info{
+    height: 50px;
+    line-height: 21px;
+    font-size: 12px;
+    padding: 10px 20px;
+    text-align: center;
+}
+.u-info a{
+    /* display: block; */
+    /* text-align: right; */
+    color:#a2b2c4;
+    /* padding-right:20px; */
+}
+.u-info a i{
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: 5px;
+}

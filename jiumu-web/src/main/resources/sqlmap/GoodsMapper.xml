@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="GoodsMapper">
+    <!-- Goods -->
+    <sql id="createTable">
+    DROP TABLE `product`;
+    CREATE TABLE `product` (
+     PRIMARY KEY (`id`) ,UNIQUE KEY `uniq_id` (`id`) ,    `id` BIGINT(20) NOT NULL  AUTO_INCREMENT  COMMENT '主键' ,
+    `name` VARCHAR(50) COMMENT '商品名称'  DEFAULT  '' ,
+    `serial_num` VARCHAR(50) COMMENT '商品编号'  DEFAULT  '' ,
+    `publish_status` TINYINT(2) COMMENT '发布状态'  DEFAULT  '' ,
+    `market_price` DECIMAL(9,2) COMMENT '市场价格'  DEFAULT  '' ,
+    `sell_price` DECIMAL(9,2) COMMENT '销售价格'  DEFAULT  '' ,
+    `buy_price` DECIMAL(9,2) COMMENT '进货价格'  DEFAULT  '' ,
+    `small_pic` VARCHAR(50) COMMENT '商品小图'  DEFAULT  '' ,
+    `big_pic` VARCHAR(50) COMMENT '商品大图'  DEFAULT  '' ,
+    `store_num` INT(4) COMMENT '库存数量'  DEFAULT  '' ,
+    `one_category_id` BIGINT(20) COMMENT '商品一级分类'  DEFAULT  '' ,
+    `two_category_id` BIGINT(20) COMMENT '商品二级分类'  DEFAULT  '' ,
+    `three_category_id` BIGINT(20) COMMENT '商品三级分类'  DEFAULT  '' ,
+    `guige_one` VARCHAR(500) COMMENT '商品规格一'  DEFAULT  '' ,
+    `guige_two` VARCHAR(500) COMMENT '商品规格二'  DEFAULT  '' ,
+    `guige_three` VARCHAR(500) COMMENT '商品规格三'  DEFAULT  '' ,
+    `guige_four` VARCHAR(500) COMMENT '商品规格四'  DEFAULT  '' ,
+    `danwei` VARCHAR(100) COMMENT '单位'  DEFAULT  '' ,
+    `biaohao` VARCHAR(100) COMMENT '产品标号'  DEFAULT  '' ,
+    `create_day` VARCHAR(100) COMMENT '生产日期'  DEFAULT  '' ,
+    `fix_day` VARCHAR(100) COMMENT '保质期'  DEFAULT  '' ,
+    `create_place` VARCHAR(100) COMMENT '产地'  DEFAULT  '' ,
+    `factory` VARCHAR(100) COMMENT '厂家'  DEFAULT  '' ,
+    `good_desc` LONGTEXT COMMENT '详细描述'  DEFAULT  '' ,
+    `operator` VARCHAR COMMENT '操作人'  DEFAULT  '' ,
+    `create_time` DATETIME COMMENT '创建日期'  ,
+    `update_time` DATETIME COMMENT '更改日期'  ,
+    `top` TINYINT(2) COMMENT '是否推荐到首页'  DEFAULT  '' 
+    )
+    </sql>
+    <sql id="selectSqlGoods">
+        id ,name ,serial_num serialNum,publish_status publishStatus,market_price marketPrice,sell_price sellPrice,buy_price buyPrice,small_pic smallPic,big_pic bigPic,store_num storeNum,one_category_id oneCategoryId,two_category_id twoCategoryId,three_category_id threeCategoryId,guige_one guigeOne,guige_two guigeTwo,guige_three guigeThree,guige_four guigeFour,danwei ,biaohao ,create_day createDay,fix_day fixDay,create_place createPlace,factory ,good_desc goodDesc,operator ,create_time createTime,update_time updateTime,top 
+    </sql>
+
+    <sql id="whereSqlGoods">
+        1=1
+                <if test="id!=null "> and id=#{id}</if>
+
+                <if test="name!=null "> and name=#{name}</if><if test="nameLike!=null ">  and name like concat('%',#{nameLike},'%')</if>
+
+                <if test="serialNum!=null "> and serial_num=#{serialNum}</if><if test="serialNumLike!=null ">  and serial_num like concat('%',#{serialNumLike},'%')</if>
+
+                <if test="publishStatus!=null "> and publish_status=#{publishStatus}</if>
+
+                <if test="marketPrice!=null "> and market_price=#{marketPrice}</if>
+
+                <if test="sellPrice!=null "> and sell_price=#{sellPrice}</if>
+
+                <if test="buyPrice!=null "> and buy_price=#{buyPrice}</if>
+
+                <if test="smallPic!=null "> and small_pic=#{smallPic}</if><if test="smallPicLike!=null ">  and small_pic like concat('%',#{smallPicLike},'%')</if>
+
+                <if test="bigPic!=null "> and big_pic=#{bigPic}</if><if test="bigPicLike!=null ">  and big_pic like concat('%',#{bigPicLike},'%')</if>
+
+                <if test="storeNum!=null "> and store_num=#{storeNum}</if>
+
+                <if test="oneCategoryId!=null "> and one_category_id=#{oneCategoryId}</if>
+
+                <if test="twoCategoryId!=null "> and two_category_id=#{twoCategoryId}</if>
+
+                <if test="threeCategoryId!=null "> and three_category_id=#{threeCategoryId}</if>
+
+                <if test="guigeOne!=null "> and guige_one=#{guigeOne}</if><if test="guigeOneLike!=null ">  and guige_one like concat('%',#{guigeOneLike},'%')</if>
+
+                <if test="guigeTwo!=null "> and guige_two=#{guigeTwo}</if><if test="guigeTwoLike!=null ">  and guige_two like concat('%',#{guigeTwoLike},'%')</if>
+
+                <if test="guigeThree!=null "> and guige_three=#{guigeThree}</if><if test="guigeThreeLike!=null ">  and guige_three like concat('%',#{guigeThreeLike},'%')</if>
+
+                <if test="guigeFour!=null "> and guige_four=#{guigeFour}</if><if test="guigeFourLike!=null ">  and guige_four like concat('%',#{guigeFourLike},'%')</if>
+
+                <if test="danwei!=null "> and danwei=#{danwei}</if><if test="danweiLike!=null ">  and danwei like concat('%',#{danweiLike},'%')</if>
+
+                <if test="biaohao!=null "> and biaohao=#{biaohao}</if><if test="biaohaoLike!=null ">  and biaohao like concat('%',#{biaohaoLike},'%')</if>
+
+                <if test="createDay!=null "> and create_day=#{createDay}</if><if test="createDayLike!=null ">  and create_day like concat('%',#{createDayLike},'%')</if>
+
+                <if test="fixDay!=null "> and fix_day=#{fixDay}</if><if test="fixDayLike!=null ">  and fix_day like concat('%',#{fixDayLike},'%')</if>
+
+                <if test="createPlace!=null "> and create_place=#{createPlace}</if><if test="createPlaceLike!=null ">  and create_place like concat('%',#{createPlaceLike},'%')</if>
+
+                <if test="factory!=null "> and factory=#{factory}</if><if test="factoryLike!=null ">  and factory like concat('%',#{factoryLike},'%')</if>
+
+                <if test="goodDesc!=null "> and good_desc=#{goodDesc}</if>
+
+                <if test="operator!=null "> and operator=#{operator}</if><if test="operatorLike!=null ">  and operator like concat('%',#{operatorLike},'%')</if>
+                <if test="createTimeBegin!=null "> and create_time>=#{createTimeBegin,jdbcType=TIMESTAMP}</if>
+                <if test="createTimeEnd!=null "> and create_time<![CDATA[<=]]>#{createTimeEnd,jdbcType=TIMESTAMP}</if>
+                <if test="updateTimeBegin!=null "> and update_time>=#{updateTimeBegin,jdbcType=TIMESTAMP}</if>
+                <if test="updateTimeEnd!=null "> and update_time<![CDATA[<=]]>#{updateTimeEnd,jdbcType=TIMESTAMP}</if>
+
+                <if test="top!=null "> and top=#{top}</if>
+
+        <if test="whereSql!=null"> ${whereSql}</if>
+    </sql>
+
+    <sql id="updateWhereSqlGoods">
+        id = #{id}
+    </sql>
+
+    <insert id="insertGoods" parameterType="Goods" >
+        <selectKey resultType="long" order="AFTER" keyProperty="id" >
+            SELECT LAST_INSERT_ID() AS id
+        </selectKey>
+        insert into product (name,serial_num,publish_status,market_price,sell_price,buy_price,small_pic,big_pic,store_num,one_category_id,two_category_id,three_category_id,guige_one,guige_two,guige_three,guige_four,danwei,biaohao,create_day,fix_day,create_place,factory,good_desc,operator,create_time,update_time,top)
+        values(
+<choose><when test="name==null">  ''    </when><otherwise>#{name}</otherwise></choose> ,
+<choose><when test="serialNum==null">  ''    </when><otherwise>#{serialNum}</otherwise></choose> ,
+<choose><when test="publishStatus==null">  ''    </when><otherwise>#{publishStatus}</otherwise></choose> ,
+<choose><when test="marketPrice==null">  ''    </when><otherwise>#{marketPrice}</otherwise></choose> ,
+<choose><when test="sellPrice==null">  ''    </when><otherwise>#{sellPrice}</otherwise></choose> ,
+<choose><when test="buyPrice==null">  ''    </when><otherwise>#{buyPrice}</otherwise></choose> ,
+<choose><when test="smallPic==null">  ''    </when><otherwise>#{smallPic}</otherwise></choose> ,
+<choose><when test="bigPic==null">  ''    </when><otherwise>#{bigPic}</otherwise></choose> ,
+<choose><when test="storeNum==null">  ''    </when><otherwise>#{storeNum}</otherwise></choose> ,
+<choose><when test="oneCategoryId==null">  ''    </when><otherwise>#{oneCategoryId}</otherwise></choose> ,
+<choose><when test="twoCategoryId==null">  ''    </when><otherwise>#{twoCategoryId}</otherwise></choose> ,
+<choose><when test="threeCategoryId==null">  ''    </when><otherwise>#{threeCategoryId}</otherwise></choose> ,
+<choose><when test="guigeOne==null">  ''    </when><otherwise>#{guigeOne}</otherwise></choose> ,
+<choose><when test="guigeTwo==null">  ''    </when><otherwise>#{guigeTwo}</otherwise></choose> ,
+<choose><when test="guigeThree==null">  ''    </when><otherwise>#{guigeThree}</otherwise></choose> ,
+<choose><when test="guigeFour==null">  ''    </when><otherwise>#{guigeFour}</otherwise></choose> ,
+<choose><when test="danwei==null">  ''    </when><otherwise>#{danwei}</otherwise></choose> ,
+<choose><when test="biaohao==null">  ''    </when><otherwise>#{biaohao}</otherwise></choose> ,
+<choose><when test="createDay==null">  ''    </when><otherwise>#{createDay}</otherwise></choose> ,
+<choose><when test="fixDay==null">  ''    </when><otherwise>#{fixDay}</otherwise></choose> ,
+<choose><when test="createPlace==null">  ''    </when><otherwise>#{createPlace}</otherwise></choose> ,
+<choose><when test="factory==null">  ''    </when><otherwise>#{factory}</otherwise></choose> ,
+<choose><when test="goodDesc==null">  ''    </when><otherwise>#{goodDesc}</otherwise></choose> ,
+<choose><when test="operator==null">  ''    </when><otherwise>#{operator}</otherwise></choose> ,
+<choose><when test="createTime==null">now() </when><otherwise>#{createTime,jdbcType=TIMESTAMP}</otherwise></choose> ,
+<choose><when test="updateTime==null">now() </when><otherwise>#{updateTime,jdbcType=TIMESTAMP}</otherwise></choose> ,
+<choose><when test="top==null">  ''    </when><otherwise>#{top}</otherwise></choose> 
+        )
+    </insert>
+
+    <select id="getGoods" parameterType="hashmap" resultType="Goods">
+        select <include refid="selectSqlGoods"/> from product where <include refid="whereSqlGoods"/>
+    </select>
+    <select id="getGoodsList" parameterType="hashmap" resultType="Goods">
+        select <include refid="selectSqlGoods"/> from product where <include refid="whereSqlGoods"/>
+        <if test="orderBy != null"> order by  ${orderBy} </if>
+        <if test="limit != null"> LIMIT #{limitIndex},#{limit} </if>
+    </select>
+    <select id="getGoodsListCount" parameterType="hashmap" resultType="int">
+        select count(1)  from product where <include refid="whereSqlGoods"/>
+    </select>
+
+
+    <update id="updateGoods" parameterType="Goods">
+        update product set
+<choose><when test="name!=null">name=#{name},</when></choose>
+<choose><when test="serialNum!=null">serial_num=#{serialNum},</when></choose>
+<choose><when test="publishStatus!=null">publish_status=#{publishStatus},</when></choose>
+<choose><when test="marketPrice!=null">market_price=#{marketPrice},</when></choose>
+<choose><when test="sellPrice!=null">sell_price=#{sellPrice},</when></choose>
+<choose><when test="buyPrice!=null">buy_price=#{buyPrice},</when></choose>
+<choose><when test="smallPic!=null">small_pic=#{smallPic},</when></choose>
+<choose><when test="bigPic!=null">big_pic=#{bigPic},</when></choose>
+<choose><when test="storeNum!=null">store_num=#{storeNum},</when></choose>
+<choose><when test="oneCategoryId!=null">one_category_id=#{oneCategoryId},</when></choose>
+<choose><when test="twoCategoryId!=null">two_category_id=#{twoCategoryId},</when></choose>
+<choose><when test="threeCategoryId!=null">three_category_id=#{threeCategoryId},</when></choose>
+<choose><when test="guigeOne!=null">guige_one=#{guigeOne},</when></choose>
+<choose><when test="guigeTwo!=null">guige_two=#{guigeTwo},</when></choose>
+<choose><when test="guigeThree!=null">guige_three=#{guigeThree},</when></choose>
+<choose><when test="guigeFour!=null">guige_four=#{guigeFour},</when></choose>
+<choose><when test="danwei!=null">danwei=#{danwei},</when></choose>
+<choose><when test="biaohao!=null">biaohao=#{biaohao},</when></choose>
+<choose><when test="createDay!=null">create_day=#{createDay},</when></choose>
+<choose><when test="fixDay!=null">fix_day=#{fixDay},</when></choose>
+<choose><when test="createPlace!=null">create_place=#{createPlace},</when></choose>
+<choose><when test="factory!=null">factory=#{factory},</when></choose>
+<choose><when test="goodDesc!=null">good_desc=#{goodDesc},</when></choose>
+<choose><when test="operator!=null">operator=#{operator},</when></choose>
+<choose><when test="createTime!=null">create_time=#{createTime,jdbcType=TIMESTAMP},</when></choose>
+<choose><when test="updateTime!=null">update_time=#{updateTime,jdbcType=TIMESTAMP},</when></choose>
+<choose><when test="top!=null">top=#{top},</when></choose>        <include refid="updateWhereSqlGoods"/>
+
+        where  <include refid="updateWhereSqlGoods"/>
+    </update>
+
+    <delete id="truncateGoods">
+        truncate table product
+    </delete>
+
+    <delete id="deleteGoods" parameterType="hashmap">
+        delete from product where id = #{id}
+    </delete>
+
+    <delete id="batchDeleteGoods" parameterType="java.util.List">
+        delete from product where id in
+        <foreach item="id" index="index" collection="list" open="(" separator="," close=")">
+#{id}        </foreach>
+    </delete>
+
+    <insert id="batchInsertGoods" parameterType="java.util.List">
+        insert into product (name,serial_num,publish_status,market_price,sell_price,buy_price,small_pic,big_pic,store_num,one_category_id,two_category_id,three_category_id,guige_one,guige_two,guige_three,guige_four,danwei,biaohao,create_day,fix_day,create_place,factory,good_desc,operator,create_time,update_time,top)
+        values
+        <foreach collection="list" item= "item" index ="index" separator=",">
+            (
+<choose><when test="item.name==null">  ''  </when><otherwise>#{item.name}</otherwise></choose> ,
+<choose><when test="item.serialNum==null">  ''  </when><otherwise>#{item.serialNum}</otherwise></choose> ,
+<choose><when test="item.publishStatus==null">  ''  </when><otherwise>#{item.publishStatus}</otherwise></choose> ,
+<choose><when test="item.marketPrice==null">  ''  </when><otherwise>#{item.marketPrice}</otherwise></choose> ,
+<choose><when test="item.sellPrice==null">  ''  </when><otherwise>#{item.sellPrice}</otherwise></choose> ,
+<choose><when test="item.buyPrice==null">  ''  </when><otherwise>#{item.buyPrice}</otherwise></choose> ,
+<choose><when test="item.smallPic==null">  ''  </when><otherwise>#{item.smallPic}</otherwise></choose> ,
+<choose><when test="item.bigPic==null">  ''  </when><otherwise>#{item.bigPic}</otherwise></choose> ,
+<choose><when test="item.storeNum==null">  ''  </when><otherwise>#{item.storeNum}</otherwise></choose> ,
+<choose><when test="item.oneCategoryId==null">  ''  </when><otherwise>#{item.oneCategoryId}</otherwise></choose> ,
+<choose><when test="item.twoCategoryId==null">  ''  </when><otherwise>#{item.twoCategoryId}</otherwise></choose> ,
+<choose><when test="item.threeCategoryId==null">  ''  </when><otherwise>#{item.threeCategoryId}</otherwise></choose> ,
+<choose><when test="item.guigeOne==null">  ''  </when><otherwise>#{item.guigeOne}</otherwise></choose> ,
+<choose><when test="item.guigeTwo==null">  ''  </when><otherwise>#{item.guigeTwo}</otherwise></choose> ,
+<choose><when test="item.guigeThree==null">  ''  </when><otherwise>#{item.guigeThree}</otherwise></choose> ,
+<choose><when test="item.guigeFour==null">  ''  </when><otherwise>#{item.guigeFour}</otherwise></choose> ,
+<choose><when test="item.danwei==null">  ''  </when><otherwise>#{item.danwei}</otherwise></choose> ,
+<choose><when test="item.biaohao==null">  ''  </when><otherwise>#{item.biaohao}</otherwise></choose> ,
+<choose><when test="item.createDay==null">  ''  </when><otherwise>#{item.createDay}</otherwise></choose> ,
+<choose><when test="item.fixDay==null">  ''  </when><otherwise>#{item.fixDay}</otherwise></choose> ,
+<choose><when test="item.createPlace==null">  ''  </when><otherwise>#{item.createPlace}</otherwise></choose> ,
+<choose><when test="item.factory==null">  ''  </when><otherwise>#{item.factory}</otherwise></choose> ,
+<choose><when test="item.goodDesc==null">  ''  </when><otherwise>#{item.goodDesc}</otherwise></choose> ,
+<choose><when test="item.operator==null">  ''  </when><otherwise>#{item.operator}</otherwise></choose> ,
+<choose><when test="item.createTime==null">now()</when><otherwise>#{item.createTime,jdbcType=TIMESTAMP}</otherwise></choose> ,
+<choose><when test="item.updateTime==null">now()</when><otherwise>#{item.updateTime,jdbcType=TIMESTAMP}</otherwise></choose> ,
+<choose><when test="item.top==null">  ''  </when><otherwise>#{item.top}</otherwise></choose> 
+            )
+        </foreach >
+    </insert>
+
+    <update id="batchUpdateGoods"  parameterType="java.util.List">
+        <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+            update product
+            <set>
+<choose><when test="item.name!=null">name=#{item.name},</when></choose>
+<choose><when test="item.serialNum!=null">serial_num=#{item.serialNum},</when></choose>
+<choose><when test="item.publishStatus!=null">publish_status=#{item.publishStatus},</when></choose>
+<choose><when test="item.marketPrice!=null">market_price=#{item.marketPrice},</when></choose>
+<choose><when test="item.sellPrice!=null">sell_price=#{item.sellPrice},</when></choose>
+<choose><when test="item.buyPrice!=null">buy_price=#{item.buyPrice},</when></choose>
+<choose><when test="item.smallPic!=null">small_pic=#{item.smallPic},</when></choose>
+<choose><when test="item.bigPic!=null">big_pic=#{item.bigPic},</when></choose>
+<choose><when test="item.storeNum!=null">store_num=#{item.storeNum},</when></choose>
+<choose><when test="item.oneCategoryId!=null">one_category_id=#{item.oneCategoryId},</when></choose>
+<choose><when test="item.twoCategoryId!=null">two_category_id=#{item.twoCategoryId},</when></choose>
+<choose><when test="item.threeCategoryId!=null">three_category_id=#{item.threeCategoryId},</when></choose>
+<choose><when test="item.guigeOne!=null">guige_one=#{item.guigeOne},</when></choose>
+<choose><when test="item.guigeTwo!=null">guige_two=#{item.guigeTwo},</when></choose>
+<choose><when test="item.guigeThree!=null">guige_three=#{item.guigeThree},</when></choose>
+<choose><when test="item.guigeFour!=null">guige_four=#{item.guigeFour},</when></choose>
+<choose><when test="item.danwei!=null">danwei=#{item.danwei},</when></choose>
+<choose><when test="item.biaohao!=null">biaohao=#{item.biaohao},</when></choose>
+<choose><when test="item.createDay!=null">create_day=#{item.createDay},</when></choose>
+<choose><when test="item.fixDay!=null">fix_day=#{item.fixDay},</when></choose>
+<choose><when test="item.createPlace!=null">create_place=#{item.createPlace},</when></choose>
+<choose><when test="item.factory!=null">factory=#{item.factory},</when></choose>
+<choose><when test="item.goodDesc!=null">good_desc=#{item.goodDesc},</when></choose>
+<choose><when test="item.operator!=null">operator=#{item.operator},</when></choose>
+<choose><when test="item.createTime!=null">create_time=#{item.createTime,jdbcType=TIMESTAMP},</when></choose>
+<choose><when test="item.updateTime!=null">update_time=#{item.updateTime,jdbcType=TIMESTAMP},</when></choose>
+<choose><when test="item.top!=null">top=#{item.top},</when></choose>
+                id = #{item.id }
+            </set>
+            where id = #{item.id }
+        </foreach>
+    </update>
+
+</mapper>
