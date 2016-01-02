@@ -175,6 +175,13 @@ pageEncoding="UTF-8"%>
                                             <option value="0" <c:if test="${ goods.top == 0 }">selected</c:if> >否</option>
                                </select>
                         </div>
+                        <div class="form-group ">
+                            <label for="topCategoty">是否推荐到首页分类下的大图</label>
+                               <select class="form-control" id="topCategoty" name="topCategoty">
+                                            <option value="1" <c:if test="${ goods.topCategoty == 1 }">selected</c:if> >是</option>
+                                            <option value="0" <c:if test="${ goods.topCategoty == 0 }">selected</c:if> >否</option>
+                               </select>
+                        </div>
 
                             </div><!-- /.box-body -->
                             <div class="box-footer">
@@ -194,8 +201,8 @@ pageEncoding="UTF-8"%>
     <script charset="utf-8" src="assets/admin/js/kindeditor-4.1.10/kindeditor.js"></script>
     <script charset="utf-8" src="assets/admin/js/kindeditor-4.1.10/lang/zh_CN.js"></script>
     <script charset="utf-8" src="assets/admin/js/kindeditor-4.1.10/plugins/code/prettify.js"></script>
-    <script type="text/javascript" src="assets/admin/js/ajaxfileupload.js"></script>
-    <script type="text/javascript" src="assets/admin/app/goods/goodsFile.js"></script>
+<script type="text/javascript" src="assets/admin/js/ajaxfileupload.js"></script>
+<script type="text/javascript" src="assets/admin/app/goods/goodsFile.js"></script>
     <script>
         $(function(){
                     createKindEditor("goodDesc");

@@ -38,7 +38,8 @@ pageEncoding="UTF-8"%>
                                 <div class="form">
                                     <div class="box-body">
                                         <div class="row">
-                <div class="col-xs-2">
+
+                <div class="col-xs-2">
                 <div class="form-group">
                     <label for="name">商品名称</label>
                         <input type="text" class="form-control" value="${ name }" id="name" name="name">
@@ -109,6 +110,7 @@ pageEncoding="UTF-8"%>
                     <label for="top">是否推荐到首页</label>
                         <select class="form-control" id="top"
                                 name="top">
+                                    <option value="" >全部</option>
                                     <option value="1"
                                     <c:if test="${ top == 1 }">
                                         selected
@@ -116,6 +118,25 @@ pageEncoding="UTF-8"%>
                                     >是</option>
                                     <option value="0"
                                     <c:if test="${ top == 0 }">
+                                        selected
+                                    </c:if>
+                                    >否</option>
+                        </select>
+                </div>
+                </div>
+                <div class="col-xs-2">
+                <div class="form-group">
+                    <label for="topCategoty">是否推荐到首页分类下的大图</label>
+                        <select class="form-control" id="topCategoty"
+                                name="topCategoty">
+                            <option value="" >全部</option>
+                            <option value="1"
+                                    <c:if test="${ topCategoty == 1 }">
+                                        selected
+                                    </c:if>
+                                    >是</option>
+                                    <option value="0"
+                                    <c:if test="${ topCategoty == 0 }">
                                         selected
                                     </c:if>
                                     >否</option>
@@ -153,6 +174,7 @@ pageEncoding="UTF-8"%>
                                                 <th class="sorting"                                                    orderField="create_time">创建日期</th>
                                                 <th class="sorting"                                                    orderField="update_time">更改日期</th>
                                                 <th class="sorting"                                                    orderField="top">是否推荐到首页</th>
+                                                <th class="sorting"                                                    orderField="top_categoty">是否推荐到首页分类下的大图</th>
                                     <th>操作</th>
                                 </tr>
                                 </thead>

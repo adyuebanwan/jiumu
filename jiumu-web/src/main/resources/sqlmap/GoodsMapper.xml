@@ -8,7 +8,7 @@
     CREATE TABLE `goods` (
      PRIMARY KEY (`id`) ,UNIQUE KEY `uniq_id` (`id`) ,    `id` BIGINT(20) NOT NULL  AUTO_INCREMENT  COMMENT '主键' ,
     `name` VARCHAR(50) COMMENT '商品名称'  DEFAULT  '' ,
-    `serial_num` VARCHAR(50) COMMENT '商品编号'  DEFAULT  '' ,
+    `serial_num` VARCHAR(250) COMMENT '商品编号'  DEFAULT  '' ,
     `publish_status` TINYINT(2) COMMENT '发布状态'  DEFAULT  '0' ,
     `market_price` DECIMAL(9,2) COMMENT '市场价格'  DEFAULT  '0' ,
     `sell_price` DECIMAL(9,2) COMMENT '销售价格'  DEFAULT  '0' ,
@@ -34,11 +34,12 @@
     `operator` VARCHAR(30) COMMENT '操作人'  DEFAULT  '' ,
     `create_time` DATETIME COMMENT '创建日期'  ,
     `update_time` DATETIME COMMENT '更改日期'  ,
-    `top` TINYINT(2) COMMENT '是否推荐到首页'  DEFAULT  '0' 
+    `top` TINYINT(2) COMMENT '是否推荐到首页'  DEFAULT  '0' ,
+    `top_categoty` TINYINT(2) COMMENT '是否推荐到首页分类下的大图'  DEFAULT  '0' 
     )
     </sql>
     <sql id="selectSqlGoods">
-        id ,name ,serial_num serialNum,publish_status publishStatus,market_price marketPrice,sell_price sellPrice,buy_price buyPrice,thumbnail_pic thumbnailPic,small_pic smallPic,big_pic bigPic,store_num storeNum,one_category_id oneCategoryId,two_category_id twoCategoryId,three_category_id threeCategoryId,guige_one guigeOne,guige_two guigeTwo,guige_three guigeThree,guige_four guigeFour,danwei ,biaohao ,create_day createDay,fix_day fixDay,create_place createPlace,factory ,good_desc goodDesc,operator ,create_time createTime,update_time updateTime,top 
+        id ,name ,serial_num serialNum,publish_status publishStatus,market_price marketPrice,sell_price sellPrice,buy_price buyPrice,thumbnail_pic thumbnailPic,small_pic smallPic,big_pic bigPic,store_num storeNum,one_category_id oneCategoryId,two_category_id twoCategoryId,three_category_id threeCategoryId,guige_one guigeOne,guige_two guigeTwo,guige_three guigeThree,guige_four guigeFour,danwei ,biaohao ,create_day createDay,fix_day fixDay,create_place createPlace,factory ,good_desc goodDesc,operator ,create_time createTime,update_time updateTime,top ,top_categoty topCategoty
     </sql>
 
     <sql id="whereSqlGoods">
@@ -101,6 +102,8 @@
 
                 <if test="top!=null "> and top=#{top}</if>
 
+                <if test="topCategoty!=null "> and top_categoty=#{topCategoty}</if>
+
         <if test="whereSql!=null"> ${whereSql}</if>
     </sql>
 
@@ -112,7 +115,7 @@
         <selectKey resultType="long" order="AFTER" keyProperty="id" >
             SELECT LAST_INSERT_ID() AS id
         </selectKey>
-        insert into goods (name,serial_num,publish_status,market_price,sell_price,buy_price,thumbnail_pic,small_pic,big_pic,store_num,one_category_id,two_category_id,three_category_id,guige_one,guige_two,guige_three,guige_four,danwei,biaohao,create_day,fix_day,create_place,factory,good_desc,operator,create_time,update_time,top)
+        insert into goods (name,serial_num,publish_status,market_price,sell_price,buy_price,thumbnail_pic,small_pic,big_pic,store_num,one_category_id,two_category_id,three_category_id,guige_one,guige_two,guige_three,guige_four,danwei,biaohao,create_day,fix_day,create_place,factory,good_desc,operator,create_time,update_time,top,top_categoty)
         values(
 <choose><when test="name==null">  ''    </when><otherwise>#{name}</otherwise></choose> ,
 <choose><when test="serialNum==null">  ''    </when><otherwise>#{serialNum}</otherwise></choose> ,
@@ -141,7 +144,8 @@
 <choose><when test="operator==null">  ''    </when><otherwise>#{operator}</otherwise></choose> ,
 <choose><when test="createTime==null">now() </when><otherwise>#{createTime,jdbcType=TIMESTAMP}</otherwise></choose> ,
 <choose><when test="updateTime==null">now() </when><otherwise>#{updateTime,jdbcType=TIMESTAMP}</otherwise></choose> ,
-<choose><when test="top==null">  '0'    </when><otherwise>#{top}</otherwise></choose> 
+<choose><when test="top==null">  '0'    </when><otherwise>#{top}</otherwise></choose> ,
+<choose><when test="topCategoty==null">  '0'    </when><otherwise>#{topCategoty}</otherwise></choose> 
         )
     </insert>
 
@@ -187,7 +191,8 @@
 <choose><when test="operator!=null">operator=#{operator},</when></choose>
 <choose><when test="createTime!=null">create_time=#{createTime,jdbcType=TIMESTAMP},</when></choose>
 <choose><when test="updateTime!=null">update_time=#{updateTime,jdbcType=TIMESTAMP},</when></choose>
-<choose><when test="top!=null">top=#{top},</when></choose>        <include refid="updateWhereSqlGoods"/>
+<choose><when test="top!=null">top=#{top},</when></choose>
+<choose><when test="topCategoty!=null">top_categoty=#{topCategoty},</when></choose>        <include refid="updateWhereSqlGoods"/>
 
         where  <include refid="updateWhereSqlGoods"/>
     </update>
@@ -207,7 +212,7 @@
     </delete>
 
     <insert id="batchInsertGoods" parameterType="java.util.List">
-        insert into goods (name,serial_num,publish_status,market_price,sell_price,buy_price,thumbnail_pic,small_pic,big_pic,store_num,one_category_id,two_category_id,three_category_id,guige_one,guige_two,guige_three,guige_four,danwei,biaohao,create_day,fix_day,create_place,factory,good_desc,operator,create_time,update_time,top)
+        insert into goods (name,serial_num,publish_status,market_price,sell_price,buy_price,thumbnail_pic,small_pic,big_pic,store_num,one_category_id,two_category_id,three_category_id,guige_one,guige_two,guige_three,guige_four,danwei,biaohao,create_day,fix_day,create_place,factory,good_desc,operator,create_time,update_time,top,top_categoty)
         values
         <foreach collection="list" item= "item" index ="index" separator=",">
             (
@@ -238,7 +243,8 @@
 <choose><when test="item.operator==null">  ''  </when><otherwise>#{item.operator}</otherwise></choose> ,
 <choose><when test="item.createTime==null">now()</when><otherwise>#{item.createTime,jdbcType=TIMESTAMP}</otherwise></choose> ,
 <choose><when test="item.updateTime==null">now()</when><otherwise>#{item.updateTime,jdbcType=TIMESTAMP}</otherwise></choose> ,
-<choose><when test="item.top==null">  '0'  </when><otherwise>#{item.top}</otherwise></choose> 
+<choose><when test="item.top==null">  '0'  </when><otherwise>#{item.top}</otherwise></choose> ,
+<choose><when test="item.topCategoty==null">  '0'  </when><otherwise>#{item.topCategoty}</otherwise></choose> 
             )
         </foreach >
     </insert>
@@ -275,6 +281,7 @@
 <choose><when test="item.createTime!=null">create_time=#{item.createTime,jdbcType=TIMESTAMP},</when></choose>
 <choose><when test="item.updateTime!=null">update_time=#{item.updateTime,jdbcType=TIMESTAMP},</when></choose>
 <choose><when test="item.top!=null">top=#{item.top},</when></choose>
+<choose><when test="item.topCategoty!=null">top_categoty=#{item.topCategoty},</when></choose>
                 id = #{item.id }
             </set>
             where id = #{item.id }

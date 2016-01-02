@@ -40,7 +40,7 @@ function createKindEditor(textName,itemArr){
         'anchor', 'link', 'unlink', '|', 'about'
         ]
     KindEditor.create('textarea[name="'+textName+'"]', {
-        uploadJson : '/commonfile/ckfileupload/business?maxWidth=952',
+        uploadJson : '/commonfile/ckfileupload/goods?maxWidth=952',
         allowFileManager : true,
         extraFileUploadParams : {sessionid : 'abcdef'},
         items : items,

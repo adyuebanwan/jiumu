@@ -108,7 +108,7 @@ function batchDeleteItem(){
 /*pageIndex 当前是第几页 */
 function  getItemPage(pageIndex){
     var template = '<tr id="tr{id}"><td><input type="checkbox" value="{id}" class="tdcheckbox"></td><td>{rankNum}</td>'+
-    '<td>{name}</td><td>{serialNum}</td><td>{publishStatus}</td><td>{sellPrice}</td><td>{buyPrice}</td><td>{storeNum}</td><td>{operator}</td><td>{createTime}</td><td>{updateTime}</td><td>{top}</td>' +
+    '<td>{name}</td><td>{serialNum}</td><td>{publishStatus}</td><td>{sellPrice}</td><td>{buyPrice}</td><td>{storeNum}</td><td>{operator}</td><td>{createTime}</td><td>{updateTime}</td><td>{top}</td><td>{topCategoty}</td>' +
     '<td><a target="_blank" href="admin/goods/detail/{id}">编辑</a> <a href="javascript:{}" onclick="deleteItem({id})">删除</a></td></tr>';
     var pageSize = 20;//每页多少条记录
     var pageCount = parseInt($("#pageCount").val());//总共多少条记录
@@ -164,6 +164,12 @@ function  getItemPage(pageIndex){
     }
 
 
+    var topCategoty = $("#topCategoty").val();
+    if(topCategoty!=''){
+        requestParam.topCategoty=topCategoty;
+    }
+
+
     //排序
     var orderBy = buildOrderBy()
     if(typeof orderBy =='undefined' || orderBy!=''){
@@ -198,6 +204,9 @@ function  getItemPage(pageIndex){
 
                         var topMap = {"1":"是","0":"否"};
                         value.top = topMap[value.top+""]
+
+                        var topCategotyMap = {"1":"是","0":"否"};
+                        value.topCategoty = topCategotyMap[value.topCategoty+""]
 
                         //赋值替换
                         var tm = template;

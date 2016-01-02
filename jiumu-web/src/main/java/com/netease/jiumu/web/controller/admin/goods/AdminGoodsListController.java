@@ -45,6 +45,7 @@ public class AdminGoodsListController extends AdminLoginController
           @RequestParam(required = false,value = "createTimeBegin") @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")Date createTimeBegin ,
           @RequestParam(required = false,value = "createTimeEnd") @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")Date createTimeEnd ,
           @RequestParam(required=false, value="top") Integer top,
+          @RequestParam(required=false, value="topCategoty") Integer topCategoty,
 HttpServletResponse response)
   {
     int idx = (pageIndex.intValue() - 1) * 20;
@@ -57,6 +58,7 @@ HttpServletResponse response)
         "createTimeBegin",createTimeBegin ,
         "createTimeEnd",createTimeEnd ,
             "top",top,
+            "topCategoty",topCategoty,
 
   "limitIndex",Integer.valueOf(idx),"limit", Integer.valueOf(20) });
     List pageList = this.goodsService.getGoodsList(query);

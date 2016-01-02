@@ -277,7 +277,7 @@
 <!-- 调用广告标签 -->
 <!-- 调用广告信息,传递参数acid:1 -->
 <!-- 获取广告列表 -->
-<div class="max-adv">
+<%--<div class="max-adv">
     <div id="index-adv" class="flexslider">
         <ul class="slides">
             <li style="background:transparent url(http://www.javashop.cn/version4/statics/attachment/adv/201512211629309212.jpg) no-repeat scroll center top / cover "/>
@@ -287,7 +287,7 @@
         </ul>
 
     </div>
-</div>
+</div>--%>
 <script type="text/javascript">
     //计算广告高度
     function advheight() {
@@ -326,12 +326,90 @@
         <div class="index-same-tile index-food">
             <h1>食品饮料<span>FOOD AND BEVERAGE</span></h1>
             <ul>
-                <!-- 获取CMS数据搜索标签， -->
-                <!-- 调用CMS数据搜索标签，并传递所在模型ID参数(es_hot_keyword表.)“3”表示出现三个关键词。 -->
             </ul>
         </div>
         <div class="same-box">
+            <div class="same-box-left">
+                <!-- 品牌 -->
+                <!-- 调用商品分类信息 -->
+               <div class="index-beand-list">
+                     <ul>
+                         <li>
+                             <a href="goods_list.html?brand=1">
+                                 <img src="http://static.v4.javamall.com.cn/attachment/brand/201202211150124684.jpg"
+                                      alt="旺旺" border="0"/> </a>
+                         </li>
 
+                         <li>
+                             <a href="goods_list.html?brand=2">
+                                 <img src="http://static.v4.javamall.com.cn/attachment/brand/201202211143461491.jpg"
+                                      alt="新农哥" border="0"/> </a>
+                         </li>
+
+                         <li>
+                             <a href="goods_list.html?brand=7">
+                                 <img src="http://static.v4.javamall.com.cn/attachment/brand/201202211200113292.jpg"
+                                      alt="天喔" border="0"/> </a>
+                         </li>
+
+                         <li>
+                             <a href="goods_list.html?brand=4">
+                                 <img src="http://static.v4.javamall.com.cn/attachment/brand/201202211152387107.gif"
+                                      alt="百味林" border="0"/> </a>
+                         </li>
+
+                         <li>
+                             <a href="goods_list.html?brand=96">
+                                 <img src="http://static.v5.javamall.com.cn/attachment/brand/201511240103545878.jpg"
+                                      alt="百变猪排" border="0"/> </a>
+                         </li>
+
+                         <li>
+                             <a href="goods_list.html?brand=17">
+                                 <img src="http://static.v4.javamall.com.cn/attachment/brand/201202221658088525.jpg"
+                                      alt="大白兔" border="0"/> </a>
+                         </li>
+
+                         <li>
+                             <a href="goods_list.html?brand=16">
+                                 <img src="http://static.v4.javamall.com.cn/attachment/brand/201202221654250514.jpg"
+                                      alt="阿尔卑斯" border="0"/> </a>
+                         </li>
+
+                         <li>
+                             <a href="goods_list.html?brand=10">
+                                 <img src="http://static.v4.javamall.com.cn/attachment/brand/201202221035341549.gif"
+                                      alt="瑞士莲" border="0"/> </a>
+                         </li>
+                     </ul>
+                 </div>
+                 <!-- 创建商品分类标签 -->
+                 <!-- 调用商品分类信息 -->
+                 <div class="same-cat">
+                     <a href="/version4/goods_list.html?cat=6" title="坚果">坚果</a>
+                     <a href="/version4/goods_list.html?cat=7" title="蜜饯">蜜饯</a>
+                     <a href="/version4/goods_list.html?cat=8" title="肉干">肉干</a>
+                     <!--  <a href="search-cat-2.html" class="menu">休闲零食 </a><br/>-->
+                     <a href="/version4/goods_list.html?cat=10" title="巧克力">巧克力</a>
+                     <a href="/version4/goods_list.html?cat=11" title="糖果">糖果</a>
+                     <a href="/version4/goods_list.html?cat=12" title="口香糖">口香糖</a>
+                     <!--  <a href="search-cat-3.html" class="menu">糖果/巧克力</a><br/>-->
+                     <a href="/version4/goods_list.html?cat=14" title="碳酸饮料">碳酸饮料</a>
+                     <a href="/version4/goods_list.html?cat=15" title="茶饮料">茶饮料</a>
+                     <a href="/version4/goods_list.html?cat=16" title="果汁">果汁</a>
+                     <!--  <a href="search-cat-13.html" class="menu">饮料</a><br/>-->
+                     <a href="/version4/goods_list.html?cat=19" title="白酒">白酒</a>
+                     <a href="/version4/goods_list.html?cat=20" title="啤酒">啤酒</a>
+                     <a href="/version4/goods_list.html?cat=21" title="洋酒">洋酒</a>
+                     <!--  <a href="search-cat-18.html" class="menu">酒水</a><br/>-->
+                 </div>
+             </div>
+            <div class="same-box-middel">
+                <!-- 调用广告信息,传递参数acid:1 -->
+                <a target="_blank" title="1楼美食、饮料广告" href="/version4/core/adv!click.do?advid=22"">
+                <img src="http://static.v5.javamall.com.cn/attachment/adv/201512091708414759.jpg" alt="1楼美食、饮料广告"
+                     border="0"/>                            </a>
+            </div>
             <div class="same-box-right">
                 <ul>
                     <li>
@@ -395,134 +473,6 @@
                             <span>￥46.00</span>
                             <!--
                             <del class="original">市场价：￥70.00</del>
-                            -->
-                        </div>
-                    </li>
-                    <li>
-                        <div class="goods-img">
-                            <a target="_blank" href="/version4/goods-263.html">
-                                <img src="http://static.v5.javamall.com.cn/attachment/goods/201511240123138244_thumbnail.jpg"
-                                     alt="绿岭新鲜有机生薄皮非新疆纸皮大核桃500G新货特产 原味坚果零食" class="scrollLoading"/> </a>
-                        </div>
-                        <div class="goods-name">
-                            <a target="_blank" href="/version4/goods-263.html">绿岭新鲜有机生薄皮非新疆纸皮大核桃500G新货特产 原味坚果零食</a>
-                        </div>
-                        <div class="goods-price">
-                            <span>￥0.00</span>
-                            <!--
-                            <del class="original">市场价：￥40.00</del>
-                            -->
-                        </div>
-                    </li>
-                    <li>
-                        <div class="goods-img">
-                            <a target="_blank" href="/version4/goods-262.html">
-                                <img src="http://static.v5.javamall.com.cn/attachment/goods/201511240115430875_thumbnail.jpg"
-                                     alt="【沃隆_每日坚果25g*30袋】精美礼盒原味混合干果综合坚果仁箱装" class="scrollLoading"/> </a>
-                        </div>
-                        <div class="goods-name">
-                            <a target="_blank" href="/version4/goods-262.html">【沃隆_每日坚果25g*30袋】精美礼盒原味混合干果综合坚果仁箱装</a>
-                        </div>
-                        <div class="goods-price">
-                            <span>￥199.00</span>
-                            <!--
-                            <del class="original">市场价：￥300.00</del>
-                            -->
-                        </div>
-                    </li>
-                    <li>
-                        <div class="goods-img">
-                            <a target="_blank" href="/version4/goods-267.html">
-                                <img src="http://static.v5.javamall.com.cn/attachment/goods/201511240149492509_thumbnail.jpg"
-                                     alt="哎呦喂和田红枣 新疆特产大枣骏枣 干果玉枣一等大红枣子500g零食" class="scrollLoading"/> </a>
-                        </div>
-                        <div class="goods-name">
-                            <a target="_blank" href="/version4/goods-267.html">哎呦喂和田红枣 新疆特产大枣骏枣 干果玉枣一等大红枣子500g零食</a>
-                        </div>
-                        <div class="goods-price">
-                            <span>￥19.80</span>
-                            <!--
-                            <del class="original">市场价：￥27.00</del>
-                            -->
-                        </div>
-                    </li>
-                    <li>
-                        <div class="goods-img">
-                            <a target="_blank" href="/version4/goods-266.html">
-                                <img src="http://static.v5.javamall.com.cn/attachment/goods/201511240144049007_thumbnail.jpg"
-                                     alt="牛叉叉蜜汁猪肉脯烟熏炭烤猪肉干正宗靖江猪肉铺浦特产零食200g" class="scrollLoading"/> </a>
-                        </div>
-                        <div class="goods-name">
-                            <a target="_blank" href="/version4/goods-266.html">牛叉叉蜜汁猪肉脯烟熏炭烤猪肉干正宗靖江猪肉铺浦特产零食200g</a>
-                        </div>
-                        <div class="goods-price">
-                            <span>￥6.00</span>
-                            <!--
-                            <del class="original">市场价：￥12.00</del>
-                            -->
-                        </div>
-                    </li>
-                    <li>
-                        <div class="goods-img">
-                            <a target="_blank" href="/version4/goods-265.html">
-                                <img src="http://static.v5.javamall.com.cn/attachment/goods/201511240139201504_thumbnail.jpg"
-                                     alt="【三只松鼠_碧根果210gx2袋】零食坚果山核桃长寿果干果奶油味 " class="scrollLoading"/> </a>
-                        </div>
-                        <div class="goods-name">
-                            <a target="_blank" href="/version4/goods-265.html">【三只松鼠_碧根果210gx2袋】零食坚果山核桃长寿果干果奶油味 </a>
-                        </div>
-                        <div class="goods-price">
-                            <span>￥22.00</span>
-                            <!--
-                            <del class="original">市场价：￥32.00</del>
-                            -->
-                        </div>
-                    </li>
-                    <li>
-                        <div class="goods-img">
-                            <a target="_blank" href="/version4/goods-264.html">
-                                <img src="http://static.v5.javamall.com.cn/attachment/goods/201511240133438025_thumbnail.jpg"
-                                     alt="歌斐颂 纯可可脂纯黑巧克力320g 58%可可进口料休闲零食品黑巧" class="scrollLoading"/> </a>
-                        </div>
-                        <div class="goods-name">
-                            <a target="_blank" href="/version4/goods-264.html">歌斐颂 纯可可脂纯黑巧克力320g 58%可可进口料休闲零食品黑巧</a>
-                        </div>
-                        <div class="goods-price">
-                            <span>￥46.00</span>
-                            <!--
-                            <del class="original">市场价：￥70.00</del>
-                            -->
-                        </div>
-                    </li>
-                    <li>
-                        <div class="goods-img">
-                            <a target="_blank" href="/version4/goods-263.html">
-                                <img src="http://static.v5.javamall.com.cn/attachment/goods/201511240123138244_thumbnail.jpg"
-                                     alt="绿岭新鲜有机生薄皮非新疆纸皮大核桃500G新货特产 原味坚果零食" class="scrollLoading"/> </a>
-                        </div>
-                        <div class="goods-name">
-                            <a target="_blank" href="/version4/goods-263.html">绿岭新鲜有机生薄皮非新疆纸皮大核桃500G新货特产 原味坚果零食</a>
-                        </div>
-                        <div class="goods-price">
-                            <span>￥0.00</span>
-                            <!--
-                            <del class="original">市场价：￥40.00</del>
-                            -->
-                        </div>
-                    </li>
-                    <li>
-                        <div class="goods-img">
-                            <a target="_blank" href="/version4/goods-262.html">
-                                <img src="http://static.v5.javamall.com.cn/attachment/goods/201511240115430875_thumbnail.jpg"
-                                     alt="【沃隆_每日坚果25g*30袋】精美礼盒原味混合干果综合坚果仁箱装" class="scrollLoading"/> </a>
-                        </div>
-                        <div class="goods-name">
-                            <a target="_blank" href="/version4/goods-262.html">【沃隆_每日坚果25g*30袋】精美礼盒原味混合干果综合坚果仁箱装</a>
-                        </div>
-                        <div class="goods-price">
-                            <span>￥199.00</span>
-                            <!--
-                            <del class="original">市场价：￥300.00</del>
                             -->
                         </div>
                     </li>

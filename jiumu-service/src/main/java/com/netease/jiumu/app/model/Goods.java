@@ -41,6 +41,7 @@ public class Goods{
     @DateTimeFormat( pattern = "yyyy-MM-dd HH:mm:ss" )
     private Date updateTime;//更改日期
     private Integer top;//是否推荐到首页
+    private Integer topCategoty;//是否推荐到首页分类下的大图
 
     public Long getId(){
         return id;
@@ -129,6 +130,9 @@ public class Goods{
     public Integer getTop(){
         return top;
     }
+    public Integer getTopCategoty(){
+        return topCategoty;
+    }
     public void setId(Long id){
         this.id = id;
     }
@@ -215,6 +219,9 @@ public class Goods{
     }
     public void setTop(Integer top){
         this.top = top;
+    }
+    public void setTopCategoty(Integer topCategoty){
+        this.topCategoty = topCategoty;
     }
 
 }
