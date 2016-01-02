@@ -37,3 +37,6 @@
         $('#nav_menu>ul>li').dropDownMenu({child:'.child'});
     });
 </script>
+<script>
+    var ctx = "${CTX}";
+</script>

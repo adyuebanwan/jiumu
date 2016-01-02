@@ -78,12 +78,22 @@ pageEncoding="UTF-8"%>
                                         <input type="text" class="form-control" id="buyPrice" name="buyPrice" value="${goods.buyPrice}" placeholder="">
                         </div>
                         <div class="form-group ">
+                            <label for="thumbnailPic">商品缩略图</label>
+                            <img id="thumbnailPicReview"  src="${CTX}${goods.thumbnailPic}" />
+                            <input type="text" class="form-control" id="thumbnailPic" name="thumbnailPic" value="${goods.thumbnailPic}" placeholder="">
+                            <input type="file" id="thumbnailPicFile" name="myfiles" onchange="uploadFile('thumbnailPic','goods')" class="file"/>
+                        </div>
+                        <div class="form-group ">
                             <label for="smallPic">商品小图</label>
-                                        <input type="text" class="form-control" id="smallPic" name="smallPic" value="${goods.smallPic}" placeholder="">
+                            <img id="smallPicReview"  src="${CTX}${goods.smallPic}" />
+                            <input type="text" class="form-control" id="smallPic" name="smallPic" value="${goods.smallPic}" placeholder="">
+                            <input type="file" id="smallPicFile" name="myfiles" onchange="uploadFile('smallPic','goods')" class="file"/>
                         </div>
                         <div class="form-group ">
                             <label for="bigPic">商品大图</label>
-                                        <input type="text" class="form-control" id="bigPic" name="bigPic" value="${goods.bigPic}" placeholder="">
+                            <img id="bigPicReview"  src="${CTX}${goods.bigPic}" />
+                            <input type="text" class="form-control" id="bigPic" name="bigPic" value="${goods.bigPic}" placeholder="">
+                            <input type="file" id="bigPicFile" name="myfiles" onchange="uploadFile('bigPic','goods')" class="file"/>
                         </div>
                         <div class="form-group ">
                             <label for="storeNum">库存数量</label>
@@ -184,6 +194,8 @@ pageEncoding="UTF-8"%>
     <script charset="utf-8" src="assets/admin/js/kindeditor-4.1.10/kindeditor.js"></script>
     <script charset="utf-8" src="assets/admin/js/kindeditor-4.1.10/lang/zh_CN.js"></script>
     <script charset="utf-8" src="assets/admin/js/kindeditor-4.1.10/plugins/code/prettify.js"></script>
+    <script type="text/javascript" src="assets/admin/js/ajaxfileupload.js"></script>
+    <script type="text/javascript" src="assets/admin/app/goods/goodsFile.js"></script>
     <script>
         $(function(){
                     createKindEditor("goodDesc");

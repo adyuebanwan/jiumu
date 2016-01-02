@@ -8,8 +8,8 @@
     CREATE TABLE `category` (
      PRIMARY KEY (`id`) ,UNIQUE KEY `uniq_id` (`id`) ,    `id` BIGINT(20) NOT NULL  AUTO_INCREMENT  COMMENT '主键' ,
     `name` VARCHAR(50) COMMENT '分类名称'  DEFAULT  '' ,
-    `parent_id` BIGINT(20) COMMENT '父亲节点ID'  DEFAULT  '' ,
-    `sort_num` INT(4) COMMENT '排序从小到大'  DEFAULT  '' 
+    `parent_id` BIGINT(20) COMMENT '父亲节点ID'  DEFAULT  '0' ,
+    `sort_num` INT(4) COMMENT '排序从小到大'  DEFAULT  '0' 
     )
     </sql>
     <sql id="selectSqlCategory">
@@ -40,8 +40,8 @@
         insert into category (name,parent_id,sort_num)
         values(
 <choose><when test="name==null">  ''    </when><otherwise>#{name}</otherwise></choose> ,
-<choose><when test="parentId==null">  ''    </when><otherwise>#{parentId}</otherwise></choose> ,
-<choose><when test="sortNum==null">  ''    </when><otherwise>#{sortNum}</otherwise></choose> 
+<choose><when test="parentId==null">  '0'    </when><otherwise>#{parentId}</otherwise></choose> ,
+<choose><when test="sortNum==null">  '0'    </when><otherwise>#{sortNum}</otherwise></choose> 
         )
     </insert>
 
@@ -87,8 +87,8 @@
         <foreach collection="list" item= "item" index ="index" separator=",">
             (
 <choose><when test="item.name==null">  ''  </when><otherwise>#{item.name}</otherwise></choose> ,
-<choose><when test="item.parentId==null">  ''  </when><otherwise>#{item.parentId}</otherwise></choose> ,
-<choose><when test="item.sortNum==null">  ''  </when><otherwise>#{item.sortNum}</otherwise></choose> 
+<choose><when test="item.parentId==null">  '0'  </when><otherwise>#{item.parentId}</otherwise></choose> ,
+<choose><when test="item.sortNum==null">  '0'  </when><otherwise>#{item.sortNum}</otherwise></choose> 
             )
         </foreach >
     </insert>

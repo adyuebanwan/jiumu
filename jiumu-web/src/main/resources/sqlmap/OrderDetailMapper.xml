@@ -10,18 +10,18 @@
     `goods_serial_num` VARCHAR(20) COMMENT '商品编号'  DEFAULT  '' ,
     `goods_name` VARCHAR(20) COMMENT '商品名称'  DEFAULT  '' ,
     `danwei` VARCHAR(100) COMMENT '单位'  DEFAULT  '' ,
-    `buy_count` INT(4) COMMENT '购买数量'  DEFAULT  '' ,
-    `price` DECIMAL(9,2) COMMENT '商品单价'  DEFAULT  '' ,
+    `buy_count` INT(4) COMMENT '购买数量'  DEFAULT  '0' ,
+    `price` DECIMAL(9,2) COMMENT '商品单价'  DEFAULT  '0' ,
     `mark` VARCHAR(200) COMMENT '备注'  DEFAULT  '' ,
     `guige_one` VARCHAR(500) COMMENT '用户购买的商品规格一'  DEFAULT  '' ,
     `guige_two` VARCHAR(500) COMMENT '用户购买的商品规格二'  DEFAULT  '' ,
     `guige_three` VARCHAR(500) COMMENT '用户购买的商品规格三'  DEFAULT  '' ,
     `guige_four` VARCHAR(500) COMMENT '用户购买的商品规格四'  DEFAULT  '' ,
-    `order_main_id` BIGINT(20) COMMENT '订单ID'  DEFAULT  '' ,
-    `goods_id` BIGINT(20) COMMENT '商品ID'  DEFAULT  '' ,
+    `order_main_id` BIGINT(20) COMMENT '订单ID'  DEFAULT  '0' ,
+    `goods_id` BIGINT(20) COMMENT '商品ID'  DEFAULT  '0' ,
     `create_time` DATETIME COMMENT '下单日期'  ,
     `update_time` DATETIME COMMENT '更新日期'  ,
-    `operator` DATETIME COMMENT '操作人'  DEFAULT  '' 
+    `operator` VARCHAR(30) COMMENT '操作人'  DEFAULT  '' 
     )
     </sql>
     <sql id="selectSqlOrderDetail">
@@ -60,7 +60,7 @@
                 <if test="updateTimeBegin!=null "> and update_time>=#{updateTimeBegin,jdbcType=TIMESTAMP}</if>
                 <if test="updateTimeEnd!=null "> and update_time<![CDATA[<=]]>#{updateTimeEnd,jdbcType=TIMESTAMP}</if>
 
-                <if test="operator!=null "> and operator=#{operator}</if>
+                <if test="operator!=null "> and operator=#{operator}</if><if test="operatorLike!=null ">  and operator like concat('%',#{operatorLike},'%')</if>
 
         <if test="whereSql!=null"> ${whereSql}</if>
     </sql>
@@ -78,15 +78,15 @@
 <choose><when test="goodsSerialNum==null">  ''    </when><otherwise>#{goodsSerialNum}</otherwise></choose> ,
 <choose><when test="goodsName==null">  ''    </when><otherwise>#{goodsName}</otherwise></choose> ,
 <choose><when test="danwei==null">  ''    </when><otherwise>#{danwei}</otherwise></choose> ,
-<choose><when test="buyCount==null">  ''    </when><otherwise>#{buyCount}</otherwise></choose> ,
-<choose><when test="price==null">  ''    </when><otherwise>#{price}</otherwise></choose> ,
+<choose><when test="buyCount==null">  '0'    </when><otherwise>#{buyCount}</otherwise></choose> ,
+<choose><when test="price==null">  '0'    </when><otherwise>#{price}</otherwise></choose> ,
 <choose><when test="mark==null">  ''    </when><otherwise>#{mark}</otherwise></choose> ,
 <choose><when test="guigeOne==null">  ''    </when><otherwise>#{guigeOne}</otherwise></choose> ,
 <choose><when test="guigeTwo==null">  ''    </when><otherwise>#{guigeTwo}</otherwise></choose> ,
 <choose><when test="guigeThree==null">  ''    </when><otherwise>#{guigeThree}</otherwise></choose> ,
 <choose><when test="guigeFour==null">  ''    </when><otherwise>#{guigeFour}</otherwise></choose> ,
-<choose><when test="orderMainId==null">  ''    </when><otherwise>#{orderMainId}</otherwise></choose> ,
-<choose><when test="goodsId==null">  ''    </when><otherwise>#{goodsId}</otherwise></choose> ,
+<choose><when test="orderMainId==null">  '0'    </when><otherwise>#{orderMainId}</otherwise></choose> ,
+<choose><when test="goodsId==null">  '0'    </when><otherwise>#{goodsId}</otherwise></choose> ,
 <choose><when test="createTime==null">now() </when><otherwise>#{createTime,jdbcType=TIMESTAMP}</otherwise></choose> ,
 <choose><when test="updateTime==null">now() </when><otherwise>#{updateTime,jdbcType=TIMESTAMP}</otherwise></choose> ,
 <choose><when test="operator==null">  ''    </when><otherwise>#{operator}</otherwise></choose> 
@@ -149,15 +149,15 @@
 <choose><when test="item.goodsSerialNum==null">  ''  </when><otherwise>#{item.goodsSerialNum}</otherwise></choose> ,
 <choose><when test="item.goodsName==null">  ''  </when><otherwise>#{item.goodsName}</otherwise></choose> ,
 <choose><when test="item.danwei==null">  ''  </when><otherwise>#{item.danwei}</otherwise></choose> ,
-<choose><when test="item.buyCount==null">  ''  </when><otherwise>#{item.buyCount}</otherwise></choose> ,
-<choose><when test="item.price==null">  ''  </when><otherwise>#{item.price}</otherwise></choose> ,
+<choose><when test="item.buyCount==null">  '0'  </when><otherwise>#{item.buyCount}</otherwise></choose> ,
+<choose><when test="item.price==null">  '0'  </when><otherwise>#{item.price}</otherwise></choose> ,
 <choose><when test="item.mark==null">  ''  </when><otherwise>#{item.mark}</otherwise></choose> ,
 <choose><when test="item.guigeOne==null">  ''  </when><otherwise>#{item.guigeOne}</otherwise></choose> ,
 <choose><when test="item.guigeTwo==null">  ''  </when><otherwise>#{item.guigeTwo}</otherwise></choose> ,
 <choose><when test="item.guigeThree==null">  ''  </when><otherwise>#{item.guigeThree}</otherwise></choose> ,
 <choose><when test="item.guigeFour==null">  ''  </when><otherwise>#{item.guigeFour}</otherwise></choose> ,
-<choose><when test="item.orderMainId==null">  ''  </when><otherwise>#{item.orderMainId}</otherwise></choose> ,
-<choose><when test="item.goodsId==null">  ''  </when><otherwise>#{item.goodsId}</otherwise></choose> ,
+<choose><when test="item.orderMainId==null">  '0'  </when><otherwise>#{item.orderMainId}</otherwise></choose> ,
+<choose><when test="item.goodsId==null">  '0'  </when><otherwise>#{item.goodsId}</otherwise></choose> ,
 <choose><when test="item.createTime==null">now()</when><otherwise>#{item.createTime,jdbcType=TIMESTAMP}</otherwise></choose> ,
 <choose><when test="item.updateTime==null">now()</when><otherwise>#{item.updateTime,jdbcType=TIMESTAMP}</otherwise></choose> ,
 <choose><when test="item.operator==null">  ''  </when><otherwise>#{item.operator}</otherwise></choose> 

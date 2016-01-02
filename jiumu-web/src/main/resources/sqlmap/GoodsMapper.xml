@@ -4,21 +4,22 @@
 <mapper namespace="GoodsMapper">
     <!-- Goods -->
     <sql id="createTable">
-    DROP TABLE `product`;
-    CREATE TABLE `product` (
+    DROP TABLE `goods`;
+    CREATE TABLE `goods` (
      PRIMARY KEY (`id`) ,UNIQUE KEY `uniq_id` (`id`) ,    `id` BIGINT(20) NOT NULL  AUTO_INCREMENT  COMMENT '主键' ,
     `name` VARCHAR(50) COMMENT '商品名称'  DEFAULT  '' ,
     `serial_num` VARCHAR(50) COMMENT '商品编号'  DEFAULT  '' ,
-    `publish_status` TINYINT(2) COMMENT '发布状态'  DEFAULT  '' ,
-    `market_price` DECIMAL(9,2) COMMENT '市场价格'  DEFAULT  '' ,
-    `sell_price` DECIMAL(9,2) COMMENT '销售价格'  DEFAULT  '' ,
-    `buy_price` DECIMAL(9,2) COMMENT '进货价格'  DEFAULT  '' ,
+    `publish_status` TINYINT(2) COMMENT '发布状态'  DEFAULT  '0' ,
+    `market_price` DECIMAL(9,2) COMMENT '市场价格'  DEFAULT  '0' ,
+    `sell_price` DECIMAL(9,2) COMMENT '销售价格'  DEFAULT  '0' ,
+    `buy_price` DECIMAL(9,2) COMMENT '进货价格'  DEFAULT  '0' ,
+    `thumbnail_pic` VARCHAR(50) COMMENT '商品缩略图'  DEFAULT  '' ,
     `small_pic` VARCHAR(50) COMMENT '商品小图'  DEFAULT  '' ,
     `big_pic` VARCHAR(50) COMMENT '商品大图'  DEFAULT  '' ,
-    `store_num` INT(4) COMMENT '库存数量'  DEFAULT  '' ,
-    `one_category_id` BIGINT(20) COMMENT '商品一级分类'  DEFAULT  '' ,
-    `two_category_id` BIGINT(20) COMMENT '商品二级分类'  DEFAULT  '' ,
-    `three_category_id` BIGINT(20) COMMENT '商品三级分类'  DEFAULT  '' ,
+    `store_num` INT(4) COMMENT '库存数量'  DEFAULT  '0' ,
+    `one_category_id` BIGINT(20) COMMENT '商品一级分类'  DEFAULT  '0' ,
+    `two_category_id` BIGINT(20) COMMENT '商品二级分类'  DEFAULT  '0' ,
+    `three_category_id` BIGINT(20) COMMENT '商品三级分类'  DEFAULT  '0' ,
     `guige_one` VARCHAR(500) COMMENT '商品规格一'  DEFAULT  '' ,
     `guige_two` VARCHAR(500) COMMENT '商品规格二'  DEFAULT  '' ,
     `guige_three` VARCHAR(500) COMMENT '商品规格三'  DEFAULT  '' ,
@@ -30,14 +31,14 @@
     `create_place` VARCHAR(100) COMMENT '产地'  DEFAULT  '' ,
     `factory` VARCHAR(100) COMMENT '厂家'  DEFAULT  '' ,
     `good_desc` LONGTEXT COMMENT '详细描述'  DEFAULT  '' ,
-    `operator` VARCHAR COMMENT '操作人'  DEFAULT  '' ,
+    `operator` VARCHAR(30) COMMENT '操作人'  DEFAULT  '' ,
     `create_time` DATETIME COMMENT '创建日期'  ,
     `update_time` DATETIME COMMENT '更改日期'  ,
-    `top` TINYINT(2) COMMENT '是否推荐到首页'  DEFAULT  '' 
+    `top` TINYINT(2) COMMENT '是否推荐到首页'  DEFAULT  '0' 
     )
     </sql>
     <sql id="selectSqlGoods">
-        id ,name ,serial_num serialNum,publish_status publishStatus,market_price marketPrice,sell_price sellPrice,buy_price buyPrice,small_pic smallPic,big_pic bigPic,store_num storeNum,one_category_id oneCategoryId,two_category_id twoCategoryId,three_category_id threeCategoryId,guige_one guigeOne,guige_two guigeTwo,guige_three guigeThree,guige_four guigeFour,danwei ,biaohao ,create_day createDay,fix_day fixDay,create_place createPlace,factory ,good_desc goodDesc,operator ,create_time createTime,update_time updateTime,top 
+        id ,name ,serial_num serialNum,publish_status publishStatus,market_price marketPrice,sell_price sellPrice,buy_price buyPrice,thumbnail_pic thumbnailPic,small_pic smallPic,big_pic bigPic,store_num storeNum,one_category_id oneCategoryId,two_category_id twoCategoryId,three_category_id threeCategoryId,guige_one guigeOne,guige_two guigeTwo,guige_three guigeThree,guige_four guigeFour,danwei ,biaohao ,create_day createDay,fix_day fixDay,create_place createPlace,factory ,good_desc goodDesc,operator ,create_time createTime,update_time updateTime,top 
     </sql>
 
     <sql id="whereSqlGoods">
@@ -55,6 +56,8 @@
                 <if test="sellPrice!=null "> and sell_price=#{sellPrice}</if>
 
                 <if test="buyPrice!=null "> and buy_price=#{buyPrice}</if>
+
+                <if test="thumbnailPic!=null "> and thumbnail_pic=#{thumbnailPic}</if><if test="thumbnailPicLike!=null ">  and thumbnail_pic like concat('%',#{thumbnailPicLike},'%')</if>
 
                 <if test="smallPic!=null "> and small_pic=#{smallPic}</if><if test="smallPicLike!=null ">  and small_pic like concat('%',#{smallPicLike},'%')</if>
 
@@ -109,20 +112,21 @@
         <selectKey resultType="long" order="AFTER" keyProperty="id" >
             SELECT LAST_INSERT_ID() AS id
         </selectKey>
-        insert into product (name,serial_num,publish_status,market_price,sell_price,buy_price,small_pic,big_pic,store_num,one_category_id,two_category_id,three_category_id,guige_one,guige_two,guige_three,guige_four,danwei,biaohao,create_day,fix_day,create_place,factory,good_desc,operator,create_time,update_time,top)
+        insert into goods (name,serial_num,publish_status,market_price,sell_price,buy_price,thumbnail_pic,small_pic,big_pic,store_num,one_category_id,two_category_id,three_category_id,guige_one,guige_two,guige_three,guige_four,danwei,biaohao,create_day,fix_day,create_place,factory,good_desc,operator,create_time,update_time,top)
         values(
 <choose><when test="name==null">  ''    </when><otherwise>#{name}</otherwise></choose> ,
 <choose><when test="serialNum==null">  ''    </when><otherwise>#{serialNum}</otherwise></choose> ,
-<choose><when test="publishStatus==null">  ''    </when><otherwise>#{publishStatus}</otherwise></choose> ,
-<choose><when test="marketPrice==null">  ''    </when><otherwise>#{marketPrice}</otherwise></choose> ,
-<choose><when test="sellPrice==null">  ''    </when><otherwise>#{sellPrice}</otherwise></choose> ,
-<choose><when test="buyPrice==null">  ''    </when><otherwise>#{buyPrice}</otherwise></choose> ,
+<choose><when test="publishStatus==null">  '0'    </when><otherwise>#{publishStatus}</otherwise></choose> ,
+<choose><when test="marketPrice==null">  '0'    </when><otherwise>#{marketPrice}</otherwise></choose> ,
+<choose><when test="sellPrice==null">  '0'    </when><otherwise>#{sellPrice}</otherwise></choose> ,
+<choose><when test="buyPrice==null">  '0'    </when><otherwise>#{buyPrice}</otherwise></choose> ,
+<choose><when test="thumbnailPic==null">  ''    </when><otherwise>#{thumbnailPic}</otherwise></choose> ,
 <choose><when test="smallPic==null">  ''    </when><otherwise>#{smallPic}</otherwise></choose> ,
 <choose><when test="bigPic==null">  ''    </when><otherwise>#{bigPic}</otherwise></choose> ,
-<choose><when test="storeNum==null">  ''    </when><otherwise>#{storeNum}</otherwise></choose> ,
-<choose><when test="oneCategoryId==null">  ''    </when><otherwise>#{oneCategoryId}</otherwise></choose> ,
-<choose><when test="twoCategoryId==null">  ''    </when><otherwise>#{twoCategoryId}</otherwise></choose> ,
-<choose><when test="threeCategoryId==null">  ''    </when><otherwise>#{threeCategoryId}</otherwise></choose> ,
+<choose><when test="storeNum==null">  '0'    </when><otherwise>#{storeNum}</otherwise></choose> ,
+<choose><when test="oneCategoryId==null">  '0'    </when><otherwise>#{oneCategoryId}</otherwise></choose> ,
+<choose><when test="twoCategoryId==null">  '0'    </when><otherwise>#{twoCategoryId}</otherwise></choose> ,
+<choose><when test="threeCategoryId==null">  '0'    </when><otherwise>#{threeCategoryId}</otherwise></choose> ,
 <choose><when test="guigeOne==null">  ''    </when><otherwise>#{guigeOne}</otherwise></choose> ,
 <choose><when test="guigeTwo==null">  ''    </when><otherwise>#{guigeTwo}</otherwise></choose> ,
 <choose><when test="guigeThree==null">  ''    </when><otherwise>#{guigeThree}</otherwise></choose> ,
@@ -137,31 +141,32 @@
 <choose><when test="operator==null">  ''    </when><otherwise>#{operator}</otherwise></choose> ,
 <choose><when test="createTime==null">now() </when><otherwise>#{createTime,jdbcType=TIMESTAMP}</otherwise></choose> ,
 <choose><when test="updateTime==null">now() </when><otherwise>#{updateTime,jdbcType=TIMESTAMP}</otherwise></choose> ,
-<choose><when test="top==null">  ''    </when><otherwise>#{top}</otherwise></choose> 
+<choose><when test="top==null">  '0'    </when><otherwise>#{top}</otherwise></choose> 
         )
     </insert>
 
     <select id="getGoods" parameterType="hashmap" resultType="Goods">
-        select <include refid="selectSqlGoods"/> from product where <include refid="whereSqlGoods"/>
+        select <include refid="selectSqlGoods"/> from goods where <include refid="whereSqlGoods"/>
     </select>
     <select id="getGoodsList" parameterType="hashmap" resultType="Goods">
-        select <include refid="selectSqlGoods"/> from product where <include refid="whereSqlGoods"/>
+        select <include refid="selectSqlGoods"/> from goods where <include refid="whereSqlGoods"/>
         <if test="orderBy != null"> order by  ${orderBy} </if>
         <if test="limit != null"> LIMIT #{limitIndex},#{limit} </if>
     </select>
     <select id="getGoodsListCount" parameterType="hashmap" resultType="int">
-        select count(1)  from product where <include refid="whereSqlGoods"/>
+        select count(1)  from goods where <include refid="whereSqlGoods"/>
     </select>
 
 
     <update id="updateGoods" parameterType="Goods">
-        update product set
+        update goods set
 <choose><when test="name!=null">name=#{name},</when></choose>
 <choose><when test="serialNum!=null">serial_num=#{serialNum},</when></choose>
 <choose><when test="publishStatus!=null">publish_status=#{publishStatus},</when></choose>
 <choose><when test="marketPrice!=null">market_price=#{marketPrice},</when></choose>
 <choose><when test="sellPrice!=null">sell_price=#{sellPrice},</when></choose>
 <choose><when test="buyPrice!=null">buy_price=#{buyPrice},</when></choose>
+<choose><when test="thumbnailPic!=null">thumbnail_pic=#{thumbnailPic},</when></choose>
 <choose><when test="smallPic!=null">small_pic=#{smallPic},</when></choose>
 <choose><when test="bigPic!=null">big_pic=#{bigPic},</when></choose>
 <choose><when test="storeNum!=null">store_num=#{storeNum},</when></choose>
@@ -188,36 +193,37 @@
     </update>
 
     <delete id="truncateGoods">
-        truncate table product
+        truncate table goods
     </delete>
 
     <delete id="deleteGoods" parameterType="hashmap">
-        delete from product where id = #{id}
+        delete from goods where id = #{id}
     </delete>
 
     <delete id="batchDeleteGoods" parameterType="java.util.List">
-        delete from product where id in
+        delete from goods where id in
         <foreach item="id" index="index" collection="list" open="(" separator="," close=")">
 #{id}        </foreach>
     </delete>
 
     <insert id="batchInsertGoods" parameterType="java.util.List">
-        insert into product (name,serial_num,publish_status,market_price,sell_price,buy_price,small_pic,big_pic,store_num,one_category_id,two_category_id,three_category_id,guige_one,guige_two,guige_three,guige_four,danwei,biaohao,create_day,fix_day,create_place,factory,good_desc,operator,create_time,update_time,top)
+        insert into goods (name,serial_num,publish_status,market_price,sell_price,buy_price,thumbnail_pic,small_pic,big_pic,store_num,one_category_id,two_category_id,three_category_id,guige_one,guige_two,guige_three,guige_four,danwei,biaohao,create_day,fix_day,create_place,factory,good_desc,operator,create_time,update_time,top)
         values
         <foreach collection="list" item= "item" index ="index" separator=",">
             (
 <choose><when test="item.name==null">  ''  </when><otherwise>#{item.name}</otherwise></choose> ,
 <choose><when test="item.serialNum==null">  ''  </when><otherwise>#{item.serialNum}</otherwise></choose> ,
-<choose><when test="item.publishStatus==null">  ''  </when><otherwise>#{item.publishStatus}</otherwise></choose> ,
-<choose><when test="item.marketPrice==null">  ''  </when><otherwise>#{item.marketPrice}</otherwise></choose> ,
-<choose><when test="item.sellPrice==null">  ''  </when><otherwise>#{item.sellPrice}</otherwise></choose> ,
-<choose><when test="item.buyPrice==null">  ''  </when><otherwise>#{item.buyPrice}</otherwise></choose> ,
+<choose><when test="item.publishStatus==null">  '0'  </when><otherwise>#{item.publishStatus}</otherwise></choose> ,
+<choose><when test="item.marketPrice==null">  '0'  </when><otherwise>#{item.marketPrice}</otherwise></choose> ,
+<choose><when test="item.sellPrice==null">  '0'  </when><otherwise>#{item.sellPrice}</otherwise></choose> ,
+<choose><when test="item.buyPrice==null">  '0'  </when><otherwise>#{item.buyPrice}</otherwise></choose> ,
+<choose><when test="item.thumbnailPic==null">  ''  </when><otherwise>#{item.thumbnailPic}</otherwise></choose> ,
 <choose><when test="item.smallPic==null">  ''  </when><otherwise>#{item.smallPic}</otherwise></choose> ,
 <choose><when test="item.bigPic==null">  ''  </when><otherwise>#{item.bigPic}</otherwise></choose> ,
-<choose><when test="item.storeNum==null">  ''  </when><otherwise>#{item.storeNum}</otherwise></choose> ,
-<choose><when test="item.oneCategoryId==null">  ''  </when><otherwise>#{item.oneCategoryId}</otherwise></choose> ,
-<choose><when test="item.twoCategoryId==null">  ''  </when><otherwise>#{item.twoCategoryId}</otherwise></choose> ,
-<choose><when test="item.threeCategoryId==null">  ''  </when><otherwise>#{item.threeCategoryId}</otherwise></choose> ,
+<choose><when test="item.storeNum==null">  '0'  </when><otherwise>#{item.storeNum}</otherwise></choose> ,
+<choose><when test="item.oneCategoryId==null">  '0'  </when><otherwise>#{item.oneCategoryId}</otherwise></choose> ,
+<choose><when test="item.twoCategoryId==null">  '0'  </when><otherwise>#{item.twoCategoryId}</otherwise></choose> ,
+<choose><when test="item.threeCategoryId==null">  '0'  </when><otherwise>#{item.threeCategoryId}</otherwise></choose> ,
 <choose><when test="item.guigeOne==null">  ''  </when><otherwise>#{item.guigeOne}</otherwise></choose> ,
 <choose><when test="item.guigeTwo==null">  ''  </when><otherwise>#{item.guigeTwo}</otherwise></choose> ,
 <choose><when test="item.guigeThree==null">  ''  </when><otherwise>#{item.guigeThree}</otherwise></choose> ,
@@ -232,14 +238,14 @@
 <choose><when test="item.operator==null">  ''  </when><otherwise>#{item.operator}</otherwise></choose> ,
 <choose><when test="item.createTime==null">now()</when><otherwise>#{item.createTime,jdbcType=TIMESTAMP}</otherwise></choose> ,
 <choose><when test="item.updateTime==null">now()</when><otherwise>#{item.updateTime,jdbcType=TIMESTAMP}</otherwise></choose> ,
-<choose><when test="item.top==null">  ''  </when><otherwise>#{item.top}</otherwise></choose> 
+<choose><when test="item.top==null">  '0'  </when><otherwise>#{item.top}</otherwise></choose> 
             )
         </foreach >
     </insert>
 
     <update id="batchUpdateGoods"  parameterType="java.util.List">
         <foreach collection="list" item="item" index="index" open="" close="" separator=";">
-            update product
+            update goods
             <set>
 <choose><when test="item.name!=null">name=#{item.name},</when></choose>
 <choose><when test="item.serialNum!=null">serial_num=#{item.serialNum},</when></choose>
@@ -247,6 +253,7 @@
 <choose><when test="item.marketPrice!=null">market_price=#{item.marketPrice},</when></choose>
 <choose><when test="item.sellPrice!=null">sell_price=#{item.sellPrice},</when></choose>
 <choose><when test="item.buyPrice!=null">buy_price=#{item.buyPrice},</when></choose>
+<choose><when test="item.thumbnailPic!=null">thumbnail_pic=#{item.thumbnailPic},</when></choose>
 <choose><when test="item.smallPic!=null">small_pic=#{item.smallPic},</when></choose>
 <choose><when test="item.bigPic!=null">big_pic=#{item.bigPic},</when></choose>
 <choose><when test="item.storeNum!=null">store_num=#{item.storeNum},</when></choose>

@@ -17,6 +17,7 @@ public class Goods{
     private BigDecimal marketPrice;//市场价格
     private BigDecimal sellPrice;//销售价格
     private BigDecimal buyPrice;//进货价格
+    private String thumbnailPic;//商品缩略图
     private String smallPic;//商品小图
     private String bigPic;//商品大图
     private Integer storeNum;//库存数量
@@ -61,6 +62,9 @@ public class Goods{
     }
     public BigDecimal getBuyPrice(){
         return buyPrice;
+    }
+    public String getThumbnailPic(){
+        return thumbnailPic;
     }
     public String getSmallPic(){
         return smallPic;
@@ -145,6 +149,9 @@ public class Goods{
     }
     public void setBuyPrice(BigDecimal buyPrice){
         this.buyPrice = buyPrice;
+    }
+    public void setThumbnailPic(String thumbnailPic){
+        this.thumbnailPic = thumbnailPic;
     }
     public void setSmallPic(String smallPic){
         this.smallPic = smallPic;

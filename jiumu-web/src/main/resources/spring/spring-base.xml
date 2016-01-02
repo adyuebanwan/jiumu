@@ -86,11 +86,9 @@
         <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory2"/>
     </bean>-->
    <!-- 文件上传下载开关 -->
-    <!--
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <property name="maxUploadSize" ><value>104857600</value></property>
     </bean>
-    -->
     <!-- 初始化字典 -->
     <bean id="dictionaryListener" class="com.netease.jiumu.app.dict.listener.DictionaryListener"></bean>
 
