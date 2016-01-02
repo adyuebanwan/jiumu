@@ -21,9 +21,9 @@ var Cart={
                 }
                 if($this.hasClass("decrease")){
                     if(num == 1 ){
-                        if(confirm("确定要删除该商品?")){
+                        //if(confirm("确定要删除该商品?")){
                             self.deleteGoodsItem(itemid);
-                        }
+                        //}
                         return false;
                     }
                     num--;
@@ -64,30 +64,30 @@ var Cart={
         //删除商品
         $("#cart-wrapper .delete").click(function(){
             var cartid = $(this).parents("tr").attr("itemid");
-            if(confirm("您确实要把该商品移出购物车吗？") ){
+            //if(confirm("您确实要把该商品移出购物车吗？") ){
                 self.deleteGoodsItem(cartid);
-            }
+            //}
         });
 
         //清空购物车
         $("#cart-wrapper .clean_btn").click(function(){
-            if(confirm("您确认要清空购物车吗？") ){
+            //if(confirm("您确认要清空购物车吗？") ){
                 self.clean();
-            }
+            //}
         });
 
         //继续购物
         $("#cart-wrapper .returnbuy_btn").click(function(){
-            location.href="index.html";
+            location.href="/";
         });
 
         //去结算
         $("#cart-wrapper .checkout-btn").click(function(){
-            if(isLogin){
-                location.href="checkout.html";
-            }else{
-                self.showLoginWarnDlg();
-            }
+            //if(isLogin){
+                location.href="myorder/userinfo";
+           // }else{
+             //   self.showLoginWarnDlg();
+           // }
         });
     },
 
@@ -105,14 +105,6 @@ var Cart={
             $(".button-wrapper .to-checkout-btn").click(function(){
                 location.href="register.html?forward=checkout.html";
             });
-
-//				// 跳转到结算页  取消 直接购买
-//				$(".button-wrapper .to-register-btn").click(function(){
-//					location.href="register.html?forward=checkout.html";
-//				});
-
-
-
         }});
     },
 
@@ -121,16 +113,15 @@ var Cart={
         var self=this;
         $.Loading.show("请稍候...");
         $.ajax({
-            url:ctx+"/api/shop/cart!delete.do?ajax=yes",
-            data:"cartid="+itemid,
+            url:ctx+"/mycart/delete/"+itemid,
+            data:"time="+new Date().getTime(),
             dataType:"json",
             success:function(result){
-                if(result.result==1){
+                if(result== 'ok'){
                     self.refreshTotal();
                     self.removeItem(itemid);
-
                 }else{
-                    $.alert(result.message);
+                    $.alert("失败");
                 }
                 $.Loading.hide();
             },
@@ -151,14 +142,15 @@ var Cart={
         $.Loading.show("请稍候...");
         var self=this;
         $.ajax({
-            url:ctx+"/api/shop/cart!clean.do?ajax=yes",
+            url:ctx+"/mycart/clean",
+            data:"time="+new Date().getTime(),
             dataType:"json",
             success:function(result){
                 $.Loading.hide();
-                if(result.result==1){
-                    location.href='cart.html';
+                if(result=="ok"){
+                    location.href='mycart/';
                 }else{
-                    $.alert("清空失败:"+result.message);
+                    $.alert("清空失败");
                 }
             },
             error:function(){
@@ -171,25 +163,20 @@ var Cart={
     //更新数量
     updateNum:function(itemid,num,productid,num_input){
         var self = this;
+        var url = ctx+"/mycart/update_cart_num/"+itemid+"/"+productid+"/"+num
         $.ajax({
-            url:ctx+"/api/shop/cart!updateNum.do?ajax=yes",
-            data:"cartid="+itemid +"&num="+num +"&productid="+productid,
+            url:url,
+            data:"time="+new Date().getTime(),
             dataType:"json",
             success:function(result){
-                if(result.result==1){
-                    if(result.store>=num){
-                        self.refreshTotal();
-                        var price = parseFloat($("tr[itemid="+itemid+"]").attr("price"));
-                        //price =price* num;
-                        price =self.changeTwoDecimal_f(price* num);
-                        $("tr[itemid="+itemid+"] .itemTotal").html("￥"+price);
-                        num_input.val(num);
-                    }else{
-                        num_input.val(result.store);
-                        alert(result.message);
-                    }
+                if(result == 'ok'){
+                    self.refreshTotal();
+                    var price = parseFloat($("tr[itemid="+itemid+"]").attr("price"));
+                    price =self.changeTwoDecimal_f(price* num);
+                    $("tr[itemid="+itemid+"] .itemTotal").html("￥"+price);
+                    num_input.val(num);
                 }else{
-                    alert(result.message);
+                    alert(result);
                 }
             },
             error:function(){
@@ -200,12 +187,13 @@ var Cart={
 
     //刷新价格
     refreshTotal:function(){
-        var self = this;
         $.ajax({
-            url:"cart/cartTotal.html",
-            dataType:"html",
-            success:function(html){
-                $(".yes_bonded").html(html);
+            url:ctx+"/mycart/cart_account",
+            data:"time="+new Date().getTime(),
+            dataType:"json",
+            success:function(data){
+                $("#bonded_price").val(data);
+                $("#cartAccount").html("￥"+data);
             },
             error:function(){
                 alert("糟糕，出错了:(");

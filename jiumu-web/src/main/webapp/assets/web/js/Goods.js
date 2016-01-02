@@ -59,8 +59,9 @@ var Goods={
 				}
 			}else{
 				$.Loading.hide();
-				btn.attr("disabled",false);
+
 			}
+			btn.attr("disabled",false);
 		})
 	},
 	
@@ -71,7 +72,7 @@ var Goods={
 			$(".ui_content .btn").jbtn();
 			$(".ui_content .returnbuy_btn").click(function(){
 				self.close();     //关闭自己
-				$.ajax({
+				/*$.ajax({
 					url:ctx+"/api/shop/cart!getCartData.do",   //获取购物车数据api
 					dataType:"json",
 					cache: false,             //清楚缓存，暂时测试，如果产生冲突，请优先考虑是否是这条语句。
@@ -86,7 +87,8 @@ var Goods={
 						$.Loading.hide();
 						$.alert("出错了:(");
 					}
-				});
+				});*/
+				$.Loading.hide();
 			});
 
 			$(".ui_content .checkout_btn").click(function(){

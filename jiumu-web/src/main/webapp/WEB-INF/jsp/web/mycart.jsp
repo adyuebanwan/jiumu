@@ -110,12 +110,12 @@
                 <em>1</em>
             </li>
             <li class="num2">
-                <span>核对订单信息</span>
+                <span>收货人信息</span>
                 <em>2</em>
             </li>
             <li class="num3">
                 <span>成功提交订单</span>
-                <em>3</em>
+                <em>2</em>
             </li>
             <li class="clear"></li>
         </ol>
@@ -138,8 +138,8 @@
                     <thead>
                     <tr>
                         <th style="width:650px;">商品名称</th>
-                        <th>商品积分</th>
-                        <th>销售价格</th>
+                        <%--<th>商品积分</th>--%>
+                        <%--<th>市场价格</th>--%>
                         <th>优惠价格</th>
                         <th>数量</th>
                         <th style="width:100px;">小计</th>
@@ -148,20 +148,20 @@
                     </thead>
                     <tbody>
                     <c:forEach items="${cartList}" var="cart">
-                        <tr itemid="199" productid="${cart.goodsId}" price="${cart.sellPrice}">
+                        <tr itemid="${cart.itemId}" productid="${cart.goodsId}" price="${cart.sellPrice}">
                             <td style="width:650px;">
                                 <a target="_blank" href="goods/${cart.goodsId}" class="cart_list_img">
                                     <img src="${CTX}${cart.goodsPic}"
                                          height="50" style="cursor: pointer;" width="36"/> </a>
 
-                                <p><a target="_blank" href="goods/${cart.goodsId}"></a>
+                                <p><a target="_blank" href="goods/${cart.goodsId}">${cart.goodsName}</a>
                                 </p>
                             </td>
-                            <td style="font-weight:bold; font-size:14px;">0</td>
-                            <td class=" mktprice1" style="font-weight:bold; font-size:14px;">￥19.80</td>
+                           <%-- <td style="font-weight:bold; font-size:14px;">0</td>--%>
+                            <%--<td class=" mktprice1" style="font-weight:bold; font-size:14px;"> </td>--%>
                             <td>￥${cart.sellPrice}</td>
                             <td class="cart-quantity" style="text-align:center;">
-                                <div id="num" class="Numinput" value="${cart.buyCount}" itemid="199" productid="${cart.goodsId}">
+                                <div id="num" class="Numinput" value="${cart.buyCount}" itemid="${cart.itemId}" productid="${cart.goodsId}">
                                     <span class="numadjust decrease">-</span>
                                     <input size="5" name="num" autocomplete="off" type="text" value="${cart.buyCount}">
                                     <span class="numadjust increase">+</span>
@@ -178,9 +178,9 @@
                     <div class="yes_bonded">
                 <span class="c08">
                     商品总价
-                    <input type="hidden" value="79.2" id="bonded_price">
+                    <input type="hidden" value="${cartTotalAccount}" id="bonded_price">
                     <span class="color02">(不含运费及税费)</span>：
-                    <span class="color03">￥79.20</span>
+                    <span class="color03" id="cartAccount">￥${cartTotalAccount}</span>
                 </span>
                     </div>
                     <div class="cart_tools">
