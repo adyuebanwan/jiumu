@@ -31,7 +31,7 @@
 <script src="assets/web/js/Cart.js"></script>
 <script src="assets/web/js/CartBar.js"></script>
 
-<script   src="/version4/themes/default/js/My97DatePicker/WdatePicker.js" ></script>
+<script   src="assets/web/js/WdatePicker.js" ></script>
 <script  >
     $(function(){
         $('#nav_menu>ul>li').dropDownMenu({child:'.child'});

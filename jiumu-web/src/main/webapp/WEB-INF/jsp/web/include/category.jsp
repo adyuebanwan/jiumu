@@ -9,7 +9,7 @@
         <div class="item_box " rel="${sta.index+1}">
             <div class="item">
                 <div class="common_item_title">
-                    <a href="${item.id}" class="c_item_title">${item.name}</a>
+                    <a href="list/${item.id}" class="c_item_title">${item.name}</a>
                 </div>
                     <%--<div class="common_item_list">
                         <a href="goods_list.html?cat=5">进2</a>
@@ -55,5 +55,4 @@
             <div class="index-show-children"></div>
         </div>
     </c:forEach>
-
 </div>

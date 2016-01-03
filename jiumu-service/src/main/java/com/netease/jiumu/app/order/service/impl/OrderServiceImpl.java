@@ -42,6 +42,7 @@ public class OrderServiceImpl implements OrderService {
             BigDecimal account = cartService.cartTotalAccount(cartDtoList);
             OrderMain orderMain = new OrderMain();
             orderMain.setAccount(account);
+            orderMain.setRealPay(account);
             orderMain.setBuyerName(userName);
             orderMain.setCreateTime(now);
             orderMain.setUpdateTime(now);

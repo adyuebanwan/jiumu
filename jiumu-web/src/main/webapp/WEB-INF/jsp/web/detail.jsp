@@ -16,72 +16,13 @@
 <body>
 <!--最上导航-->
 <div class="top">
-    <div class="welcome">
-        <span class="title"><a href="/version4/index.html">您好，欢迎来到本站！</a></span>
-        <div class="login_bar login">
-        </div>
-        <div class="navigation">
-            <ul>
-                <li class="first">
-                    <ul>
-                        <li id="cart_bar_wrapper">
-                            <a href="/version4/cart.html" class="index-go-cart">购物车(<span class="num">0</span>)件<i class="common-cart-down"></i></a>
-                            <div class="cart_content02" style="display:none">
-                                <div class="cart_list"><img src="assets/web/images/ajax-loader.gif" class="loading" /></div>
-                            </div>
-                        </li>
-                        <!--购物车下拉菜单结束-->
-                    </ul>
-                </li>
-                <li><a href="/version4/help.html">帮助中心</a></li>
-                <li style="background:none;"><a href="#">&nbsp;&nbsp;&nbsp;</a></li>
-                <li style="background:none;"><a href="#">&nbsp;&nbsp;&nbsp;</a></li>
-            </ul>
-        </div>
-    </div>
+    <%@include file="include/top.jsp" %>
 </div>
-<script type="text/javascript">
+<script type="text/javascript" src="assets/web/app/userAndCart.js"></script>
 
-    //购物车显示隐藏
-    $("#cart_bar_wrapper").mouseenter(function(){
-        $("#cart_bar_wrapper .cart_content02").slideDown(300);
-        $(".common-cart-down").addClass("common-cart-up");
-        $(this).addClass("cart-hover");
-        //加载购物项
-        $("#cart_bar_wrapper .cart_content02").remove(".cart_list");
-//	$(".checkout").load("cart/common_totle.html");
-
-    })
-    //购物车显示隐藏
-    $("#cart_bar_wrapper").mouseleave(function(){
-        $("#cart_bar_wrapper .cart_content02").stop(true,true).hide();
-        $(".common-cart-down").removeClass("common-cart-up");
-        $(this).removeClass("cart-hover");
-    })
-</script>
 <!--header-->
 <div class="header">
-    <div class="logo_area">
-        <div class="logo">
-            <a href="/version4/index.html">
-                <img src="http://www.javashop.cn/version4/statics/attachment//201512112001371904.jpg" title="logo" />			</a>
-        </div>
-        <div class="search_area">
-            <div class="search">
-                <input type="text" class="hunt" id="keyword" placeholder="请输入产品关键字等..." />
-                <input type="button" name="s_seek" class="s_seek" value="搜 索" id="searchBtn">
-            </div>
-            <div class="hot_keyword">
-                <h1>热门搜索：</h1>
-                <ul>
-                    <!-- 获取CMS数据搜索标签， -->
-                    <!-- 调用CMS数据搜索标签，并传递所在模型ID参数(es_hot_keyword表.)“3”表示出现三个关键词。 -->
-                </ul>
-            </div>
-        </div>
-        <div class="service_tel">
-            <img src="assets/web/images/cn.png" alt="承诺图片" />		</div>
-    </div>
+    <%@include file="include/header.jsp"%>
 </div>
 <div class="common_menu">
     <div class="menu">
@@ -98,114 +39,6 @@
     </div>
 </div>
 <!--header end-->
-
-<script>
-    $(function(){
-        $("#keyword").keypress(function(event){
-            //	$("#keyword").attr("class","seek");
-            if(event.keyCode=="13" ){
-                search();
-            }
-        });
-        $("#keyword").click(function(){
-            if($(this).val() == searchTipText){
-                $(this).val("");
-            }
-        });
-        $("#keyword").blur(function(){
-            if($(this).val() == ''){
-                $(this).val(searchTipText);
-            }
-        });
-
-        $("#searchBtn").click(function(){
-            search();
-        });
-    })
-
-    $('.all-sort-list > .item').hover(function(){
-        var eq = $('.all-sort-list > .item').index(this),				//获取当前滑过是第几个元素
-                h = $('.all-sort-list').offset().top,						//获取当前下拉菜单距离窗口多少像素
-                s = $(window).scrollTop(),									//获取游览器滚动了多少高度
-                i = $(this).offset().top,									//当前元素滑过距离窗口多少像素
-                item = $(this).children('.item-list').height(),				//下拉菜单子类内容容器的高度
-                sort = $('.all-sort-list').height();						//父类分类列表容器的高度
-
-        $(this).children('.item-list').css('top', 0 );
-
-        $(this).addClass('hover');
-        $(this).children('.item-list').css('display','block');
-    },function(){
-        $(this).removeClass('hover');
-        $(this).children('.item-list').css('display','none');
-    });
-
-    $('.item > .item-list > .close').click(function(){
-        $(this).parent().parent().removeClass('hover');
-        $(this).parent().hide();
-    });
-
-    $(".all_goods_list").hover(function(){
-        $(".all-sort-list").css('display','block');
-    },function(){
-        $(".all-sort-list").css('display','none');
-    })
-
-    var searchTipText = "请输入产品关键字，如品牌、型号等";
-    function search(){
-        var keyword = $.trim( $("#keyword").val());
-        if(keyword == searchTipText){
-            keyword = '';
-        }
-        if(keyword.indexOf('\\')!=-1){
-            alert("请输入正确的关键词");
-            return false;
-        }
-        if(keyword==''){
-            alert("请输入关键字");
-        }else{
-            keyword = keyword.replace(/\//g,"-xie-")
-            location.href="/version4/goods_list.html?keyword="+keyword;
-        }
-    }
-    function addfavorite(title,url){
-        if (document.all){
-            window.external.addFavorite(url,title);
-        }else if (window.sidebar){
-            window.sidebar.addPanel(title, url, "");
-        }
-    }
-
-</script>
-<script>
-    $(function(){
-        $(".all-sort-list .item_box").mouseover(function(){
-            $(this).find(".item").addClass("children-show");
-            $(this).find(".index-show-children").css("left","195px");
-            $(this).find(".item_list").show();
-            $(this).css("background","#fff");
-        })
-        $(".all-sort-list .item_box").mouseleave(function(){
-            $(this).find(".item").removeClass("children-show");
-            $(this).find(".index-show-children").css("left","190px");
-            $(this).find(".item_list").hide();
-            $(this).css("background","none");
-        })
-
-        $(".menu_left").mouseover(function(){
-            $(".all-sort-list").addClass("is_show");
-
-        });
-        $(".menu_left").mouseleave(function(){
-            $(".all-sort-list").removeClass("is_show");
-
-        })
-        var url_ = "/version4/api/shop/goods-words.do";
-        $("#keyword").bigAutocomplete({url:url_, callback:function(data){
-            location.href="/version4/goods_list.html?keyword="+data.title;
-        }});
-    })
-</script>
 
 <link rel="stylesheet" href="assets/web/css/goods.css" type="text/css" />
 

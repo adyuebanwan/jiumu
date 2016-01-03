@@ -18,81 +18,9 @@
 <body>
 <!--最上导航-->
 <div class="top">
-    <div class="welcome">
-        <span class="title"><a href="/version4/index.html">您好，欢迎来到本站！</a></span>
-
-        <div class="login_bar login">
-        </div>
-        <div class="navigation">
-            <ul>
-                <li class="first">
-                    <ul>
-                        <li id="cart_bar_wrapper">
-                            <a href="/version4/cart.html" class="index-go-cart">购物车(<span class="num">0</span>)件<i
-                                    class="common-cart-down"></i></a>
-
-                            <div class="cart_content02" style="display:none">
-                                <div class="cart_list"><img src="assets/web/images/ajax-loader.gif"
-                                                            class="loading"/></div>
-                            </div>
-                        </li>
-                        <!--购物车下拉菜单结束-->
-                    </ul>
-                </li>
-                <li><a href="/version4/help.html">帮助中心</a></li>
-                <li style="background:none;"><a href="#">&nbsp;&nbsp;&nbsp;</a></li>
-                <li style="background:none;"><a href="#">&nbsp;&nbsp;&nbsp;</a></li>
-            </ul>
-        </div>
-    </div>
+    <%@include file="include/top.jsp" %>
 </div>
-<script type="text/javascript">
-    //加载头部会员信息
-    $(".login_bar").load("/version4/common/member_bar.html", function () {
-        $("#logout").click(function () {
-            $.ajax({
-                url: "/version4/api/shop/member!logout.do?ajax=yes",
-                dataType: "json",
-                cache: false,             //清楚缓存，暂时测试，如果产生冲突，请优先考虑是否是这条语句。
-                success: function (result) {
-                    if (result.result == 1) {
-                        $.alert(result.message);
-                        location.href = "/version4/index.html";
-
-                    } else {
-                        $.alert(result.message);
-                    }
-                    $.Loading.hide();
-                },
-                error: function () {
-                    $.Loading.hide();
-                    $.alert("出错了:(");
-                }
-            });
-            return false;
-        })
-    });
-
-    //购物车显示隐藏
-    $("#cart_bar_wrapper").mouseenter(function () {
-        $("#cart_bar_wrapper .cart_content02").slideDown(300);
-        $(".common-cart-down").addClass("common-cart-up");
-        $(this).addClass("cart-hover");
-        //加载购物项
-        $("#cart_bar_wrapper .cart_content02").remove(".cart_list");
-//	$(".checkout").load("cart/common_totle.html");
-
-    })
-    //购物车显示隐藏
-    $("#cart_bar_wrapper").mouseleave(function () {
-        $("#cart_bar_wrapper .cart_content02").stop(true, true).hide();
-        $(".common-cart-down").removeClass("common-cart-up");
-        $(this).removeClass("cart-hover");
-    })
-
-
-</script>
-
+<script type="text/javascript" src="assets/web/app/userAndCart.js"></script>
 
 <link rel="stylesheet" href="assets/web/css/cart.css" type="text/css"/>
 <style>
