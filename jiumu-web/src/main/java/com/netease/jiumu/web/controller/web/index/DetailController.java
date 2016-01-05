@@ -4,6 +4,7 @@ import com.netease.jiumu.app.category.service.CategoryService;
 import com.netease.jiumu.app.goods.service.GoodsService;
 import com.netease.jiumu.app.model.Category;
 import com.netease.jiumu.app.model.Goods;
+import com.netease.jiumu.app.utils.ProjectUtil;
 import com.netease.jiumu.web.common.BaseController;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -26,8 +27,8 @@ public class DetailController extends BaseController {
     @RequestMapping(value = "/goods/{id}",method = RequestMethod.GET)
     public String toIndex(@PathVariable Long id,ModelMap model)
     {
-        List<Category> categoryList = categoryService.getCategoryList(null);
-        model.addAttribute("categoryList",categoryList);
+        ProjectUtil.commonModel(model);
+
         Goods goods = goodsService.getGoods(id);
         model.addAttribute("goods",goods);
         return "web/detail";

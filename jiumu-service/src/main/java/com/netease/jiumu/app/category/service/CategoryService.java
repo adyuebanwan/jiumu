@@ -1,5 +1,6 @@
 package com.netease.jiumu.app.category.service;
 
+import com.netease.jiumu.app.category.dto.CategoryListDto;
 import com.netease.jiumu.app.model.Category;
 
 import java.util.List;
@@ -16,4 +17,6 @@ public interface CategoryService{
     void truncateCategory();
     void deleteCategory(Long id);
     void batchDeleteCategory(List<Long> list);
+
+    List<CategoryListDto> list();
 }

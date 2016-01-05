@@ -1,11 +1,13 @@
 package com.netease.jiumu.web.controller.web.index;
 
+import com.netease.jiumu.app.category.dto.CategoryListDto;
 import com.netease.jiumu.app.category.service.CategoryService;
 import com.netease.jiumu.app.dto.IndexDto;
 import com.netease.jiumu.app.goods.constant.GoodsConstant;
 import com.netease.jiumu.app.goods.service.GoodsService;
 import com.netease.jiumu.app.model.Category;
 import com.netease.jiumu.app.model.Goods;
+import com.netease.jiumu.app.utils.ProjectUtil;
 import com.netease.jiumu.web.common.BaseController;
 import com.netease.worldhero.core.common.utils.ListUtils;
 import com.netease.worldhero.core.common.utils.MapUtil;
@@ -32,9 +34,10 @@ public class IndexController extends BaseController{
     @RequestMapping(value = "/index",method = RequestMethod.GET)
     public String toIndex(ModelMap model)
     {
+        ProjectUtil.commonModel(model);
+
         //列表
-        List<Category> categoryList = categoryService.getCategoryList(MapUtil.buildMap("orderBy","sort_num desc"));
-        model.addAttribute("categoryList",categoryList);
+        List<Category> categoryList = categoryService.getCategoryList(MapUtil.buildMap("parentId", 0L,"orderBy", "sort_num desc"));
         //
         List<IndexDto> all = new ArrayList<IndexDto>();
         for(Category category:categoryList){

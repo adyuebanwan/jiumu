@@ -37,8 +37,8 @@ public class ListController extends BaseController {
     public String list(ModelMap model, HttpServletResponse response)
     {
         //列表
-        List<Category> categoryList = categoryService.getCategoryList(MapUtil.buildMap("orderBy", "sort_num desc"));
-        model.addAttribute("categoryList",categoryList);
+        ProjectUtil.commonModel(model);
+
         model.addAttribute("oneCategoryId",null);
         return "web/list";
     }
@@ -47,8 +47,8 @@ public class ListController extends BaseController {
     public String listCategory(@PathVariable Long oneCategoryId,ModelMap model, HttpServletResponse response)
     {
         //列表
-        List<Category> categoryList = categoryService.getCategoryList(MapUtil.buildMap("orderBy", "sort_num desc"));
-        model.addAttribute("categoryList",categoryList);
+        ProjectUtil.commonModel(model);
+
         model.addAttribute("oneCategoryId",oneCategoryId);
         return "web/list";
     }

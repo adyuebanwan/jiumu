@@ -1,9 +1,12 @@
 package com.netease.jiumu.web.controller.admin.goods;
 
+import com.netease.jiumu.app.category.service.CategoryService;
 import com.netease.jiumu.app.goods.service.GoodsService;
+import com.netease.jiumu.app.model.Category;
 import com.netease.jiumu.app.model.Goods;
 import com.netease.jiumu.app.utils.ProjectUtil;
 import com.netease.worldhero.core.common.utils.ListUtils;
+import com.netease.worldhero.core.common.utils.MapUtil;
 import com.netease.worldhero.core.common.utils.StringUtils;
 import com.netease.worldhero.core.common.dto.AjaxData;
 import com.netease.worldhero.core.common.utils.copy.Copyer;
@@ -29,7 +32,11 @@ public class AdminGoodsListController extends AdminLoginController
   @Resource(name="goodsService")
   private GoodsService goodsService;
 
-  @RequestMapping(value={"list"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
+    @Resource(name="categoryService")
+    private CategoryService categoryService;
+
+
+    @RequestMapping(value={"list"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
   public String list(ModelMap model, HttpServletResponse response)
   {
     return "admin/goods/goodsList";
@@ -93,6 +100,9 @@ HttpServletResponse response)
       entity = this.goodsService.getGoods(id);
     }
     model.addAttribute("goods", entity);
+
+      List<Category> parentList = categoryService.getCategoryList(MapUtil.buildMap("parentId",0L));
+
   }
 
   @RequestMapping(value={"save"}, method={org.springframework.web.bind.annotation.RequestMethod.POST})

@@ -11,7 +11,57 @@ pageEncoding="UTF-8"%>
     <%@include file="../include/head.jsp"%>
         <link rel="stylesheet" href="assets/admin/js/kindeditor-4.1.10/themes/default/default.css" />
         <link rel="stylesheet" href="assets/admin/js/kindeditor-4.1.10/plugins/code/prettify.css" />
+    <link rel="stylesheet" href="assets/admin/js/zTree_v3/css/zTreeStyle/zTreeStyle.css" type="text/css"/>
+    <script src="assets/admin/js/zTree_v3/js/jquery.ztree.core-3.5.js" type="text/javascript"></script>
+    <script src="assets/admin/js/zTree_v3/js/jquery.ztree.excheck-3.5.js" type="text/javascript"></script>
+    <script src="assets/admin/js/zTree_v3/js/jquery.ztree.exedit-3.5.js" type="text/javascript"></script>
+    <SCRIPT type="text/javascript">
+        <!--
+        var setting = {
+            check: {
+                enable: true,
+                chkStyle: "radio",
+                radioType: "all"
+            },
+            data: {
+                simpleData: {
+                    enable: true
+                }
+            },
+            callback: {
+                onClick: zTreeOnClick
+            }
+        };
+        function zTreeOnClick(event, treeId, treeNode){
+            alert(1111)
+        }
+        $(document).ready(function(){
+            $.getJSON("admin/category/init_node",{date:new Date().getTime()},function(zNodes){
+                if(zNodes){
+                    for(var i=0;i<zNodes.length;i++){
+                        zNodes[i].pId = zNodes[i].parentId
+                        if(zNodes[i].pId == 0 || zNodes[i].pId == null){//1级目录不让选择
+                            zNodes[i].nocheck = true
+                        }
+                    }
+                }
+                $.fn.zTree.init($("#treeDemo"), setting, zNodes);
+            })
 
+        });
+        function submitForm(){
+            var zTree = $.fn.zTree.getZTreeObj("treeDemo");
+            var nodes = zTree.getCheckedNodes(true);
+            if(nodes.length<=0){
+                alert("请选择商品分类")
+            }else{
+                $("#oneCategoryId").val(nodes[0].pId)//1级分类
+                $("#twoCategoryId").val(nodes[0].id)//2级分类
+                $("form").submit();
+            }
+        }
+        //-->
+    </SCRIPT>
 </head>
 <body class="skin-blue">
 <header class="header">
@@ -100,16 +150,22 @@ pageEncoding="UTF-8"%>
                                         <input type="text" class="form-control" id="storeNum" name="storeNum" value="${goods.storeNum}" placeholder="">
                         </div>
                         <div class="form-group ">
+                            <label for="oneCategoryId">商品分类</label>
+                            <div class="zTreeDemoBackground left">
+                                <ul id="treeDemo" class="ztree"></ul>
+                            </div>
+                        </div>
+                        <div class="form-group hidden">
                             <label for="oneCategoryId">商品一级分类</label>
-                                        <input type="text" class="form-control" id="oneCategoryId" name="oneCategoryId" value="${goods.oneCategoryId}" placeholder="">
+                            <input type="hidden" class="form-control" id="oneCategoryId" name="oneCategoryId" value="${goods.oneCategoryId}" placeholder="">
                         </div>
-                        <div class="form-group ">
+                        <div class="form-group hidden ">
                             <label for="twoCategoryId">商品二级分类</label>
-                                        <input type="text" class="form-control" id="twoCategoryId" name="twoCategoryId" value="${goods.twoCategoryId}" placeholder="">
+                                        <input type="hidden" class="form-control" id="twoCategoryId" name="twoCategoryId" value="${goods.twoCategoryId}" placeholder="">
                         </div>
-                        <div class="form-group ">
+                        <div class="form-group hidden">
                             <label for="threeCategoryId">商品三级分类</label>
-                                        <input type="text" class="form-control" id="threeCategoryId" name="threeCategoryId" value="${goods.threeCategoryId}" placeholder="">
+                                        <input type="hidden" class="form-control" id="threeCategoryId" name="threeCategoryId" value="${goods.threeCategoryId}" placeholder="">
                         </div>
                         <div class="form-group ">
                             <label for="guigeOne">商品规格一</label>
@@ -185,7 +241,7 @@ pageEncoding="UTF-8"%>
 
                             </div><!-- /.box-body -->
                             <div class="box-footer">
-                                <button type="submit" class="btn btn-primary">保存</button>
+                                <button type="button" onclick="submitForm()" class="btn btn-primary">保存</button>
                                 <button type="button" onclick="history.go(-1);"  class="btn btn-primary">返回</button>
                             </div>
                         </form>
