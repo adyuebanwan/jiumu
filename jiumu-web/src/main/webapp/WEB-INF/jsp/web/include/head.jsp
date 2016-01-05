@@ -17,7 +17,7 @@
 <!-- 购物车 -->
 <script src="assets/web/js/shop.js" type="text/javascript"></script>
 
-<!-- 下拉菜单jquer插件 -->
+<!-- 下拉菜单jquery插件 -->
 <script src="assets/web/js/DropDownMenu.js" type="text/javascript"></script>
 <script src="assets/web/js/ui.datepicker.js" type="text/javascript"></script>
 <!-- 日期插件 -->
@@ -35,6 +35,9 @@
 <script  >
     $(function(){
         $('#nav_menu>ul>li').dropDownMenu({child:'.child'});
+        $(".menu_left").click(function(){
+            $("#common_goodscat").toggle()
+        })
     });
 </script>
 <script>

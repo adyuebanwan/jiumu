@@ -69,8 +69,8 @@ public class ListController extends BaseController {
     @RequestMapping(value={"list/page/{pageIndex}/{pageCount}"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
     public void page(@PathVariable Integer pageIndex, @PathVariable Integer pageCount, @RequestParam(required=false, value="orderBy") String orderBy,
                      @RequestParam(required=false, value="oneCategoryId") Long oneCategoryId,
-                     @RequestParam(required=false, value="oneCategoryId") Long twoCategoryId,
-                     @RequestParam(required=false, value="oneCategoryId") String keyword,
+                     @RequestParam(required=false, value="twoCategoryId") Long twoCategoryId,
+                     @RequestParam(required=false, value="keyword") String keyword,
                      @RequestParam(required=false, value="sellPrice") BigDecimal sellPrice,
                      HttpServletResponse response)
     {

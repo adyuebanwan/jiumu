@@ -57,7 +57,7 @@
         <c:when test="${hasSubmit}">
             <div class="encircle">您的订单已经提交过了
                 <div class="checkout_order_tools ">
-                    <a href="/index" class="go_continue">继续购物</a>
+                    <a href="/" class="go_continue">继续购物</a>
                 </div>
             </div>
         </c:when>

@@ -28,6 +28,10 @@
 <script src="/version4/themes/kaben/js/checkout_address.js" type="text/javascript"></script>--%>
 <style>
     .good_list .title{color:#fff;}
+    .h_btm .flow-steps ol .num3{
+         background: #dedede;
+        width: 162px;
+    }
 </style>
 <div class="h_btm">
     <div class="logo">
