@@ -12,7 +12,7 @@
                     <li id="cart_bar_wrapper">
                         <a href="mycart" class="index-go-cart">购物车(<span class="num">0</span>)件<i class="common-cart-down"></i></a>
                         <div class="cart_content02" style="display:none">
-                            <div class="cart_list"><img src="/version4/themes/kaben/images/ajax-loader.gif" class="loading" /></div>
+                            <div class="cart_list"><img src="assets/web/img/ajax-loader.gif" class="loading" /></div>
                         </div>
                     </li>
                     <!--购物车下拉菜单结束-->

@@ -20,5 +20,5 @@
         </div>
     </div>
     <div class="service_tel">
-        <img src="assets/web/images/cn.png" alt="承诺图片" />		</div>
+        <img src="assets/web/img/cn.png" alt="承诺图片" />		</div>
 </div>

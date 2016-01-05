@@ -79,7 +79,7 @@
                 </ul>
             </div>
             <div class="item">
-                <span class="title">官方微信</span> <img src="assets/web/images/weixin.png" alt="登录" />
+                <span class="title">官方微信</span> <img src="assets/web/img/weixin.png" alt="登录" />
             </div>
         </div>
     </div>·

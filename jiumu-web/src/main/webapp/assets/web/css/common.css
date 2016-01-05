@@ -348,7 +348,7 @@ a {
 .search_area .hot_keyword h1{float:left;height:20px;line-height:20px;color:#666;font-weight:normal;}
 .search_area .hot_keyword ul{width:470px;height:20px;line-height:20px;overlfow:hiddne;float:left;}
 .search_area .hot_keyword ul li{float:left;display:inline;margin-right:10px;}
-.search_area .hot_keyword ul li a{padding-right:20px;background:url(../images/libk.png) no-repeat right -4px;}
+.search_area .hot_keyword ul li a{padding-right:20px;background:url(../img/libk.png) no-repeat right -4px;}
 .service_tel{
     float: right;
     height: 70px;

@@ -247,7 +247,7 @@
     line-height: 60px;
 }
 .time_groupbuy .groupbuy_left .l_groupbuy_time .g_time{
-    background:url("../images/index_icon04_clock.png") no-repeat scroll 5px 6px;
+    background:url("../img/index_icon04_clock.png") no-repeat scroll 5px 6px;
     color: #333;
     float: left;
     font-size: 15px;
@@ -266,7 +266,7 @@
     padding-right: 15px;
 }
 .time_groupbuy .groupbuy_left .l_groupbuy_time .groupbuy_next a{
-    color:#2c2319;background:url(../images/index_icon05_toright.png) no-repeat right center;padding-right:15px;
+    color:#2c2319;background:url(../img/index_icon05_toright.png) no-repeat right center;padding-right:15px;
 }
 .time_groupbuy .groupbuy_left .groupbuy_list{
     height: 304px;
@@ -361,7 +361,7 @@
     overflow:hidden;
 }
 .time_groupbuy .groupbuy_adv .groupbuy_roll .flex-direction-nav li .flex-prev{
-    background:url("../images/index_icon07.png") no-repeat scroll 0 0;
+    background:url("../img/index_icon07.png") no-repeat scroll 0 0;
     cursor: pointer;
     height: 19px;
     left: 12px;
@@ -372,7 +372,7 @@
     line-height:50px;
 }
 .time_groupbuy .groupbuy_adv .groupbuy_roll .flex-direction-nav li .flex-next{
-    background:url("../images/index_icon08.png") no-repeat scroll 0 0;
+    background:url("../img/index_icon08.png") no-repeat scroll 0 0;
     cursor: pointer;
     height: 19px;
     position: absolute;
