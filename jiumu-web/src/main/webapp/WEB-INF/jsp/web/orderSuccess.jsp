@@ -87,7 +87,7 @@
                     </div>
 
                     <div class="checkout_order_tools ">
-                        <a href="/index" class="go_continue">继续购物</a>
+                        <a href="/" class="go_continue">继续购物</a>
                     </div>
                 </div>
             </div>
