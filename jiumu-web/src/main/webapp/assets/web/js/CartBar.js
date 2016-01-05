@@ -21,13 +21,13 @@ var CartBar={
             function(){
                 contentBox.show();
                 //显示loading 图标
-                listBox.load(ctx+"/cart/cart_bar.html",function(){
+/*                listBox.load(ctx+"/cart/cart_bar.html",function(){
 //						 //加载完列表绑定删除事件
 //						 $(this).find(".delete").click(function(){
 //							 var itemid = $(this).attr("itemid");
 //							 self.deleteItem(itemid);
 //						 });
-                });
+                });*/
             },function(){
                 contentBox.hide();
             }

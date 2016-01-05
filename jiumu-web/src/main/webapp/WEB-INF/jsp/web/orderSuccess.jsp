@@ -41,7 +41,7 @@
 <div id="main">
     <!--上部填写信息单、购买流程-->
     <div class="h_btm">
-        <div class="logo"><img src="http://www.javashop.cn/version4/statics/attachment//201512112001371904.jpg" title="logo" /></div>
+        <div class="logo"><img src="assets/web/img/logo.png" title="logo" /></div>
         <div class="flow-steps">
             <ol class="cur1">
                 <li class="num1"><span>我的购物车</span> <em>1</em></li>

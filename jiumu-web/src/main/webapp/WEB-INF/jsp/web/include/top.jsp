@@ -2,7 +2,7 @@
          pageEncoding="UTF-8"%>
 <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="welcome">
-    <span class="title"><a href="/version4/index.html">您好，欢迎来到本站！</a></span>
+    <span class="title"><a href="/">您好，欢迎来到本站！</a></span>
     <div class="login_bar login">
     </div>
     <div class="navigation">

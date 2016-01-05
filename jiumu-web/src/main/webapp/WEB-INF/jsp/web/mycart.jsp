@@ -30,7 +30,7 @@
 </style>
 <div class="h-btm">
     <div class="logo">
-        <img src="http://www.javashop.cn/version4/statics/attachment//201512112001371904.jpg" title="logo"/></div>
+        <img src="assets/web/img/logo.png" title="logo"/></div>
     <div class="flow-steps">
         <ol class="cur1">
             <li class="num1">

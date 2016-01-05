@@ -4,7 +4,7 @@
 <div class="logo_area">
     <div class="logo">
         <a href="/">
-            <img src="http://www.javashop.cn/version4/statics/attachment//201512112001371904.jpg" title="logo" />			</a>
+            <img src="assets/web/img/logo.png" title="logo" />			</a>
     </div>
     <div class="search_area">
         <div class="search">
