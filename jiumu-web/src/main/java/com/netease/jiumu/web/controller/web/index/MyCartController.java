@@ -21,14 +21,14 @@ import java.util.List;
  * Created by Administrator on 2016/1/2.
  */
 @Controller
-@RequestMapping(value = "/mycart")
+@RequestMapping(value = "")
 public class MyCartController extends BaseController {
     @Resource
     private GoodsService goodsService;
     private static final String SESSION_KEY = "MY_CART";
 
     //到我的购物车
-    @RequestMapping(value = "/")
+    @RequestMapping(value = "/mycart")
     public String getCartData( HttpServletRequest request,HttpServletResponse response,ModelMap modelMap){
         List<CartDto> list =  myCartList(request);
         modelMap.addAttribute("cartList",list);
@@ -37,19 +37,23 @@ public class MyCartController extends BaseController {
     }
 
     //购物车总额
-    @RequestMapping(value = "/cart_account")
+    @RequestMapping(value = "/mycart/cart_account")
     public void cartAccount(HttpServletRequest request,HttpServletResponse response){
         toJson(response, cartTotalAccount(request));
     }
-
+    //购物车件数
+    @RequestMapping(value = "/mycart/cart_count")
+    public void cartTotalCount(HttpServletRequest request,HttpServletResponse response){
+        toJson(response, cartTotalCount(request));
+    }
     //清空购物车
-    @RequestMapping(value = "/clean")
+    @RequestMapping(value = "/mycart/clean")
     public void clean(HttpServletRequest request,HttpServletResponse response){
         resetCartData(request,new ArrayList<CartDto>());
         toJson(response,"ok");
     }
     //删除一个产品购物车
-    @RequestMapping(value = "/delete/{itemId}")
+    @RequestMapping(value = "/mycart/delete/{itemId}")
     public void delete(@PathVariable Integer itemId,HttpServletRequest request,HttpServletResponse response){
         List<CartDto> list = myCartList(request);
         if(ListUtils.isNotBlank(list)){
@@ -75,6 +79,17 @@ public class MyCartController extends BaseController {
         }
         return total.setScale(2, BigDecimal.ROUND_HALF_UP);
     }
+    private int cartTotalCount( HttpServletRequest request){
+        List<CartDto> list = myCartList(request);
+        int count = 0 ;
+        if(ListUtils.isNotBlank(list)){
+            for(CartDto cartDto:list){
+                count += cartDto.getBuyCount();
+            }
+        }
+        return count;
+    }
+
 
     private List<CartDto> myCartList(HttpServletRequest request){
         List<CartDto> list = (List<CartDto>)request.getSession().getAttribute(SESSION_KEY);
@@ -85,7 +100,7 @@ public class MyCartController extends BaseController {
     }
 
     //加入购物车
-    @RequestMapping(value = "/join/{goodsId}/{count}")
+    @RequestMapping(value = "/mycart/join/{goodsId}/{count}")
     public void joinCart(@PathVariable Long goodsId,@PathVariable Integer count,
             HttpServletRequest request,HttpServletResponse response){
         Goods goods = goodsService.getGoods(goodsId);
@@ -116,7 +131,7 @@ public class MyCartController extends BaseController {
     }
 
     //更新购物车数量
-    @RequestMapping(value = "/update_cart_num/{itemId}/{goodsId}/{buyCount}")
+    @RequestMapping(value = "/mycart/update_cart_num/{itemId}/{goodsId}/{buyCount}")
     public void updateCartNum(@PathVariable Integer itemId,@PathVariable Long goodsId,@PathVariable Integer buyCount,HttpServletRequest request,HttpServletResponse response){
         List<CartDto> list = myCartList(request);
         String result = "ok";

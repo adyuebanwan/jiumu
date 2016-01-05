@@ -4,6 +4,9 @@
 	version="3.0">
 
 	<display-name>jiumu-web</display-name>
+	<welcome-file-list>
+		<welcome-file>/</welcome-file>
+	</welcome-file-list>
 
 	<!-- - Key of the system property that should specify the root directory 
 		of this - web app. Applied by WebAppRootListener or Log4jConfigListener. -->

@@ -12,6 +12,7 @@ public class IndexDto {
     private List<Goods> topList;
     private Goods topCategory;
     private Category category;
+    private List<Category> subCategory;
 
     public List<Goods> getTopList() {
         return topList;
@@ -35,5 +36,13 @@ public class IndexDto {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public List<Category> getSubCategory() {
+        return subCategory;
+    }
+
+    public void setSubCategory(List<Category> subCategory) {
+        this.subCategory = subCategory;
     }
 }

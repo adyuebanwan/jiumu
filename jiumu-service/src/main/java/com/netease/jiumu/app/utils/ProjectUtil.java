@@ -3,6 +3,7 @@ package com.netease.jiumu.app.utils;
 import com.netease.jiumu.app.category.dto.CategoryListDto;
 import com.netease.jiumu.app.category.service.CategoryService;
 import com.netease.jiumu.app.model.Category;
+import com.netease.worldhero.core.common.utils.MapUtil;
 import com.netease.worldhero.core.common.utils.MapUtils;
 import com.netease.worldhero.core.spring.SpringContainer;
 import org.springframework.ui.ModelMap;
@@ -22,6 +23,7 @@ public class ProjectUtil {
     public static void commonModel(ModelMap model){
         CategoryService categoryService = SpringContainer.getBean("categoryService",CategoryService.class);
         List<CategoryListDto> categoryListDtoList = categoryService.list();
-        model.addAttribute("categoryList",categoryListDtoList);
+        model.addAttribute("categoryDtoList",categoryListDtoList);
+        model.addAttribute("categoryList",categoryService.getCategoryList(MapUtil.buildMap("parentId",0L)));
     }
 }

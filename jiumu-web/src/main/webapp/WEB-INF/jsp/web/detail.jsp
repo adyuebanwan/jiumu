@@ -33,7 +33,7 @@
         </div>
         <div class="menu_right">
             <ul>
-                <li><a href="/index">首 页</a></li>
+                <li><a href="/">首 页</a></li>
             </ul>
         </div>
     </div>

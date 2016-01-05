@@ -56,6 +56,14 @@ function  getItemPage(pageIndex){
     if(oneCategoryId!=''){
         requestParam.oneCategoryId=oneCategoryId;
     }
+    var twoCategoryId = $("#twoCategoryId").val();
+    if(twoCategoryId!=''){
+        requestParam.twoCategoryId=twoCategoryId;
+    }
+    var keyword = $("#keyword").val();
+    if(keyword!=''){
+        requestParam.keyword=keyword;
+    }
     var sellPrice = $("#sellPrice").val();
     if(sellPrice!=''){
         requestParam.sellPrice=sellPrice;

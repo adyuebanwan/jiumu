@@ -24,8 +24,8 @@
 
 <link rel="stylesheet" href="assets/web/css/checkout.css" type="text/css" />
 
-<script src="/version4/themes/kaben/js/Checkout.js" type="text/javascript"></script>
-<script src="/version4/themes/kaben/js/checkout_address.js" type="text/javascript"></script>
+<%--<script src="/version4/themes/kaben/js/Checkout.js" type="text/javascript"></script>
+<script src="/version4/themes/kaben/js/checkout_address.js" type="text/javascript"></script>--%>
 <style>
     .good_list .title{color:#fff;}
 </style>

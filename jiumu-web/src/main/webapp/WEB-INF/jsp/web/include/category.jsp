@@ -5,7 +5,7 @@
     <span class="title">所有商品分类</span>
 </div>
 <div class="all-sort-list" id="common_goodscat">
-    <c:forEach var="item" varStatus="sta" items="${categoryList}">
+    <c:forEach var="item" varStatus="sta" items="${categoryDtoList}">
         <div class="item_box " rel="${sta.index+1}">
             <div class="item">
                 <div class="common_item_title">
@@ -22,7 +22,7 @@
                             <dl>
                                 <%--<dt><a href="search-cat-5.html">进2<i>></i></a></dt>--%>
                                 <dd>
-                                    <c:forEach items="${item.chidren}" var="child">
+                                    <c:forEach items="${item.children}" var="child">
                                         <a href="list/${item.category.id}/${child.id}" style="">${child.name}</a>
                                     </c:forEach>
                                 </dd>

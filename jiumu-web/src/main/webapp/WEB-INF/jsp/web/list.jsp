@@ -34,7 +34,7 @@
         </div>
         <div class="menu_right">
             <ul>
-                <li><a href="/version4/index.html">首 页</a></li>
+                <li><a href="/">首 页</a></li>
             </ul>
         </div>
     </div>
@@ -46,14 +46,14 @@
 <div class="goodslist_nav">
     <div class="goods_selected_left">
     	<span>
-    		<a href="index.html">首页</a>
+    		<a href="/">首页</a>
     	</span>
         <span class="arrow">&gt;</span>
         <span>搜索结果</span>
         <span class="arrow">&gt;</span>
     </div>
 
-    <div class="goods_selected_all">
+   <%-- <div class="goods_selected_all">
         <div class="have_chosen have_chosen_cat">
             <ul class="have_chosen_goods top_have_chosen_goods">
                 <li class="have_chosen_goods_list cur last" rel=" last">
@@ -61,7 +61,7 @@
                 </li>
             </ul>
         </div>
-    </div>
+    </div>--%>
 </div>
 <div style="width:1200px;height:1px;margin:0px auto;clear:both;"></div>
 <div class="goods_clear"></div>
@@ -89,14 +89,29 @@
         })
     </script>
     <div class="wait_select">
-        <div class="wait_left">按分类：</div>
+        <div class="wait_left">一级分类：</div>
         <div class="wait_right">
             <ul>
             <c:forEach var="item" varStatus="sta" items="${categoryList}">
-                <li <c:if test="${item.id == oneCategoryId}">class="current"</c:if> ><a  href="list/${item.id}" >${item.name}</a></li>
+                <li <c:if test="${item.id == oneCategoryId}">class="current"</c:if> ><a  href="list/${item.id}/0" >${item.name}</a></li>
             </c:forEach>
             </ul>
         </div>
+
+    </div>
+
+    <c:if test="${subCategoryList!=null and subCategoryList.size()>0}">
+    <div class="wait_select">
+        <div class="wait_left">二级分类：</div>
+        <div class="wait_right">
+            <ul>
+                <li <c:if test="${twoCategoryId==null || twoCategoryId == 0}">class="current"</c:if> ><a href="list/${oneCategoryId}/0">全部</a> </li>
+                <c:forEach var="item" varStatus="sta" items="${subCategoryList}">
+                    <li <c:if test="${item.id == twoCategoryId}">class="current"</c:if> ><a  href="list/${oneCategoryId}/${item.id}" >${item.name}</a></li>
+                </c:forEach>
+            </ul>
+        </div>
+    </c:if>
     </div>
 </div>
 <script>
@@ -138,6 +153,7 @@
     <!-- 商品列表循环  -->
     <input type="hidden" id="pageCount" value="0">
     <input type="hidden" id="oneCategoryId" value="${oneCategoryId}">
+    <input type="hidden" id="twoCategoryId" value="${twoCategoryId}">
     <input type="hidden" id="orderBy" value="${orderBy}">
     <div class="goodslist_circulate" >
         <ul class="goodslist_all" id="tbody"></ul>

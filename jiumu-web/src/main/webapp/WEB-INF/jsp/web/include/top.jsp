@@ -10,7 +10,7 @@
             <li class="first">
                 <ul>
                     <li id="cart_bar_wrapper">
-                        <a href="/version4/cart.html" class="index-go-cart">购物车(<span class="num">0</span>)件<i class="common-cart-down"></i></a>
+                        <a href="mycart" class="index-go-cart">购物车(<span class="num">0</span>)件<i class="common-cart-down"></i></a>
                         <div class="cart_content02" style="display:none">
                             <div class="cart_list"><img src="/version4/themes/kaben/images/ajax-loader.gif" class="loading" /></div>
                         </div>

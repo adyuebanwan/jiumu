@@ -1,5 +1,5 @@
 //加载头部会员信息
-$(".login_bar").load("/version4/common/member_bar.html", function () {
+/*$(".login_bar").load("/version4/common/member_bar.html", function () {
     $("#logout").click(function () {
         $.ajax({
             url: "/version4/api/shop/member!logout.do?ajax=yes",
@@ -22,7 +22,7 @@ $(".login_bar").load("/version4/common/member_bar.html", function () {
         });
         return false;
     })
-});
+});*/
 
 //购物车显示隐藏
 $("#cart_bar_wrapper").mouseenter(function () {
@@ -44,7 +44,7 @@ $("#cart_bar_wrapper").mouseleave(function () {
 
 
 $(function(){
-    $("#logout").click(function(){
+    /*$("#logout").click(function(){
         $.ajax({
             url:"api/shop/member!logout.do?ajax=yes",
             dataType:"json",
@@ -65,7 +65,7 @@ $(function(){
             }
         });
         return false;
-    })
+    })*/
 
     $("#keyword").keypress(function(event){
         //	$("#keyword").attr("class","seek");
@@ -131,7 +131,7 @@ function search(){
         alert("请输入关键字");
     }else{
         keyword = keyword.replace(/\//g,"-xie-")
-        location.href="/version4/goods_list.html?keyword="+keyword;
+        location.href="list?keyword="+keyword;
     }
 }
 
@@ -169,8 +169,8 @@ $(function(){
         $(".all-sort-list").removeClass("is_show");
 
     })
-    var url_ = "/version4/api/shop/goods-words.do";
+   /* var url_ = "/version4/api/shop/goods-words.do";
     $("#keyword").bigAutocomplete({url:url_, callback:function(data){
         location.href="/version4/goods_list.html?keyword="+data.title;
-    }});
+    }});*/
 })

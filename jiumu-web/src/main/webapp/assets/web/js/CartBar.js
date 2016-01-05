@@ -74,13 +74,11 @@ var CartBar={
     loadNum:function(){
         var self = this;
         $.ajax({
-            url: ctx+"/api/shop/cart!getCartData.do?ajax=yes",
+            url: ctx+"/mycart/cart_count",
             dataType:'json',
             cache:false,
             success:function(result){
-                if(result.result==1){
-                    self.numBox.text(result.data.count);
-                }
+                self.numBox.text(result);
             }
         });
     }

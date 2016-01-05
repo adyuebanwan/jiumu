@@ -32,7 +32,7 @@
         </div>
         <div class="menu_right">
             <ul>
-                <li><a href="/version4/index.html">首 页</a></li>
+                <li><a href="/">首 页</a></li>
                 <%--<li><a href="/version4/goods_list.html?cat=1">零食天地</a></li>
                 <li><a href="/version4/goods_list.html?cat=4">进口食品</a></li>
                 <li><a href="/version4/goods_list.html?cat=38">个人护理</a></li>
@@ -102,7 +102,7 @@
         </div>
         <div class="same-box">
             <div class="same-box-left">
-                    <div class="index-beand-list">
+                    <%--<div class="index-beand-list">
                           <ul>
                               <li>
                                   <a href="goods_list.html?brand=1">
@@ -152,26 +152,14 @@
                                            alt="瑞士莲" border="0"/> </a>
                               </li>
                           </ul>
-                      </div>
+                      </div>--%>
                       <!-- 创建商品分类标签 -->
                       <!-- 调用商品分类信息 -->
                       <div class="same-cat">
-                          <a href="/version4/goods_list.html?cat=6" title="坚果">坚果</a>
-                          <a href="/version4/goods_list.html?cat=7" title="蜜饯">蜜饯</a>
-                          <a href="/version4/goods_list.html?cat=8" title="肉干">肉干</a>
-                          <!--  <a href="search-cat-2.html" class="menu">休闲零食 </a><br/>-->
-                          <a href="/version4/goods_list.html?cat=10" title="巧克力">巧克力</a>
-                          <a href="/version4/goods_list.html?cat=11" title="糖果">糖果</a>
-                          <a href="/version4/goods_list.html?cat=12" title="口香糖">口香糖</a>
-                          <!--  <a href="search-cat-3.html" class="menu">糖果/巧克力</a><br/>-->
-                          <a href="/version4/goods_list.html?cat=14" title="碳酸饮料">碳酸饮料</a>
-                          <a href="/version4/goods_list.html?cat=15" title="茶饮料">茶饮料</a>
-                          <a href="/version4/goods_list.html?cat=16" title="果汁">果汁</a>
-                          <!--  <a href="search-cat-13.html" class="menu">饮料</a><br/>-->
-                          <a href="/version4/goods_list.html?cat=19" title="白酒">白酒</a>
-                          <a href="/version4/goods_list.html?cat=20" title="啤酒">啤酒</a>
-                          <a href="/version4/goods_list.html?cat=21" title="洋酒">洋酒</a>
-                          <!--  <a href="search-cat-18.html" class="menu">酒水</a><br/>-->
+                          <c:forEach items="${indexDto.subCategory}" var="sc">
+                              <a href="list/${indexDto.category.id}/${sc.id}" title="${sc.name}">${sc.name}</a>
+
+                          </c:forEach>
                       </div>
                   </div>
                 <c:if test="${indexDto.topCategory !=null}">

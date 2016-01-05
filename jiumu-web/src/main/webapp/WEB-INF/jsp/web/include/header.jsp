@@ -3,12 +3,12 @@
 <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="logo_area">
     <div class="logo">
-        <a href="/version4/index.html">
+        <a href="/">
             <img src="http://www.javashop.cn/version4/statics/attachment//201512112001371904.jpg" title="logo" />			</a>
     </div>
     <div class="search_area">
         <div class="search">
-            <input type="text" class="hunt" id="keyword" placeholder="请输入产品关键字等..." />
+            <input type="text" class="hunt" id="keyword" value="${keyword}" placeholder="请输入产品关键字等..." />
             <input type="button" name="s_seek" class="s_seek" value="搜 索" id="searchBtn">
         </div>
         <div class="hot_keyword">
