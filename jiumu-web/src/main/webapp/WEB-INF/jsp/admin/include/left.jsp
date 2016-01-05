@@ -32,7 +32,8 @@
             </a>
             <ul class="treeview-menu">
                 <li><a id="3-1" href="admin/goods/list"><i class="fa fa-circle-o"></i> 商品管理</a></li>
-                <li><a id="3-2" href="admin/category/list"><i class="fa fa-circle-o"></i> 商品分类</a></li>
+                <li><a id="3-3" href="admin/category/tree"><i class="fa fa-circle-o"></i> 商品分类编辑</a></li>
+                <li><a id="3-2" href="admin/category/list"><i class="fa fa-circle-o"></i> 商品分类排序</a></li>
             </ul>
         </li>
 

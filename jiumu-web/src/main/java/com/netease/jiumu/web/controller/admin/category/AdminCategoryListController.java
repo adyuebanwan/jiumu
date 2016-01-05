@@ -1,5 +1,6 @@
 package com.netease.jiumu.web.controller.admin.category;
 
+import com.netease.jiumu.app.category.dto.CategoryTreeDto;
 import com.netease.jiumu.app.category.service.CategoryService;
 import com.netease.jiumu.app.model.Category;
 import com.netease.jiumu.app.utils.ProjectUtil;
@@ -19,13 +20,67 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@RequestMapping({"/admin/category"})
+@RequestMapping({"/admin/category/"})
 @Controller
 public class AdminCategoryListController extends AdminLoginController
 {
 
   @Resource(name="categoryService")
   private CategoryService categoryService;
+
+  @RequestMapping(value = "tree")
+  public String tree(){
+
+
+    return "admin/category/categoryTree";
+  }
+  @RequestMapping(value={"init_node"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
+  public void initNode(HttpServletResponse response){
+      List<Category> categoryList = categoryService.getCategoryList(null);
+      List<CategoryTreeDto> list = new ArrayList<CategoryTreeDto>();
+      CategoryTreeDto treeDto = new CategoryTreeDto();
+      treeDto.setId(0L);
+      treeDto.setName("根节点");
+      treeDto.setParentId(null);
+      treeDto.setOpen(true);
+      list.add(treeDto);
+      if(ListUtils.isNotBlank(categoryList)){
+
+        for(Category category:categoryList){
+          CategoryTreeDto tree = new CategoryTreeDto();
+          tree.setId(category.getId());
+          tree.setName(category.getName());
+          tree.setParentId(category.getParentId());
+          tree.setOpen(true);
+          list.add(tree);
+        }
+      }
+    toSimpleJson(response, list);
+  }
+
+  @RequestMapping(value={"add_node/{parentId}"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
+  public void addNode(@PathVariable Long parentId,HttpServletResponse response){
+      Category category = new Category();
+      category.setParentId(parentId);
+      category.setName("新节点");
+      Long id = categoryService.insertCategory(category);
+      toSimpleJson(response, id);
+  }
+
+  @RequestMapping(value={"remove_node/{id}"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
+  public void removeNode(@PathVariable Long id,HttpServletResponse response){
+      categoryService.deleteCategory(id);
+      toSimpleJson(response,"ok");
+  }
+
+  @RequestMapping(value={"rename_node/{id}/{name}"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
+  public void renameNode(@PathVariable Long id,@PathVariable String name,HttpServletResponse response){
+    Category category = categoryService.getCategory(id);
+    category.setName(name);
+    categoryService.updateCategory(category);
+    toSimpleJson(response, "ok");
+  }
+
 
   @RequestMapping(value={"list"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
   public String list(ModelMap model, HttpServletResponse response)
