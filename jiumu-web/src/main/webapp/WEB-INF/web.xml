@@ -16,7 +16,7 @@
 	</context-param>
     <session-config>
         <!-- 超时时间30分钟session自动失效-->
-        <session-timeout>480</session-timeout>
+        <session-timeout>4800</session-timeout>
     </session-config>
 	<!-- - Location of the Log4J config file, for initialization and refresh 
 		checks. - Applied by Log4jConfigListener. -->

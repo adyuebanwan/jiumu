@@ -7,5 +7,5 @@
 	<import resource="classpath*:/spring/spring-framework.xml"/>
     <import resource="classpath:/spring/spring-base.xml"/>
     <import resource="classpath:/spring/spring-web.xml"/>
-    <import resource="classpath:/xmemcached.bean.xml"/>
+    <!--<import resource="classpath:/xmemcached.bean.xml"/>-->
 </beans>

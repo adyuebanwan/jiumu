@@ -37,13 +37,10 @@ public class AdminIndexController extends AdminLoginController{
         String sessionId = AdminUserContext.getSessionKey();
         AdminUserDto adminUser = null;
         try {
-            AdminUserContextDto adminUserContextDto = MemcachedClientUtils.get().get(sessionId);
+//            AdminUserContextDto adminUserContextDto = MemcachedClientUtils.get().get(sessionId);
+            AdminUserContextDto adminUserContextDto = (AdminUserContextDto)request.getSession().getAttribute(sessionId);
             adminUser = adminUserContextDto.getAdminUser();
-        } catch (TimeoutException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (MemcachedException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         Map<String,String> map = new HashMap<String,String>();
@@ -54,8 +51,10 @@ public class AdminIndexController extends AdminLoginController{
     @RequestMapping(value="/admin/loginOut")
     public String loginOut(HttpServletRequest request,HttpServletResponse response,ModelMap model){
         String sessionId = AdminUserContext.getSessionKey();
+        request.getSession().removeAttribute(sessionId);
+        return "admin/login";
 //        EhcacheUtils.removeCache(sessionId);
-        try {
+        /*try {
             MemcachedClientUtils.get().delete(sessionId);
             return "admin/login";
         } catch (TimeoutException e) {
@@ -64,7 +63,7 @@ public class AdminIndexController extends AdminLoginController{
             e.printStackTrace();
         } catch (MemcachedException e) {
             e.printStackTrace();
-        }
-        return "admin/index";
+        }*/
+//        return "admin/index";
     }
 }

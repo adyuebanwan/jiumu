@@ -9,6 +9,7 @@ import com.netease.worldhero.core.common.utils.StringUtils;
 import com.netease.worldhero.core.common.utils.SysPropertiesUtil;
 import com.netease.worldhero.core.spring.admin.AdminLoginController;
 import com.netease.worldhero.core.spring.admin.AdminLoginPagingController;
+import org.apache.http.HttpRequest;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -16,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 public class AdminLoginInterceptor implements HandlerInterceptor{
@@ -45,7 +47,8 @@ public class AdminLoginInterceptor implements HandlerInterceptor{
                 dispatcher .forward(req, res);
                 return false;
             }
-            AdminUserContextDto  adminUserContextDto = MemcachedClientUtils.get().get(sessionId);
+//            AdminUserContextDto  adminUserContextDto = MemcachedClientUtils.get().get(sessionId);
+            AdminUserContextDto  adminUserContextDto = (AdminUserContextDto) req.getSession().getAttribute(sessionId);
             if(adminUserContextDto==null){//未登录
                 RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/jsp/admin/login.jsp");
                 dispatcher .forward(req, res);

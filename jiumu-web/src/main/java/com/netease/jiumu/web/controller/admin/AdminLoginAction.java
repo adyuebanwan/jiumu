@@ -56,9 +56,9 @@ public class AdminLoginAction {
         try {
             CreateIdentifyingCode code = new CreateIdentifyingCode();
             String cookieKey = code.getCookieKey(request);
-            //System.out.println("key2="+IdentifyingCodeConstant.CHECK_CODE_SESSION_KEY+cookieKey);
-            String sesionCheckCode = MemcachedClientUtils.get().get(IdentifyingCodeConstant.CHECK_CODE_SESSION_KEY+cookieKey);
-            //System.out.println("c="+checkCode+";s"+sesionCheckCode);
+
+//            String sesionCheckCode = MemcachedClientUtils.get().get(IdentifyingCodeConstant.CHECK_CODE_SESSION_KEY+cookieKey);
+            String sesionCheckCode = (String)request.getSession().getAttribute(IdentifyingCodeConstant.CHECK_CODE_SESSION_KEY);
             if(checkCode==null || sesionCheckCode==null || !checkCode.toLowerCase().equals(sesionCheckCode.toLowerCase())){
                 setCheckCodeCookie(request, response);
                 return "admin/login";
@@ -106,7 +106,9 @@ public class AdminLoginAction {
         adminUserContextDto.setAdminUser(adminUserDto);
         //存储到缓存
 //        EhcacheUtils.resetCache(sessionId,AdminConstant.ADMIN_LOGIN_TIMEOUT,adminUser);
-        MemcachedClientUtils.resetCache(sessionId, AdminConstant.ADMIN_LOGIN_TIMEOUT, adminUserContextDto);
+//        MemcachedClientUtils.resetCache(sessionId, AdminConstant.ADMIN_LOGIN_TIMEOUT, adminUserContextDto);
+        request.getSession().setAttribute(sessionId,adminUserContextDto);
+//        MemcachedClientUtils.resetCache(sessionId, AdminConstant.ADMIN_LOGIN_TIMEOUT, adminUserContextDto);
         return "redirect:admin/index";//index.jsp 后台主页
 	}
 
