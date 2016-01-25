@@ -44,6 +44,8 @@ public class OrderSuccessController extends BaseController {
     @RequestMapping(value = "/save",method = RequestMethod.POST)
     public String success( HttpServletRequest request,HttpServletResponse response,ModelMap modelMap){
         String userName = request.getParameter("userName");
+        String buyerAdress = request.getParameter("buyerAdress");
+        String buyerPhone = request.getParameter("buyerPhone");
         String[] remarks = request.getParameterValues("remark");
         List<CartDto> list =  myCartList(request);
         Long orderId = null;
@@ -56,7 +58,7 @@ public class OrderSuccessController extends BaseController {
                     cartDto.setRemark(remarks[i]);
                 }
             }
-            orderId = orderService.userSubmitOrder(list,userName);
+            orderId = orderService.userSubmitOrder(list,userName,buyerAdress,buyerPhone);
             //清空购物车
             resetCartData(request, new ArrayList<CartDto>());
             modelMap.addAttribute("hasSubmit",false);

@@ -38,7 +38,8 @@ pageEncoding="UTF-8"%>
                                 <div class="form">
                                     <div class="box-body">
                                         <div class="row">
-                <div class="col-xs-2">
+
+                <div class="col-xs-2">
                 <div class="form-group">
                     <label for="id">订单号</label>
                         <input type="text" class="form-control" value="${ id }" id="id" name="id">
@@ -130,16 +131,16 @@ pageEncoding="UTF-8"%>
                                 <tr>
                                     <th><input type="checkbox" id="checkAll"></th>
                                     <th>序号</th>
-                                                <th class="sorting"                                                    orderField="id">订单号</th>
-                                                <th class="sorting"                                                    orderField="account">订单总额</th>
-                                                <th class="sorting"                                                    orderField="real_pay">客户实付金额</th>
-                                                <th class="sorting"                                                    orderField="buyer_name">购货单位</th>
-                                                <th class="sorting"                                                    orderField="buyer_adress">地址</th>
-                                                <th class="sorting"                                                    orderField="buyer_phone">电话</th>
-                                                <th class="sorting"                                                    orderField="create_time">下单日期</th>
-                                                <th class="sorting"                                                    orderField="update_time">更新日期</th>
-                                                <th class="sorting"                                                    orderField="operator">操作人</th>
-                                                <th class="sorting"                                                    orderField="order_status">订单状态</th>
+                                                <th class="sorting"  orderField="id">订单号</th>
+                                                <th class="sorting"  orderField="account">订单总额</th>
+                                                <th class="sorting"  orderField="real_pay">客户实付金额</th>
+                                                <th class="sorting"  orderField="buyer_name">购货单位</th>
+                                                <th class="sorting"  orderField="buyer_adress">地址</th>
+                                                <th class="sorting"  orderField="buyer_phone">电话</th>
+                                                <th class="sorting"  orderField="create_time">下单日期</th>
+                                                <th class="sorting"  orderField="update_time">更新日期</th>
+                                                <th class="sorting"  orderField="operator">操作人</th>
+                                                <th class="sorting"  orderField="order_status">订单状态</th>
                                     <th>操作</th>
                                 </tr>
                                 </thead>

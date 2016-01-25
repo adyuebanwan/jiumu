@@ -68,6 +68,18 @@
                             <input type="text" value="" size="40" name="userName" class="c_addr">
                         </div>
                     </div>
+                    <h3>输人地址</h3>
+                    <div class="box address ">
+                        <div class="modify" >
+                            <input type="text" value="" size="40" name="buyerAdress" class="c_addr">
+                        </div>
+                    </div>
+                    <h3>输入电话</h3>
+                    <div class="box address ">
+                        <div class="modify" >
+                            <input type="text" value="" size="40" name="buyerPhone" class="c_addr">
+                        </div>
+                    </div>
                     <div class="goods_wrapper">
                         <h3>商品清单<a href="mycart/">[返回购物车修改]</a></h3>
                         <table cellspacing="0" cellpadding="3" width="100%" >

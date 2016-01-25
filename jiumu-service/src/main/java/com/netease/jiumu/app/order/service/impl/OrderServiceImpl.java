@@ -36,7 +36,7 @@ public class OrderServiceImpl implements OrderService {
     private CartService cartService;
     @Override
     @Transactional
-    public Long userSubmitOrder(List<CartDto> cartDtoList, String userName) {
+    public Long userSubmitOrder(List<CartDto> cartDtoList, String userName,String buyerAdress,String buyerPhone) {
         if(ListUtils.isNotBlank(cartDtoList)){
             Date now = new Date();
             BigDecimal account = cartService.cartTotalAccount(cartDtoList);
@@ -46,6 +46,8 @@ public class OrderServiceImpl implements OrderService {
             orderMain.setBuyerName(userName);
             orderMain.setCreateTime(now);
             orderMain.setUpdateTime(now);
+            orderMain.setBuyerAdress(buyerAdress);
+            orderMain.setBuyerPhone(buyerPhone);
             orderMain.setOrderStatus(OrderMainConstant.ORDER_STATUS_INIT);
             Long orderId = orderMainService.insertOrderMain(orderMain);//订单号
             for(CartDto cartDto:cartDtoList){

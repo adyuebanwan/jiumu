@@ -170,7 +170,7 @@ pageEncoding="UTF-8"%>
         sObj.after(addStr);
         var btn = $("#addBtn_"+treeNode.tId);
         if (btn) btn.bind("click", function(){//新增
-            if(treeNode.pId == 0 ){
+            if(treeNode.pId == 0 || treeNode.pId == null){
                 $.getJSON("admin/category/add_node/"+treeNode.id,{date:new Date().getTime()},function(data){
                     var zTree = $.fn.zTree.getZTreeObj("treeDemo");
                     zTree.addNodes(treeNode, {id:(data), pId:treeNode.id, name:"新节点" + (data)});

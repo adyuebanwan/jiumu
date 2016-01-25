@@ -9,5 +9,5 @@ import java.util.List;
  */
 public interface OrderService {
 
-    Long  userSubmitOrder(List<CartDto> cartDtoList,String userName);
+    Long  userSubmitOrder(List<CartDto> cartDtoList,String userName,String buyerAdress,String buyerPhone);
 }

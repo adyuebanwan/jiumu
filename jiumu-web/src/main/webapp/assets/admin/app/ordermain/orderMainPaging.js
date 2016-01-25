@@ -109,7 +109,7 @@ function batchDeleteItem(){
 function  getItemPage(pageIndex){
     var template = '<tr id="tr{id}"><td><input type="checkbox" value="{id}" class="tdcheckbox"></td><td>{rankNum}</td>'+
     '<td>{id}</td><td>{account}</td><td>{realPay}</td><td>{buyerName}</td><td>{buyerAdress}</td><td>{buyerPhone}</td><td>{createTime}</td><td>{updateTime}</td><td>{operator}</td><td>{orderStatus}</td>' +
-    '<td><a target="_blank" href="admin/ordermain/detail/{id}">编辑</a> <a href="javascript:{}" onclick="deleteItem({id})">删除</a></td></tr>';
+    '<td><a target="_blank" href="admin/ordermain/detail/{id}">编辑|</a> <a href="javascript:{}" onclick="deleteItem({id})">删除|</a><a target="_blank" href="admin/ordermain/print/{id}">打印</a></td></tr>';
     var pageSize = 20;//每页多少条记录
     var pageCount = parseInt($("#pageCount").val());//总共多少条记录
     var url ='admin/ordermain/page/'+pageIndex+'/'+pageCount;
