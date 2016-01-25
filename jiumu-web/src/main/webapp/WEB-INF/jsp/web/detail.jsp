@@ -61,15 +61,15 @@
         <!-- 商品相册 -->
         <div class="gallery">
             <div class="preview">
-                <a href="${CTX}${goods.bigPic}"  id="zoom" rel="zoom-width:400px;zoom-height:400px;"  class="MagicZoom">
-                    <img   src="${CTX}${goods.bigPic}" />
+                <a href="<%=basePath%>${goods.bigPic}"  id="zoom" rel="zoom-width:400px;zoom-height:400px;"  class="MagicZoom">
+                    <img   src="<%=basePath%>${goods.bigPic}" />
                 </a>
             </div>
             <div class="control_bar">
                 <div class="control left-control"></div>
                 <div class="thumblist">
                     <ul>
-                        <li  class="selected"> <img src="${CTX}${goods.smallPic}" big="${CTX}${goods.bigPic}" small="${CTX}${goods.smallPic}" /></li>
+                        <li  class="selected"> <img src="<%=basePath%>${goods.smallPic}" big="<%=basePath%>${goods.bigPic}" small="<%=basePath%>${goods.smallPic}" /></li>
                     </ul>
                 </div>
                 <div class="control right-control "></div>

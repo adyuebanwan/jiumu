@@ -7,4 +7,4 @@
 
 <!-- jiumu app-->
 <script src="assets/admin/js/page/common_paging.js" type="text/javascript"></script>
-<input type="hidden" id="ctx" value="${CTX}">
+<input type="hidden" id="ctx" value="<%=basePath%>">

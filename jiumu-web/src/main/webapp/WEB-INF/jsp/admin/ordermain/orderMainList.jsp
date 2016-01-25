@@ -174,7 +174,7 @@ pageEncoding="UTF-8"%>
 <!-- ./wrapper -->
 <%@include file="../include/tail.jsp"%>
 <script language="javascript" type="text/javascript"
-        src="${CTX}assets/admin/js/My97DatePicker/WdatePicker.js"></script>
+        src="<%=basePath%>assets/admin/js/My97DatePicker/WdatePicker.js"></script>
 <script src="assets/admin/app/ordermain/orderMainPaging.js" type="text/javascript"></script>
 </body>
 </html>

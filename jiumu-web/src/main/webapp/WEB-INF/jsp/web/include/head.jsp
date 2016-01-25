@@ -41,5 +41,5 @@
     });
 </script>
 <script>
-    var ctx = "${CTX}";
+    var ctx = "<%=basePath%>";
 </script>

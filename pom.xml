@@ -12,6 +12,7 @@
         <java.version>1.6</java.version>
         <java.encoding>UTF-8</java.encoding>
         <encoding>UTF-8</encoding>
+	  	<java.home>D:\ProgrameFiles\javasoft\jdk\jdk1.6.0_38_64bit</java.home>
     </properties>
     <build>
         <plugins>
@@ -23,6 +24,10 @@
                     <source>${java.version}</source>
                     <target>${java.version}</target>
                     <encoding>${java.encoding}</encoding>
+					<compilerArguments>
+						<verbose />
+						<bootclasspath>${java.home}\jre\lib\rt.jar;${java.home}\jre\lib\jce.jar</bootclasspath>
+					</compilerArguments>
                 </configuration>
             </plugin>
             <plugin>

@@ -61,7 +61,7 @@ pageEncoding="UTF-8"%>
 <!-- ./wrapper -->
 <%@include file="../include/tail.jsp"%>
 <script language="javascript" type="text/javascript"
-        src="${CTX}assets/admin/js/My97DatePicker/WdatePicker.js"></script>
+        src="<%=basePath%>assets/admin/js/My97DatePicker/WdatePicker.js"></script>
 <link rel="stylesheet" href="assets/admin/js/zTree_v3/css/demo.css" type="text/css"/>
 <link rel="stylesheet" href="assets/admin/js/zTree_v3/css/zTreeStyle/zTreeStyle.css" type="text/css"/>
 

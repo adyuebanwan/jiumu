@@ -4,8 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <base href="${CTX }">
-    <meta charset="UTF-8">
+    <%@include file="../common/head.jsp"%>
     <title>AdminLTE | Dashboard</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <!-- bootstrap 3.0.2 -->

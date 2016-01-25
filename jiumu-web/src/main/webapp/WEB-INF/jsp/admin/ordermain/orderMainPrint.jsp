@@ -5,7 +5,7 @@ pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <%@include file="../../common/head.jsp"%>
     <meta name="Generator" content="EditPlus®">
     <meta name="Author" content="">
     <meta name="Keywords" content="">
@@ -139,7 +139,7 @@ pageEncoding="UTF-8"%>
 </head>
 <body>
 <div class="g-wrap">
-    <div><img src="jiumu.png" width="190"/></div>
+    <div><img src="assets/admin/img/jiumu.png" width="190"/></div>
     <h1>合肥JOMOO九牧卫浴专卖店销售清单</h1>
     <div class="ovh mt25">
         <div class="fl">购货单位:${orderMain.buyerName}</div>
@@ -177,11 +177,11 @@ pageEncoding="UTF-8"%>
     <p class="mt20">开单人：</p>
     <p class="fz16 mt5">特别提示:请您仔细阅读本销售清单背面条款,在购买商品时予以确认。</p>
     <div class="ovh mt30"><p class="fr">客户签字确认:___________</p></div>
-    <p class="fz16 mt5 ovh">一店：合肥市合肥市合肥市合肥市合肥市合肥市  <span class="fr">电话：0551-67113019</span></p>
-    <p class="fz16 mt5 ovh">一店：合肥市合肥市合肥市合肥市合肥市合肥市  <span class="fr">电话：0551-67113019</span></p>
-    <p class="fz16 mt5 ovh">一店：合肥市合肥市合肥市合肥市合肥市合肥市  <span class="fr">电话：0551-67113019</span></p>
-    <p class="fz16 mt5 ovh">一店：合肥市合肥市合肥市合肥市合肥市合肥市  <span class="fr">电话：0551-67113019</span></p>
-    <p class="fz16 mt5 ovh">一店：合肥市合肥市合肥市合肥市合肥市合肥市  <span class="fr">电话：0551-67113019</span></p>
+    <p class="fz16 mt5 ovh">一店：青阳路美家居九牧卫浴五星定制体验店  <span class="fr">电话：0551-65230020</span></p>
+    <p class="fz16 mt5 ovh">二店：潜山北路凤凰城商业广场九牧卫浴旗舰店  <span class="fr">电话：0551-65632423</span></p>
+    <p class="fz16 mt5 ovh">三店：紫云路与广西路交口居然之家九牧卫浴精品店  <span class="fr">电话：0551-62990338</span></p>
+    <p class="fz16 mt5 ovh">四店：临泉路信地红星美凯龙九牧卫浴五星定制店  <span class="fr">电话：0551-62918121</span></p>
+    <p class="fz16 mt5 ovh">五店：青阳路美家居五金区九牧卫浴工厂店  <span class="fr">电话：0551-67113019</span></p>
     <p class="fz16 mt5">九牧网站：WWW.JOMMOO.COM.CN</p>
     <span class="p">一存根</span>
 </div>

@@ -79,19 +79,19 @@
                                 </div>
                                 <div class="form-group ">
                                     <label for="thumbnailPic">商品缩略图</label>
-                                    <img id="thumbnailPicReview"  src="${CTX}${goods.thumbnailPic}" />
+                                    <img id="thumbnailPicReview"  src="<%=basePath%>${goods.thumbnailPic}" />
                                     <input type="text" class="form-control" id="thumbnailPic" name="thumbnailPic" value="${goods.thumbnailPic}" placeholder="">
                                     <input type="file" id="thumbnailPicFile" name="myfiles" onchange="uploadFile('thumbnailPic','goods')" class="file"/>
                                 </div>
                                 <div class="form-group ">
                                     <label for="smallPic">商品小图</label>
-                                    <img id="smallPicReview"  src="${CTX}${goods.smallPic}" />
+                                    <img id="smallPicReview"  src="<%=basePath%>${goods.smallPic}" />
                                     <input type="text" class="form-control" id="smallPic" name="smallPic" value="${goods.smallPic}" placeholder="">
                                     <input type="file" id="smallPicFile" name="myfiles" onchange="uploadFile('smallPic','goods')" class="file"/>
                                 </div>
                                 <div class="form-group ">
                                     <label for="bigPic">商品大图</label>
-                                    <img id="bigPicReview"  src="${CTX}${goods.bigPic}" />
+                                    <img id="bigPicReview"  src="<%=basePath%>${goods.bigPic}" />
                                     <input type="text" class="form-control" id="bigPic" name="bigPic" value="${goods.bigPic}" placeholder="">
                                     <input type="file" id="bigPicFile" name="myfiles" onchange="uploadFile('bigPic','goods')" class="file"/>
                                 </div>
@@ -189,7 +189,7 @@
     </aside>
 </div>
 <%@include file="../include/tail.jsp"%>
-<script language="javascript" type="text/javascript" src="${CTX}assets/admin/js/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" type="text/javascript" src="<%=basePath%>assets/admin/js/My97DatePicker/WdatePicker.js"></script>
 <script charset="utf-8" src="assets/admin/app/base.js"></script>
 <script charset="utf-8" src="assets/admin/js/kindeditor-4.1.10/kindeditor.js"></script>
 <script charset="utf-8" src="assets/admin/js/kindeditor-4.1.10/lang/zh_CN.js"></script>

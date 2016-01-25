@@ -102,7 +102,7 @@ pageEncoding="UTF-8"%>
     </aside>
 </div>
 <%@include file="../include/tail.jsp"%>
-<script language="javascript" type="text/javascript" src="${CTX}assets/admin/js/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" type="text/javascript" src="<%=basePath%>assets/admin/js/My97DatePicker/WdatePicker.js"></script>
 <script charset="utf-8" src="assets/admin/app/base.js"></script>
 
 </body>

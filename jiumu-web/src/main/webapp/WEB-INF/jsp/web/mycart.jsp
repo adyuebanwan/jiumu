@@ -79,7 +79,7 @@
                         <tr itemid="${cart.itemId}" productid="${cart.goodsId}" price="${cart.sellPrice}">
                             <td style="width:650px;">
                                 <a target="_blank" href="goods/${cart.goodsId}" class="cart_list_img">
-                                    <img src="${CTX}${cart.goodsPic}"
+                                    <img src="<%=basePath%>${cart.goodsPic}"
                                          height="50" style="cursor: pointer;" width="36"/> </a>
 
                                 <p><a target="_blank" href="goods/${cart.goodsId}">${cart.goodsName}</a>

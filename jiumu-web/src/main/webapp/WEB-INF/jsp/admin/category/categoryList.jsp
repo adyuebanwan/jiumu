@@ -38,7 +38,8 @@ pageEncoding="UTF-8"%>
                                 <div class="form">
                                     <div class="box-body">
                                         <div class="row">
-                <div class="col-xs-2">
+
+                <div class="col-xs-2">
                 <div class="form-group">
                     <label for="name">分类名称</label>
                         <input type="text" class="form-control" value="${ name }" id="name" name="name">
@@ -100,7 +101,7 @@ pageEncoding="UTF-8"%>
 <!-- ./wrapper -->
 <%@include file="../include/tail.jsp"%>
 <script language="javascript" type="text/javascript"
-        src="${CTX}assets/admin/js/My97DatePicker/WdatePicker.js"></script>
+        src="<%=basePath%>assets/admin/js/My97DatePicker/WdatePicker.js"></script>
 <script src="assets/admin/app/category/categoryPaging.js" type="text/javascript"></script>
 </body>
 </html>
