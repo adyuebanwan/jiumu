@@ -1,7 +1,7 @@
 package com.netease.jiumu.app.category.dto;
 
 /**
- * Created by hzhedongyu on 2016/1/5.
+ * Created by hzwww.magicalcoder.com on 2016/1/5.
  */
 public class CategoryTreeDto {
     private Long id;

@@ -5,7 +5,7 @@ import com.netease.jiumu.app.model.Category;
 import java.util.List;
 
 /**
- * Created by hzhedongyu on 2016/1/5.
+ * Created by hzwww.magicalcoder.com on 2016/1/5.
  */
 public class CategoryListDto {
     private Category category;

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
 /**
- * Created by hedongyu on 2015/6/23.
+ * Created by www.magicalcoder.com on 2015/6/23.
  * 799374340@qq.com
  */
 public class OnlineContext {

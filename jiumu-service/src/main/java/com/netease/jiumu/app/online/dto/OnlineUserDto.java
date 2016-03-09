@@ -3,7 +3,7 @@ package com.netease.jiumu.app.online.dto;
 import java.io.Serializable;
 
 /**
- * Created by hedongyu on 2015/6/23.
+ * Created by www.magicalcoder.com on 2015/6/23.
  * 799374340@qq.com
  */
 public class OnlineUserDto implements Serializable{

@@ -21,7 +21,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 /**
- * Created by hedongyu on 2015/4/29.
+ * Created by www.magicalcoder.com on 2015/4/29.
  * 799374340@qq.com
  */
 @RequestMapping(value = "/admin/aAdminUser")

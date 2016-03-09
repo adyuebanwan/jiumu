@@ -5,7 +5,7 @@ import java.util.Date;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
-* Created by hedongyu.
+* Created by www.magicalcoder.com.
 * 799374340@qq.com
 */
 public class Goods{

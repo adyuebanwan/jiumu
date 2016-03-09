@@ -1,7 +1,7 @@
 package com.netease.jiumu.app.dto;
 
 /**
- * Created by hedongyu on 14-8-5.
+ * Created by www.magicalcoder.com on 14-8-5.
  * 799374340@qq.com
  */
 public class SysConfig {

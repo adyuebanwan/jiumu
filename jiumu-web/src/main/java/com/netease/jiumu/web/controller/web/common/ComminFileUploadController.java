@@ -25,7 +25,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by hedongyu on 2015/9/8.
+ * Created by www.magicalcoder.com on 2015/9/8.
  * 799374340@qq.com
  */
 @Controller

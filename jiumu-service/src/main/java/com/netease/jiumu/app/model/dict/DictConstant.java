@@ -1,7 +1,7 @@
 package com.netease.jiumu.app.model.dict;
 
 /**
- * Created by hedongyu on 14-4-1.
+ * Created by www.magicalcoder.com on 14-4-1.
  * 799374340@qq.com
  */
 public interface DictConstant {

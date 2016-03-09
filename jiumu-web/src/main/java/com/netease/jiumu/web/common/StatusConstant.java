@@ -1,7 +1,7 @@
 package com.netease.jiumu.web.common;
 
 /**
- * Created by hedongyu on 2015/7/15.
+ * Created by www.magicalcoder.com on 2015/7/15.
  * 799374340@qq.com
  */
 public interface StatusConstant {

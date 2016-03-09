@@ -21,7 +21,7 @@ import java.util.Map;
 import java.util.concurrent.TimeoutException;
 
 /**
- * Created by hedongyu on 14-8-20.
+ * Created by www.magicalcoder.com on 14-8-20.
  * 799374340@qq.com
  */
 @Controller
